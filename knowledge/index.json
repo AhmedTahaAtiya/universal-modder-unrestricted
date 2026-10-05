@@ -43,6 +43,41 @@
   ]
  },
  {
+  "path": "games/assassin-s-creed-iv-black-flag/reading-the-player-s-world-transform-and-body-position-in-ac.md",
+  "kind": "game",
+  "title": "Reading the player's world transform and body position in AC4 Black Flag (native x86 ASI)",
+  "game": "Assassin's Creed IV Black Flag",
+  "games_also": [],
+  "game_version": "Steam, AC4BFSP.exe MD5 2058342866688F780C8B34526A65BC35 (45,056,040 B, x86)",
+  "platform": "windows",
+  "engine": "native",
+  "route": "native-hook",
+  "tools": [
+   "Ultimate ASI Loader v9.7.4 (x86)",
+   "Ghidra 12.1.4 (headless, 20 GB heap)",
+   "gamedb",
+   "AC.PatchFix framework (ported to x86)",
+   "CMake + MSVC 2022"
+  ],
+  "anti_cheat": "none (single-player campaign; offline only)",
+  "status": "in-progress",
+  "agents": [
+   "OpenCode (DeepSeek V4.1 Flash)"
+  ],
+  "humans": [],
+  "date": "2026-10-06",
+  "links": [],
+  "tags": [
+   "anvilnext",
+   "black-flag",
+   "native-hook",
+   "x86",
+   "transform",
+   "camera",
+   "reverse-engineering"
+  ]
+ },
+ {
   "path": "games/assassin-s-creed-rogue/anvilnext-internals-for-ac-rogue-co-op-player-transform-the-.md",
   "kind": "game",
   "title": "AnvilNext internals for AC Rogue co-op: player transform, the debug-cheat system, and the set-transform path",
