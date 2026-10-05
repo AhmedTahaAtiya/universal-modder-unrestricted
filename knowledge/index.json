@@ -780,6 +780,41 @@
   ]
  },
  {
+  "path": "games/minecraft/half-life-2-guns-in-minecraft-passthrough-hl2-demo-under-win.md",
+  "kind": "game",
+  "title": "Half-Life 2 guns in Minecraft (passthrough, HL2 Demo under Wine on macOS)",
+  "game": "Minecraft",
+  "games_also": [
+   "Half-Life 2 Demo"
+  ],
+  "game_version": "Minecraft Java 26.3 (demo account), Fabric Loader 0.19.5, Fabric API 0.161.0+26.3; Half-Life 2 Demo (Steam app 219) on the HL2 depot build 19307283, 32-bit hl2.exe with DXVK d3d9",
+  "platform": "macos",
+  "engine": "java",
+  "route": "passthrough",
+  "tools": [
+   "Fabric (Loom 1.18)",
+   "Wine 10.0 (Sikarugir wrapper)",
+   "ScreenCaptureKit (Swift helpers)",
+   "imageio-ffmpeg via uv"
+  ],
+  "anti_cheat": "none in single-player (VAC only applies to HL2 multiplayer; nothing online was touched)",
+  "status": "working",
+  "agents": [
+   "Claude Code (Claude Opus 5.5)"
+  ],
+  "humans": [],
+  "date": "2026-10-05",
+  "links": [],
+  "tags": [
+   "source-engine",
+   "wine",
+   "macos",
+   "screencapturekit",
+   "chroma-key",
+   "console-bridge"
+  ]
+ },
+ {
   "path": "games/minecraft/neoforge-1-21-1-custom-dimension-and-tool-tier.md",
   "kind": "game",
   "title": "NeoForge 1.21.1 custom dimension and tool tier",
