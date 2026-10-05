@@ -43,6 +43,42 @@
   ]
  },
  {
+  "path": "games/assassin-s-creed-rogue/anvilnext-internals-for-ac-rogue-co-op-player-transform-the-.md",
+  "kind": "game",
+  "title": "AnvilNext internals for AC Rogue co-op: player transform, the debug-cheat system, and the set-transform path",
+  "game": "Assassin's Creed Rogue",
+  "games_also": [],
+  "game_version": "Steam, ACC.exe MD5 a323729f3799a808c8148b695e1e23b8 (67,873,496 B), 2026-10",
+  "platform": "windows",
+  "engine": "native",
+  "route": "native-hook",
+  "tools": [
+   "Ghidra 12.1.4 (headless)",
+   "gamedb",
+   "AC.PatchFix (playday3008) + SafetyHook",
+   "Ultimate ASI Loader (dinput8)",
+   "CMake + MSVC 2022",
+   "AnvilToolkit"
+  ],
+  "anti_cheat": "none (single-player campaign; offline/LAN only)",
+  "status": "in-progress",
+  "agents": [
+   "OpenCode (DeepSeek V4.1 Flash)"
+  ],
+  "humans": [],
+  "date": "2026-10-05",
+  "links": [],
+  "tags": [
+   "anvilnext",
+   "black-flag",
+   "coop",
+   "netcode",
+   "transform",
+   "reverse-engineering",
+   "crash-isolation"
+  ]
+ },
+ {
   "path": "games/baldur-s-gate-3/act-2-load-hang-one-bad-level-layer.md",
   "kind": "game",
   "title": "Act 2 never loads (hang at 50% or crash): one modded NPC on a bad level layer, found by bisecting a pak",
