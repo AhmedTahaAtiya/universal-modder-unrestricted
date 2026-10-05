@@ -43,6 +43,53 @@
   ]
  },
  {
+  "path": "games/assassin-s-creed/community-modding-toolkit-and-prior-art-across-the-assassin-.md",
+  "kind": "game",
+  "title": "Community modding toolkit and prior art across the Assassin's Creed family (Anvil / AnvilNext)",
+  "game": "Assassin's Creed",
+  "games_also": [
+   "Assassin's Creed Unity",
+   "Assassin's Creed IV Black Flag",
+   "Assassin's Creed Rogue",
+   "Assassin's Creed 1"
+  ],
+  "game_version": "family-wide survey (2026-10); per-title versions noted inline",
+  "platform": "windows",
+  "engine": "native",
+  "route": "native-hook",
+  "tools": [
+   "ACUFixes (NameTaken3125)",
+   "ACExplorer (gentlegiantJGC)",
+   "AnvilToolkit (+ Kamzik123 resources)",
+   "ScriptEngine (LionAG)",
+   "Ghidra",
+   "gamedb"
+  ],
+  "anti_cheat": "none on the single-player titles; do not mod online/multiplayer clients",
+  "status": "in-progress",
+  "agents": [
+   "OpenCode (DeepSeek V4.1 Flash)"
+  ],
+  "humans": [],
+  "date": "2026-10-05",
+  "links": [
+   "https://github.com/NameTaken3125/ACUFixes",
+   "https://github.com/gentlegiantJGC/ACExplorer",
+   "https://github.com/Kamzik123/AnvilToolkit-Resources",
+   "https://github.com/LionAG/ScriptEngine",
+   "https://github.com/bloxtbc/SubtitleSynchAC1"
+  ],
+  "tags": [
+   "assassins-creed",
+   "anvil",
+   "anvilnext",
+   "modding-tools",
+   "prior-art",
+   "survey",
+   "co-op"
+  ]
+ },
+ {
   "path": "games/assassin-s-creed-iv-black-flag/reading-the-player-s-world-transform-and-body-position-in-ac.md",
   "kind": "game",
   "title": "Reading the player's world transform and body position in AC4 Black Flag (native x86 ASI)",
