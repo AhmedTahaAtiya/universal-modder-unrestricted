@@ -139,6 +139,24 @@ def test_known_game_longest_key_wins(tmp_path):
     assert r["routes"][0]["route"] == scan.KNOWN["grand theft auto v enhanced"][0]
 
 
+def test_record_encodes_and_tags_bt709(tmp_path, monkeypatch):
+    # RGB frames -> yuv420p used the BT.601 matrix untagged; browsers read HD video as BT.709 and shift colours
+    from um import win
+    seen = {}
+    monkeypatch.setattr(win, "is_wsl", lambda: False)   # under WSL, Recorder calls wslpath through the patched Popen
+
+    class FakePopen:
+        def __init__(self, cmd, **kw):
+            seen["cmd"] = cmd
+    monkeypatch.setattr(win, "ffmpeg_win", lambda *a, **k: "ffmpeg")
+    monkeypatch.setattr(win, "encoder", lambda: "libx264")
+    monkeypatch.setattr(win.subprocess, "Popen", FakePopen)
+    win.Recorder(exe="Game.exe", out=str(tmp_path / "take"), audio=False).start()
+    cmd = seen["cmd"]
+    assert "out_color_matrix=bt709" in cmd[cmd.index("-vf") + 1]
+    assert cmd[cmd.index("-colorspace") + 1] == "bt709" and cmd[cmd.index("-color_range") + 1] == "tv"
+
+
 def test_auto_hdr_detection(monkeypatch):
     # Auto HDR on an HDR display washes out captures of SDR games; um warns from the registry setting
     from um import win

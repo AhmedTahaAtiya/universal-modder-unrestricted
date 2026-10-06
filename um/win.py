@@ -281,6 +281,8 @@ class Recorder:
         if mw:
             vf.append(f"scale='min(iw,{mw})':-2")
         vf.append("crop=trunc(iw/2)*2:trunc(ih/2)*2")
+        # RGB -> YUV with the BT.709 matrix, and say so: an untagged file gets BT.601 here but is read as BT.709 by browsers
+        vf.append("scale=out_color_matrix=bt709:out_range=tv,format=yuv420p")
         codec = {"h264_nvenc": ["-c:v", "h264_nvenc", "-preset", "p4", "-cq", str(self.cq)],
                  "h264_amf": ["-c:v", "h264_amf", "-quality", "quality", "-qp_i", str(self.cq), "-qp_p", str(self.cq)],
                  "h264_qsv": ["-c:v", "h264_qsv", "-global_quality", str(self.cq)]}.get(enc, ["-c:v", "libx264", "-preset", "veryfast", "-crf", "18"])
@@ -299,7 +301,7 @@ class Recorder:
         self.t_video = time.time()
         self.log = Path(to_posix(self.base + ".ffmpeg.log"))
         self.video = subprocess.Popen([ff, "-hide_banner", "-loglevel", "error", "-y", "-f", "lavfi", "-i", _source(self.exe, self.hwnd, self.title, crop=self.crop),
-                                       "-vf", ",".join(vf), *codec, "-pix_fmt", "yuv420p", "-flush_packets", "1", self.base + ".mkv"],
+                                       "-vf", ",".join(vf), *codec, "-pix_fmt", "yuv420p", "-colorspace", "bt709", "-color_range", "tv", "-flush_packets", "1", self.base + ".mkv"],
                                       stdin=subprocess.PIPE, stderr=open(self.log, "w"))
         self.t_audio = t_audio
         return self
