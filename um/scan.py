@@ -18,7 +18,7 @@ import subprocess
 import time
 from pathlib import Path
 
-from um.common import die, is_mac, is_windows, is_wsl, to_posix
+from um.common import die, is_mac, is_windows, is_wsl, ps_exe, to_posix
 
 MAX_ENTRIES = 80_000
 MAX_DEPTH = 6
@@ -55,7 +55,7 @@ def win_folders() -> dict:
         ps = ("$f=[Environment]; "
               "@($f::GetFolderPath('UserProfile'),$f::GetFolderPath('MyDocuments'),$f::GetFolderPath('ApplicationData'),"
               "$f::GetFolderPath('LocalApplicationData')) -join '|'")
-        exe = "powershell.exe" if is_wsl() else "powershell"
+        exe = ps_exe()
         try:
             out = subprocess.run([exe, "-NoProfile", "-Command", ps], capture_output=True, text=True, timeout=30,
                                  cwd="/mnt/c" if is_wsl() else None).stdout.strip()

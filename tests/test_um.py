@@ -326,6 +326,22 @@ def test_pr_head_same_repo():
     assert kb.pr_head("kb/a-b", None) == "kb/a-b"
 
 
+# --------------------------------------------------------------------------- powershell
+
+def test_ps_exe_falls_back_to_full_path(tmp_path, monkeypatch):
+    # an agent's PATH often lacks System32\WindowsPowerShell\v1.0; bare "powershell" then raises WinError 2
+    from um import common
+    exe = tmp_path / "System32" / "WindowsPowerShell" / "v1.0" / "powershell.exe"
+    exe.parent.mkdir(parents=True)
+    exe.write_bytes(b"MZ")
+    monkeypatch.setattr(common, "is_wsl", lambda: False)
+    monkeypatch.setattr(common.shutil, "which", lambda name: None)
+    monkeypatch.setenv("SystemRoot", str(tmp_path))
+    assert common.ps_exe() == str(exe)
+    monkeypatch.setattr(common.shutil, "which", lambda name: "/on/path/" + name)
+    assert common.ps_exe() == "/on/path/powershell"
+
+
 # --------------------------------------------------------------------------- backup
 
 def test_backup_handles_pre_1980_timestamps(tmp_path, monkeypatch):
