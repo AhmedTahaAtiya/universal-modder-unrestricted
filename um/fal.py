@@ -182,7 +182,7 @@ EXT = {"image/png": ".png", "image/jpeg": ".jpg", "image/webp": ".webp", "image/
 
 def download_outputs(result: dict, out: Path, name: str) -> list[str]:
     out.mkdir(parents=True, exist_ok=True)
-    files, used, first_key = [], set(), None
+    files, used, first_key, failed = [], set(), None, []
     for trail, url, ctype in _urls_in(result):
         ext = Path(urllib.parse.urlparse(url).path).suffix or EXT.get(ctype.split(";")[0], "")
         key = re.sub(r"\[\d+\]", "", trail).split(".")[-1] or "file"
@@ -200,9 +200,17 @@ def download_outputs(result: dict, out: Path, name: str) -> list[str]:
             path = out / f"{stem}_{n}{ext}"
         used.add(path.name)
         req = urllib.request.Request(url, headers={"User-Agent": "universal-modder"})
-        with urllib.request.urlopen(req, timeout=600) as r:
-            path.write_bytes(r.read())
+        try:
+            with urllib.request.urlopen(req, timeout=600) as r:
+                path.write_bytes(r.read())
+        except (urllib.error.URLError, OSError) as e:  # keep going: the other outputs are still worth saving
+            failed.append(f"{url} ({e})")
+            continue
         files.append(str(path))
+    if failed:
+        rid, ep = result.get("_request_id"), result.get("_endpoint") or "<endpoint>"
+        die("the job finished but these outputs did not download:\n  " + "\n  ".join(failed) +
+            (f"\nrequest {rid}: try again later with `um fal result {ep} {rid}`" if rid else ""))
     return files
 
 
@@ -237,7 +245,7 @@ def run(endpoint: str, inp: dict, timeout: float = 1800, quiet: bool = False) ->
             if st.get("error"):
                 die(f"{endpoint} failed: {st['error']}")
             res = _req("GET", response_url)
-            res["_request_id"] = rid
+            res["_request_id"], res["_endpoint"] = rid, endpoint
             return res
         if time.time() - t0 > timeout:
             die(f"{endpoint}: still {s} after {timeout:.0f}s (request {rid}); check later with `um fal result {endpoint} {rid}`")
