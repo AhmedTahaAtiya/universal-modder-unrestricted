@@ -66,8 +66,34 @@ def win_folders() -> dict:
     return cache["v"]
 
 
+def steam_registry_root() -> Path | None:
+    """Where Steam says it lives (Windows registry); many installs aren't under Program Files (e.g. C:\\Steam)."""
+    if is_windows():
+        import winreg
+        for hive, key, value in ((winreg.HKEY_CURRENT_USER, r"Software\Valve\Steam", "SteamPath"),
+                                 (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\WOW6432Node\Valve\Steam", "InstallPath")):
+            try:
+                with winreg.OpenKey(hive, key) as k:
+                    return Path(winreg.QueryValueEx(k, value)[0])
+            except OSError:
+                continue
+    elif is_wsl():
+        try:
+            out = subprocess.run(["reg.exe", "query", r"HKCU\Software\Valve\Steam", "/v", "SteamPath"], capture_output=True,
+                                 text=True, timeout=15, cwd="/mnt/c").stdout
+        except (OSError, subprocess.TimeoutExpired):
+            return None
+        m = re.search(r"SteamPath\s+REG_SZ\s+(.+)", out)
+        if m:
+            return Path(to_posix(m.group(1).strip()))
+    return None
+
+
 def steam_roots() -> list[Path]:
     cands = []
+    reg = steam_registry_root()
+    if reg:
+        cands.append(reg)
     if is_windows():
         cands += [Path(os.environ.get("ProgramFiles(x86)", r"C:\Program Files (x86)")) / "Steam", Path(r"C:\Program Files\Steam")]
     elif is_wsl():

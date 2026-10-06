@@ -120,6 +120,14 @@ def test_steam_games_utf8(tmp_path, monkeypatch, library_name, install_name, gam
         "path": str(game_path), "workshop": None,
     }]
 
+
+def test_steam_root_from_registry(tmp_path, monkeypatch):
+    # Steam installed outside Program Files (e.g. C:\Steam): its libraryfolders.vdf, and every library in it, was never read
+    root = tmp_path / "Steam"
+    (root / "steamapps").mkdir(parents=True)
+    monkeypatch.setattr(scan, "steam_registry_root", lambda: root)
+    assert root.resolve() in scan.steam_roots()
+
 def test_known_game_longest_key_wins(tmp_path):
     # "grand theft auto v" is a substring of "grand theft auto v enhanced";
     # the more specific entry must win, not whichever lands first in the dict
