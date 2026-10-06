@@ -139,6 +139,16 @@ def test_known_game_longest_key_wins(tmp_path):
     assert r["routes"][0]["route"] == scan.KNOWN["grand theft auto v enhanced"][0]
 
 
+def test_slay_the_spire_2_is_not_sts1(tmp_path):
+    # StS2 is Godot + C#; the StS1 entry (ModTheSpire, Java) must not match it
+    d = tmp_path / "Slay the Spire 2"
+    d.mkdir()
+    for i in range(6):
+        (d / f"f{i}.txt").write_text("x")
+    route = scan.scan(str(d))["routes"][0]["route"]
+    assert route == scan.KNOWN["slay the spire 2"][0] and "ModTheSpire" not in route
+
+
 # --------------------------------------------------------------------------- sprite
 
 def sprite_on_white(w=64, h=48):
