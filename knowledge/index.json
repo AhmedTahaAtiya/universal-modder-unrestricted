@@ -1006,6 +1006,39 @@
   ]
  },
  {
+  "path": "games/minecraft/ruby-rush-220-talent-forge-1-20-1-mod-gui-vein-miner-bytecod.md",
+  "kind": "game",
+  "title": "Ruby Rush: 220-talent Forge 1.20.1 mod - GUI, vein miner, bytecode-derived icon UVs",
+  "game": "Minecraft",
+  "games_also": [],
+  "game_version": "1.20.1 (Forge 47.4.10)",
+  "platform": "windows",
+  "engine": "java",
+  "route": "loader-api",
+  "tools": [
+   "javap",
+   "gradle",
+   "pillow",
+   "python"
+  ],
+  "anti_cheat": "none",
+  "status": "working",
+  "agents": [
+   "OpenCode (mimo-v2.6-flash-free)"
+  ],
+  "humans": [],
+  "date": "2026-10-06",
+  "links": [],
+  "tags": [
+   "forge",
+   "gui",
+   "talents",
+   "vein-mining",
+   "icons",
+   "bytecode"
+  ]
+ },
+ {
   "path": "games/naruto-shippuden-ultimate-ninja-storm-4/free-for-all-4-6-teams-native-ui.md",
   "kind": "game",
   "title": "Naruto Storm 4: free-for-all for 4-6 teams with native UI, by controlling the duel's side/role lookups",
