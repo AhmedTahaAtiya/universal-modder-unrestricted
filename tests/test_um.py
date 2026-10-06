@@ -252,6 +252,42 @@ def test_kv_and_urls(tmp_path):
     assert [u for _, u, _ in fal._urls_in(res)] == ["https://v3.fal.media/a.png", "https://v3.fal.media/b.png", "https://v3.fal.media/m.png"]
 
 
+def test_upload_uses_cdn_token_and_explains_big_failures(tmp_path, monkeypatch, capsys):
+    # storage/upload/initiate?storage_type=gcs now answers 400 "Invalid storage type"; files over 8 MiB then failed silently
+    calls = []
+    monkeypatch.setattr(fal, "_req", lambda method, url, body=None, **k: calls.append(url) or {"token": "t", "token_type": "Bearer"})
+
+    class Resp:
+        def __init__(self, req):
+            self.req = req
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def read(self):
+            return json.dumps({"access_url": "https://v3.fal.media/files/x/a.png"}).encode()
+    sent = []
+    monkeypatch.setattr(fal.urllib.request, "urlopen", lambda req, timeout=None: sent.append(req) or Resp(req))
+    f = tmp_path / "a.png"
+    f.write_bytes(b"\x89PNG")
+    assert fal.upload(f) == "https://v3.fal.media/files/x/a.png"
+    assert "storage_type=fal-cdn-v3" in calls[0] and sent[0].full_url == fal.CDN + "/files/upload"
+    assert sent[0].get_header("Authorization") == "Bearer t" and sent[0].get_header("X-fal-file-name") == "a.png"
+
+    def fail(req, timeout=None):
+        raise fal.urllib.error.URLError("boom")
+    monkeypatch.setattr(fal.urllib.request, "urlopen", fail)
+    assert fal.upload(f).startswith("data:image/png;base64,")              # small: inline fallback
+    big = tmp_path / "big.mp4"
+    big.write_bytes(b"\0" * ((8 << 20) + 1))
+    with pytest.raises(SystemExit):
+        fal.upload(big)
+    assert "only covers files under 8 MiB" in capsys.readouterr().err  # big: says why instead of a bare exit 1
+
+
 # --------------------------------------------------------------------------- publish
 
 def test_publish_check(tmp_path, capsys):
