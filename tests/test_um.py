@@ -497,3 +497,21 @@ def test_skill_copies_match():
         assert tree(root / copy) == src, (f"{copy} differs from skills/: rm -rf .agents/skills .claude/skills && "
                                           "cp -r skills .agents/skills && cp -r skills .claude/skills")
     assert not any((root / d).exists() for d in (".gemini/skills", ".github/skills")), "agents read .agents/skills"
+
+
+# --------------------------------------------------------------------------- hooks
+
+@pytest.mark.skipif(not shutil.which("cygpath"), reason="Git Bash / MSYS only")
+def test_path_hook_writes_a_posix_root(tmp_path):
+    # Claude Code passes ${CLAUDE_PLUGIN_ROOT} as C:/...; written as is, bash splits PATH at the drive colon
+    import os
+    root = tmp_path / "um root"
+    (root / "bin").mkdir(parents=True)
+    (root / "bin" / "um").write_text("#!/bin/sh\n")
+    env_file = tmp_path / "env.sh"
+    bash = str(Path(shutil.which("cygpath")).with_name("bash.exe"))
+    hook = Path(__file__).resolve().parents[1] / "hooks" / "add-to-path.sh"
+    subprocess.run([bash, str(hook), root.as_posix()], env={**os.environ, "CLAUDE_ENV_FILE": str(env_file)}, check=True)
+    value = env_file.read_text().split('"')[1]
+    prefix = value[:value.index("/bin:$PATH")]
+    assert prefix.startswith("/") and ":" not in prefix, value
