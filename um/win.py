@@ -185,9 +185,63 @@ def _source(exe=None, hwnd=None, title=None, cursor=False, crop=None) -> str:
     return f"gfxcapture={sel}:capture_cursor={1 if cursor else 0}:max_framerate=60{c},hwdownload,format=bgra"
 
 
+GPU_PREFS = r"Software\Microsoft\DirectX\UserGpuPreferences"
+
+
+def _gpu_prefs() -> dict:
+    """HKCU UserGpuPreferences: exe path (or DirectXUserGlobalSettings) -> "AppStatus=1;AutoHDREnable=2097;"."""
+    out = {}
+    if is_windows():
+        import winreg
+        try:
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, GPU_PREFS) as k:
+                i = 0
+                while True:
+                    try:
+                        name, data, _ = winreg.EnumValue(k, i)
+                    except OSError:
+                        break
+                    out[name] = str(data)
+                    i += 1
+        except OSError:
+            pass
+    elif is_wsl():
+        try:
+            text = subprocess.run(["reg.exe", "query", "HKCU\\" + GPU_PREFS], capture_output=True, text=True, timeout=15, cwd="/mnt/c").stdout
+        except (OSError, subprocess.TimeoutExpired):
+            return out
+        for line in text.splitlines():
+            name, sep, data = line.strip().partition("    REG_SZ    ")
+            if sep:
+                out[name] = data
+    return out
+
+
+def auto_hdr_on(exe=None) -> bool:
+    """Windows Auto HDR for this game (its own setting, else the global one). Odd AutoHDREnable = on (2097 on, 2096 off)."""
+    def flag(s):
+        v = dict(kv.split("=", 1) for kv in s.split(";") if "=" in kv).get("AutoHDREnable", "")
+        return int(v) % 2 == 1 if v.isdigit() else None
+    prefs = _gpu_prefs()
+    if exe:
+        name = (exe if exe.lower().endswith(".exe") else exe + ".exe").lower()
+        for path, data in prefs.items():
+            if path.replace("/", "\\").lower().rsplit("\\", 1)[-1] == name and flag(data) is not None:
+                return flag(data)
+    return bool(flag(prefs.get("DirectXUserGlobalSettings", "")))
+
+
+def warn_auto_hdr(exe=None):
+    if auto_hdr_on(exe):
+        print(f"WARNING: Windows Auto HDR is on{' for ' + exe if exe else ''}. On an HDR display the capture of an SDR game "
+              "comes out washed out (brighter, shifted colours). Turn Auto HDR off for the game while capturing: Settings > "
+              "System > Display > Graphics > (the game) > Auto HDR.", file=sys.stderr)
+
+
 def shot(out: str, exe=None, hwnd=None, title=None, scale: float | None = None, timeout=20) -> str:
     """One frame of a game window -> PNG. Returns the (posix) path; with scale also writes <out>_small.png."""
     ff = ffmpeg_win()
+    warn_auto_hdr(exe)
     dst = Path(out).resolve()
     dst.parent.mkdir(parents=True, exist_ok=True)
     target = to_win(dst) if is_wsl() else str(dst)
@@ -220,6 +274,7 @@ class Recorder:
 
     def start(self):
         ff = ffmpeg_win()
+        warn_auto_hdr(self.exe)
         enc = encoder()
         vf = [f"fps={self.fps}"]
         mw = self.max_width or (4096 if enc == "h264_nvenc" else None)
