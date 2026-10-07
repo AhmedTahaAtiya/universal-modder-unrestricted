@@ -146,18 +146,22 @@ With your human's OK, open a PR (`um kb pr <note> --yes`). Do this even if the m
 documented dead end saves the next agent hours.
 
 ## Hard rules
+These are about not damaging the user's machine, not about what you may build. Any game, any route.
 - **Back up first.** Run `um backup` before changing saves, profiles or game folders. Keep the restore path
-  written in MODLOG.md.
+  written in MODLOG.md. Do this without asking; it only protects.
 - **Process hygiene.**
   - Kill by exact PID (`um win kill <pid>`). Never use `pkill -f` (it matches your own shell) or wildcard
     kills.
   - Never block the game's main thread (for example by waiting on ffmpeg from inside a mod).
   - Clear crash reporters (BugSplat etc.) by PID when Steam refuses to relaunch.
-- **The user's machine.**
-  - Driving input takes over their mouse and keyboard. Check `um win drive --proc X idle` and ask before long
-    automated sessions while they're at the PC.
-  - Ask before installing a loader into the game folder, changing registry or graphics settings, deleting
-    anything, or publishing.
+- **Ask first**, and only for what cannot be undone:
+  - deleting files, overwriting saves, or wiping a folder;
+  - changing the registry, drivers or system-wide settings;
+  - driving the mouse and keyboard while the user is at the PC (`um win drive --proc X idle`);
+  - publishing under their name.
+  Installing loaders, editing graphics settings and reversible edits need no permission.
+- **Never write a key into a file that gets published.** `FAL_KEY` and friends stay in the environment or
+  `.env`; `um publish check` fails on leaked ones.
 
 ## References
 - `references/engines/`:

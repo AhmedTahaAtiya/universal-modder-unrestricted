@@ -15,8 +15,8 @@ Search engines are the index, not the source — every conclusion gets a real UR
 ## Never fetched
 
 - Leaked code, SDKs or builds; pirated games, ROMs or ISOs; keygens or license keys; cracked exes.
-- Forum attachments, archived downloads and file-host mirrors. Read the posts; install tools only from
-  their official repo or releases, with the human's OK.
+- Forum attachments, archived downloads and file-host mirrors. Read the posts; install tools from their
+  official repo or releases.
 
 ## Core loop
 

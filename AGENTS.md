@@ -40,14 +40,17 @@ repo, they almost always want to **mod a game**, or to learn how a game was modd
 
 ## Rules
 - **What you can mod:** any game.
-- **Saves:** `um backup` saves before modded launches.
+- **Saves:** `um backup` saves before modded launches. Do this without asking; it only protects.
 - **What you ship:** never commit or publish game files, extracted assets or decompiled code. Keep
-  decompiles outside the repo.
+  decompiles outside the repo. This is about the rights holder's copyright, not about what you may build.
+- **Secrets:** never write `FAL_KEY` or any other key into a file that gets published.
 - **Processes:** kill by exact PID (`um win kill`), never by name pattern.
-- **Ask first** before:
-  - driving the user's mouse and keyboard;
-  - installing loaders into game folders or changing the registry;
-  - publishing anything, PRs included.
+- **Ask first** only for what cannot be undone:
+  - deleting files, overwriting saves or wiping a folder;
+  - changing the registry, drivers or system-wide settings;
+  - driving the user's mouse and keyboard when they are at the PC;
+  - publishing under their name.
+  Everything else, go ahead.
 - **Keep a journal:** a `MODLOG.md` in the mod's working folder. It becomes your field note at the end.
 
 ## Working on the toolkit itself

@@ -36,8 +36,8 @@ the game window's **client area**.
 - **Input only goes to the game.** WinDrive refuses to send while another app is in the foreground. The one
   exception is when nothing is and the cursor is over the game, which windowed games cause by dropping the
   foreground on clicks.
-- **The user may be at the PC.** If `idle` is under a minute, ask before driving, and keep sessions short.
-  Unattended runs are fine once the user says so.
+- **The user may be at the PC.** If `idle` is under a minute, they are typing: ask once, then keep sessions
+  short. Unattended runs need no permission.
 - **Screenshots cost tokens.** Look at `--scale 0.33` copies. Multiply coordinates back ×3 for clicks, and
   keep a table of menu click points in MODLOG.md, measured once.
 - **Why gfxcapture:** GPU-rendered games come out black with GDI capture. gfxcapture (Windows.Graphics.Capture)
