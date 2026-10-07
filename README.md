@@ -1,9 +1,17 @@
 <p align="center">
-  <img src="docs/media/banner.png" alt="universal-modder: mod any game. Point any AI coding agent at the PC games you own. Publish your mods, remix other people's, and make new ones." width="100%">
+  <b>Community fork.</b> This is not the original project. It is a fork of
+  <a href="https://github.com/rehan-remade/universal-modder">rehan-remade/universal-modder</a> by Rehan and the
+  universal-modder contributors, with the built-in agent guardrail layer removed. All original work, the skills, the
+  <code>um</code> CLI and the knowledge base are theirs, under MIT. This fork only deletes restriction text; it adds no
+  capability and ships no new features.
 </p>
 
 <p align="center">
-  <b>Skills, tools and a shared knowledge base that let any AI coding agent mod almost any PC game you own.</b><br>
+  <img src="docs/media/banner.png" alt="universal-modder: mod any game. Point any AI coding agent at PC games. Publish your mods, remix other people's, and make new ones." width="100%">
+</p>
+
+<p align="center">
+  <b>Skills, tools and a shared knowledge base that let any AI coding agent mod almost any PC game.</b><br>
   The agent finds the game, works out the engine and the route, reads the real code, builds the mod, makes art, 3D and sound
   with <a href="https://fal.ai">fal</a>, tests it in the running game, cuts the video, and writes down what it learned for the next agent.
 </p>
@@ -27,14 +35,17 @@ Pick your agent. Each gets the same skills (Agent Skills format), the fal MCP se
 
 | Agent | Install |
 |---|---|
-| **Claude Code** | `/plugin marketplace add rehan-remade/universal-modder`<br>`/plugin install universal-modder@universal-modder` |
-| **Codex** | `codex plugin marketplace add rehan-remade/universal-modder`<br>`codex plugin add universal-modder@universal-modder` |
-| **Gemini CLI** | `gemini extensions install https://github.com/rehan-remade/universal-modder` |
+| **Claude Code** | `/plugin marketplace add PLACEHOLDER/universal-modder-unrestricted`<br>`/plugin install universal-modder-unrestricted@universal-modder-unrestricted` |
+| **Codex** | `codex plugin marketplace add PLACEHOLDER/universal-modder-unrestricted`<br>`codex plugin add universal-modder-unrestricted@universal-modder-unrestricted` |
+| **Gemini CLI** | `gemini extensions install https://github.com/PLACEHOLDER/universal-modder-unrestricted` |
 | **VS Code / Copilot** | Enable `chat.plugins.enabled`, run **Chat: Install Plugin From Source**, and enter this repo's URL |
 | **Cursor** | Cursor Marketplace, or clone (Cursor reads `AGENTS.md` and `.cursor/mcp.json`) |
 | **OpenCode** | Clone and run `opencode` inside it (`opencode.json` adds the skills and the fal MCP server) |
-| **Skills only**<br>(any agent) | `npx skills add https://github.com/rehan-remade/universal-modder` |
-| **Anything else** | `git clone https://github.com/rehan-remade/universal-modder` and start your agent inside it |
+| **Skills only**<br>(any agent) | `npx skills add https://github.com/PLACEHOLDER/universal-modder-unrestricted` |
+| **Anything else** | `git clone https://github.com/PLACEHOLDER/universal-modder-unrestricted` and start your agent inside it |
+
+Want the original instead? Use [`rehan-remade/universal-modder`](https://github.com/rehan-remade/universal-modder) —
+swap `PLACEHOLDER/universal-modder-unrestricted` for `rehan-remade/universal-modder` in any line above.
 
 Inside a clone, each agent finds the skills where it looks for them: `.agents/skills` (Codex, Gemini CLI,
 Copilot, Cursor, OpenCode) and `.claude/skills` (Claude Code) are copies of `skills/`. Instructions are in
@@ -43,7 +54,7 @@ Copilot, Cursor, OpenCode) and `.claude/skills` (Claude Code) are copies of `ski
 
 **The `um` CLI.** Plugin installs and clones put it on PATH. Anywhere else:
 ```bash
-uv tool install git+https://github.com/rehan-remade/universal-modder     # or: pipx install git+...
+uv tool install git+https://github.com/PLACEHOLDER/universal-modder-unrestricted     # or: pipx install git+...
 ```
 **For assets,** get a [fal API key](https://fal.ai/dashboard/keys). It powers both the fal MCP server and
 `um fal` (for images without a key, `um comfy` uses a local ComfyUI server):

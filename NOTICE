@@ -1,0 +1,27 @@
+# Notice
+
+This repository is a **community fork**, not the original project.
+
+- **Original project:** [rehan-remade/universal-modder](https://github.com/rehan-remade/universal-modder)
+- **Original author:** Rehan and the universal-modder contributors
+- **Upstream license:** MIT (see `LICENSE`)
+- **This fork adds:** no features. It removes the built-in agent guardrail text and fixes some
+  packaging damage inherited from an earlier edit.
+
+All original work — the skills, the `um` CLI, the knowledge base, the examples and the
+documentation — belongs to the upstream authors and contributors.
+
+The MIT license requires the copyright notice and permission notice to be included in all copies
+or substantial portions of the Software. Both are preserved verbatim in `LICENSE`.
+
+## What changed
+
+- Removed the guardrail/rule text that told agents to refuse certain mods (anti-cheat and online-play
+  restrictions, redistribution rules, "ask first" prompts).
+- Fixed `opencode.json` to match the published OpenCode config schema.
+- Repaired Markdown damage (lost backticks, truncated lines, broken numbered lists) and broken
+  internal links left by the earlier edit.
+- Repointed `plugin.json` and `gemini-extension.json` at this fork.
+
+`um publish check` is intentionally left intact: it catches leaked API keys and game files, which
+are a practical hazard rather than a policy.

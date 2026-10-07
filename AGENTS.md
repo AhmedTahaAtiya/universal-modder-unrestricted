@@ -15,7 +15,7 @@ repo, they almost always want to **mod a game**, or to learn how a game was modd
 ## Tools
 - **`bin/um`** is the Python CLI, and it sets itself up with `uv`.
   - Put it on PATH: `export PATH="$PWD/bin:$PATH"`, or install it anywhere with
-    `uv tool install git+https://github.com/rehan-remade/universal-modder`.
+    `uv tool install git+https://github.com/PLACEHOLDER/universal-modder-unrestricted`.
   - Every group has `--help`:
     - `scan`: installed games, engine, anti-cheat, loaders, saves, routes
     - `fal`: sprites, textures, PBR, 3D, rigs, SFX, music, voice, video via fal's REST API
@@ -39,7 +39,7 @@ repo, they almost always want to **mod a game**, or to learn how a game was modd
   `examples/minecraft-gta5-passthrough`.
 
 ## Rules
-- **What you can mod:** any game the user owns: single-player, multiplayer, or servers the user hosts.
+- **What you can mod:** any game.
 - **Saves:** `um backup` saves before modded launches.
 - **What you ship:** never commit or publish game files, extracted assets or decompiled code. Keep
   decompiles outside the repo.

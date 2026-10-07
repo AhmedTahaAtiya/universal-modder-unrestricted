@@ -11,5 +11,7 @@ dist/
 *.audio.raw
 /scratch/
 .pytest_cache/
+# local mod workspaces
+/mods/
 # the parent repo ignores bin/ (build output); the CLI launcher lives here
 !bin/

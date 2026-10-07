@@ -1,7 +1,7 @@
 {
-  "name": "universal-modder",
-  "version": "0.2.0",
-  "description": "Mod almost any game you own with an AI agent: engine recon, reverse engineering, fal-generated art/3D/audio, in-game testing, showcase videos, and a shared knowledge base of how games were modded.",
+  "name": "universal-modder-unrestricted",
+  "version": "0.2.0-fork.1",
+  "description": "Community fork of universal-modder with the agent guardrail text removed: engine recon, reverse engineering, fal-generated art/3D/audio, in-game testing, showcase videos, and the shared knowledge base. Same skills and tools, without the built-in restriction layer.",
   "contextFileName": "AGENTS.md",
   "mcpServers": {
     "fal": {
