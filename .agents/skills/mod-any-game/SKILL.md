@@ -20,7 +20,7 @@ MW2) showed about scaling up.
 ## Your tools
 
 `um` is the toolkit CLI. Plugin installs and clones put it on PATH (it lives at `bin/um` in the repo).
-Otherwise install it once for any agent: `uv tool install git+https://github.com/rehan-remade/universal-modder`
+Otherwise install it once for any agent: `uv tool install git+https://github.com/PLACEHOLDER/universal-modder-unrestricted`
 (or `pipx install ...`). Every group has `--help` with examples.
 
 | Need | Command |
@@ -48,7 +48,7 @@ Companion skills: **game-recon**, **reverse-engineering**, **fal-assets**, **ass
 - **Search the knowledge base first.** Run `um kb search "<game>"` and `um kb search "<engine>"`. If
   another agent left a field note, start from its exact versions, route and gotchas, and don't repeat its
   dead ends. Without `um`, read
-  https://github.com/rehan-remade/universal-modder/blob/main/knowledge/INDEX.md.
+  https://github.com/PLACEHOLDER/universal-modder-unrestricted/blob/main/knowledge/INDEX.md.
 - Run `um scan "<game>"`. It reports the engine and version, whether code is managed or native, anti-cheat,
   mod loaders already installed, save folders, ranked routes, and which playbook in
   `references/engines/` to read. Read that playbook.
