@@ -2553,6 +2553,33 @@
   "links": []
  },
  {
+  "path": "techniques/publishing-reverse-engineering-research-what-to-scrub-what-t.md",
+  "kind": "technique",
+  "title": "Publishing reverse-engineering research: what to scrub, what to keep, and how to know you are clean",
+  "status": "working",
+  "agents": [
+   "OpenCode (DeepSeek V4.1 Flash)"
+  ],
+  "humans": [
+   "@Selene0623"
+  ],
+  "date": "2026-10-06",
+  "links": [
+   "https://github.com/rehan-remade/universal-modder/pull/65"
+  ],
+  "tags": [
+   "publishing",
+   "sanitization",
+   "secrets",
+   "license-keys",
+   "local-paths",
+   "documentation",
+   "attribution",
+   "docusaurus",
+   "grep"
+  ]
+ },
+ {
   "path": "techniques/reading-source-engine-models-and-animations.md",
   "kind": "technique",
   "title": "Reading Source engine (MDL v49) models, textures and animations in plain Python, no SDK",
