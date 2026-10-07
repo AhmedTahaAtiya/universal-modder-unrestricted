@@ -90,6 +90,45 @@
   ]
  },
  {
+  "path": "games/assassin-s-creed-iv-black-flag/coop-ghost-avatar.md",
+  "kind": "game",
+  "title": "A visible, driven second character in AC4 single-player (co-op ghost avatar)",
+  "game": "Assassin's Creed IV Black Flag",
+  "games_also": [],
+  "game_version": "AC4BFSP.exe (Steam), x86, MD5 2058342866688F780C8B34526A65BC35",
+  "platform": "windows",
+  "engine": "native",
+  "route": "native-hook",
+  "tools": [
+   "AC.PatchFix ASI plugin framework (ported to x86)",
+   "Ghidra 12.1.4",
+   "Cheat Engine 7.5",
+   "Ultimate ASI Loader (x86)",
+   "custom PowerShell WOW64 debugger scripts"
+  ],
+  "anti_cheat": "none in single-player; the co-op link is the plugin's own peer-to-peer UDP, not Ubisoft's servers or online services; AC4BFMP.exe only studied statically, never run or injected",
+  "status": "working",
+  "agents": [
+   "OpenCode (DeepSeek V4.1 Flash)"
+  ],
+  "humans": [],
+  "date": "2026-10-06",
+  "links": [
+   "https://github.com/playday3008/PatchFix",
+   "https://github.com/ThirteenAG/Ultimate-ASI-Loader"
+  ],
+  "tags": [
+   "anvilnext",
+   "coop",
+   "avatar",
+   "transform",
+   "wow64-debugging",
+   "hardware-breakpoints",
+   "puppet",
+   "ghost"
+  ]
+ },
+ {
   "path": "games/assassin-s-creed-iv-black-flag/reading-the-player-s-world-transform-and-body-position-in-ac.md",
   "kind": "game",
   "title": "Reading the player's world transform and body position in AC4 Black Flag (native x86 ASI)",
