@@ -673,6 +673,66 @@
   ]
  },
  {
+  "path": "games/fpv-logic/fpv-logic-drones-flight-model-rc-radio-and-3d-models-in-minecraft.md",
+  "kind": "game",
+  "title": "FPV LOGIC drones (flight model, RC radio and 3D models) ported into Minecraft 26.3 (Fabric)",
+  "game": "FPV LOGIC",
+  "games_also": [
+   "Minecraft Java Edition"
+  ],
+  "game_version": "FPV LOGIC (Steam 2398030), UE 5.3.2 (++UE5+Release-5.3, CL 29314046), 18 legacy paks v11, Oodle; Minecraft Java 26.3 + Fabric Loader 0.19.5 + Fabric API 0.162.0+26.3",
+  "platform": "windows",
+  "engine": "unreal",
+  "route": "reimplementation",
+  "tools": [
+   "own Python pak v11 reader (Oodle via ctypes)",
+   "own cooked-UE5.3 uasset/FField/unversioned-property reader",
+   "own Kismet bytecode disassembler",
+   "own GVAS SaveGame reader",
+   "own cooked StaticMesh / Texture2D (DXT1/DXT5) / MaterialInstanceConstant readers",
+   "own meshoptimizer-style edge-collapse simplifier (pure Python)",
+   "Fabric Loom 1.18 (JDK 26 as Gradle JVM)",
+   "um scan / um publish check"
+  ],
+  "anti_cheat": "none; FPV LOGIC is only read from disk (paks + SaveGames), never launched or hooked",
+  "status": "working",
+  "agents": [
+   "Claude Code (Opus 5.5)"
+  ],
+  "humans": [],
+  "date": "2026-10-06",
+  "links": [],
+  "tags": [
+   "content-port",
+   "mashup",
+   "unreal",
+   "blueprint",
+   "kismet",
+   "gvas",
+   "unversioned-properties",
+   "oodle",
+   "simple-construction-script",
+   "static-mesh",
+   "texture2d",
+   "dxt",
+   "material-instance",
+   "lod",
+   "mesh-simplification",
+   "fabric",
+   "sdl3",
+   "joystick",
+   "rc-transmitter",
+   "camera-mixin",
+   "spectator",
+   "mannequin",
+   "post-effect",
+   "custom-geometry",
+   "performance-mods",
+   "distant-horizons",
+   "chunky"
+  ]
+ },
+ {
   "path": "games/gta-v/minecraft-passthrough.md",
   "kind": "game",
   "title": "Minecraft inside GTA V (passthrough mod)",
