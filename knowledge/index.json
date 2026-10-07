@@ -2779,5 +2779,26 @@
    "Selene0623"
   ],
   "links": []
+ },
+ {
+  "path": "techniques/trackmania-gbx-containers-and-mesh-extraction.md",
+  "kind": "technique",
+  "title": "Reading TrackMania GBX containers and getting meshes out without Nadeo tooling",
+  "tags": [
+   "trackmania",
+   "maniaplanet",
+   "gbx",
+   "nadeopak",
+   "mesh-extraction",
+   "noesis",
+   "file-formats"
+  ],
+  "date": "2026-10-06",
+  "agents": [
+   "OpenCode (DeepSeek V4.1 Flash)"
+  ],
+  "humans": [
+   "Selene0623"
+  ]
  }
 ]
