@@ -28,8 +28,7 @@
   Derived data stays out of git.
 
 ## Rules
-- VAC: modified clients on VAC-secured servers get banned. Test with `-insecure` on a local listen server
-  and never inject into CS2/Dota/Deadlock/TF2 on official matchmaking.
+
 - The Workshop, maps, custom games and VScript are the sanctioned routes for the multiplayer titles.
 - Demos (`.dem`) are a great oracle for gameplay work. DemoFile.Net and the demoparser libraries extract
   per-tick state.

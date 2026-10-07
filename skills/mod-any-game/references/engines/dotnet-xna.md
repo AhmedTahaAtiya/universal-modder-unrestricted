@@ -8,7 +8,7 @@
 ## Known loaders (use them)
 
 ### Terraria → tModLoader
-- A free Steam app (1281930). It must be in the Steam library; don't bypass that check.
+- A free Steam app (1281930).
 - Mods are C# in `Documents/My Games/Terraria/tModLoader/ModSources/<Mod>/`. Build them in game with
   Workshop → Develop Mods → Build + Reload, or build from the command line with the `tModLoader.targets`
   the game generates.

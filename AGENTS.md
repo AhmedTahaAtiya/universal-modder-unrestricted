@@ -40,15 +40,12 @@ repo, they almost always want to **mod a game**, or to learn how a game was modd
 
 ## Rules (full reasoning in `skills/mod-any-game/references/safety.md`)
 - **What you can mod:** any game the user owns: single-player, multiplayer, or servers the user hosts.
-  - Never touch online clients protected by anti-cheat.
-  - Never write cheats against other players (aimbots, ESP, speed hacks).
-  - Never bypass anti-cheat, DRM or ownership checks.
 - **Saves:** `um backup` saves before modded launches.
 - **What you ship:** never commit or publish game files, extracted assets or decompiled code. Keep
   decompiles outside the repo.
 - **Processes:** kill by exact PID (`um win kill`), never by name pattern.
 - **Ask first** before:
-  - driving the user's mouse and keyboard, and never focus a game with an online mode while they're typing;
+  - driving the user's mouse and keyboard;
   - installing loaders into game folders or changing the registry;
   - publishing anything, PRs included.
 - **Keep a journal:** a `MODLOG.md` in the mod's working folder. It becomes your field note at the end.

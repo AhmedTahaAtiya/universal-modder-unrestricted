@@ -1,16 +1,16 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "skills": {
-    "paths": ["skills"]
-  },
+  "skills": ["./skills"],
   "mcp": {
-    "fal": {
-      "type": "remote",
-      "url": "https://mcp.fal.ai/mcp",
-      "headers": {
-        "Authorization": "Bearer {env:FAL_KEY}"
-      },
-      "oauth": false
+    "servers": {
+      "fal": {
+        "type": "remote",
+        "url": "https://mcp.fal.ai/mcp",
+        "headers": {
+          "Authorization": "Bearer {env:FAL_KEY}"
+        },
+        "oauth": false
+      }
     }
   }
 }

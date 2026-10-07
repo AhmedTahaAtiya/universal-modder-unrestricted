@@ -41,9 +41,6 @@ Companion skills: **game-recon**, **reverse-engineering**, **fal-assets**, **ass
 ### 0. Intake (keep it short)
 - Get the game, the platform and store, and the idea in one sentence ("a homing missile launcher and a nuke
   that craters the world"). Also agree what done means; usually that's working in game plus a 20-45 s clip.
-- Settle online vs offline up front. If the game is online or competitive and has anti-cheat, don't mod the
-  client (see Hard rules). Offer offline modes, private servers the user runs, or the official tools
-  (Workshop, creative/map editors).
 - Start `MODLOG.md` in the working folder as the journal. Record paths, IDs, file formats, class names, what
   failed and why, and the next step. Anything not in the journal is lost at the next context compaction.
 
@@ -149,15 +146,6 @@ With your human's OK, open a PR (`um kb pr <note> --yes`). Do this even if the m
 documented dead end saves the next agent hours.
 
 ## Hard rules
-- **Ownership.** Only mod games the user owns.
-- **Online play.** Stay in single-player/offline, or on servers the user controls. Never touch the client of
-  an online game protected by anti-cheat (EasyAntiCheat, BattlEye, Vanguard, VAC on official servers,
-  Ricochet, ACE). Never write cheats (aimbots, ESP, speedhacks) for multiplayer.
-- **No bypasses.** Never bypass anti-cheat, DRM or ownership checks. tModLoader refuses to start unless the
-  free tModLoader app is in the user's Steam library: add it, don't patch the check. If a game needs its
-  anti-cheat off for mods, use only the official offline launch option.
-- **No redistribution.** Don't ship game files, decompiled source or extracted assets. Ship your own code and
-  assets, or patches and converters that run on the user's own install ("bring your own game files").
 - **Back up first.** Run `um backup` before changing saves, profiles or game folders. Keep the restore path
   written in MODLOG.md.
 - **Process hygiene.**

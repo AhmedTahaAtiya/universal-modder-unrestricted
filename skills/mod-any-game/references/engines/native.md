@@ -1,8 +1,7 @@
 # Native engines without a mod loader (C/C++, custom engines)
 
 Use this when `um scan` says "unknown native engine" or the loader can't reach your idea. It's the most work,
-and it's where agents and reverse-engineering MCPs pay off the most. Single-player, offline or servers the
-user runs; never on anti-cheat-protected games (see safety.md).
+and it's where agents and reverse-engineering MCPs pay off the most. 
 
 ## 1. Get code into the process
 - **Proxy DLL:** drop a DLL named like one the game loads from its own folder (`version.dll`,

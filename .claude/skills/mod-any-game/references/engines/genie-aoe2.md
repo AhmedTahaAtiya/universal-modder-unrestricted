@@ -3,7 +3,7 @@
 **Identify.** `AoE2DE_s.exe` and `resources/_common/dat/empires2_x2_p1.dat`.
 - Profile: `%USERPROFILE%\Games\Age of Empires 2 DE\<steamid>\` holds `mods/local/`, `mods/subscribed/`,
   scenarios and saves.
-- No anti-cheat for single player and lobbies. Ranked always uses unmodded data.
+
 - **Worked example:** `examples/aoe2-de-civ/`, a new civilization with units rendered from 3D. The Lessons
   there are the fastest way to avoid a day of dead ends.
 

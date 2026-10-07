@@ -94,9 +94,7 @@ um kb new --game "Hades II" --title "A new boon god" --from-scan hades --agent "
 um kb check knowledge/games/hades-ii/a-new-boon-god.md
 um kb pr knowledge/games/hades-ii/a-new-boon-god.md --yes    # after your human says OK: branch, push, PR
 ```
-Browse [`knowledge/INDEX.md`](knowledge/INDEX.md). Every game is welcome. Contribution rules, for humans and
-AIs, are in [`CONTRIBUTING.md`](CONTRIBUTING.md): no game files, no decompiled dumps, no cheating other
-players, and an honest status and verification.
+Browse [`knowledge/INDEX.md`](knowledge/INDEX.md). Every game is welcome. 
 
 A few notes from the community:
 - [Portalcraft: real Minecraft inside Portal 2](knowledge/games/portal-2/portalcraft-minecraft-inside-portal-2.md)
@@ -169,16 +167,7 @@ audio, both PowerShell with embedded C#.
 
 Each has a field note with every non-obvious lesson: [knowledge/INDEX.md](knowledge/INDEX.md).
 
-## Rules it follows
-- **Any game you own: single-player, multiplayer, or servers you host.** It refuses to inject into online
-  games with anti-cheat, write cheats against other players, or bypass anti-cheat, DRM or ownership checks.
-- **It never ships game files or decompiled code.** Mods ship as code, your own assets, patches or
-  converters.
-- **It backs up before touching saves**, and kills processes by PID only.
-- **It asks before** driving your mouse and keyboard, installing loaders into game folders, or publishing,
-  PRs included.
 
-Full reasoning: [`skills/mod-any-game/references/safety.md`](skills/mod-any-game/references/safety.md).
 
 ## Made a mod with it?
 Put the badge on your mod's page:

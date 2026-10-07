@@ -1,8 +1,6 @@
 # Retro and console games: decomps, recomps, emulators
 
-The user must own the game and dump it themselves. Never download ROMs, ISOs, leaked source or leaked builds.
-Knowledge from leaks is fine to use, but some projects refuse anything built on leaked material ("leak
-poisoning"; clean decomps such as libsm64 get adopted), so check a project's rules before contributing.
+
 
 ## Is there already a decompilation or port?
 Many classics have matching decompilations (C source that compiles back to the identical ROM) and native PC
@@ -56,7 +54,3 @@ decomp can take billions of tokens.
 - **Dolphin:** texture packs, Gecko/AR codes, Riivolution patches for GameCube/Wii.
 
 ## Pitfalls
-- Some recomp/decomp communities ban AI-generated contributions. Respect each project's rules and disclose
-  AI use.
-- Publishers do DMCA recomps and ports even without assets. Keep projects non-commercial; ship patches and
-  tools only.

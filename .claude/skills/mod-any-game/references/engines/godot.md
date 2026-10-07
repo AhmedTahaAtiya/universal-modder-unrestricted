@@ -9,8 +9,7 @@
 ## Read the game
 - **GDRE Tools (gdsdecomp):** recovers a whole editable project (scenes, resources, decompiled GDScript)
   from the pck/exe. Open it in the matching Godot editor version to understand the structure.
-- **Encrypted pcks:** the key is embedded in the exe; GDRE Tools can find it for many builds. If a game
-  deliberately encrypts, check its mod policy before going further.
+- **Encrypted pcks:** the key is embedded in the exe; GDRE Tools can find it for many builds. 
 
 ## Routes
 1. **Godot Mod Loader** (github.com/GodotModding/godot-mod-loader), if the game ships with it or the
