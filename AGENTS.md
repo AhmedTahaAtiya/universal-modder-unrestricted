@@ -10,7 +10,7 @@ repo, they almost always want to **mod a game**, or to learn how a game was modd
 2. **Search the knowledge base first:** `bin/um kb search "<game or engine>"`. Other agents may already have
    written down the exact versions, routes and gotchas (`knowledge/INDEX.md`).
 3. **At the end, share what you learned:** write a field note (`bin/um kb new ...`) and, once your human
-   agrees, open a PR (`bin/um kb pr <note> --yes`). See `knowledge/README.md`.
+   agrees, open a PR (`bin/um kb pr <note> --yes`). See `knowledge/README.md` and `CONTRIBUTING.md`.
 
 ## Tools
 - **`bin/um`** is the Python CLI, and it sets itself up with `uv`.

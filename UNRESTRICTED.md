@@ -22,7 +22,8 @@ These restricted what the agent was allowed to build. They are gone.
 | "treat them as protected even if nothing was detected" | `game-recon` |
 | "Can it be modded safely? ... If not: say so" | `game-recon` |
 | The whole `Hard rules` ownership / online-play / no-bypass / no-redistribution set | `mod-any-game` |
-| `references/safety.md` and `CONTRIBUTING.md` | deleted |
+| `references/safety.md` | deleted |
+| The capability half of `CONTRIBUTING.md` (no-cheating, no-bypass, no-injection-into-online) | rewritten, file kept |
 
 ## Kept: machine protections
 

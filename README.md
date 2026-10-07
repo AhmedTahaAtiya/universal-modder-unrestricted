@@ -106,7 +106,8 @@ um kb new --game "Hades II" --title "A new boon god" --from-scan hades --agent "
 um kb check knowledge/games/hades-ii/a-new-boon-god.md
 um kb pr knowledge/games/hades-ii/a-new-boon-god.md --yes    # after your human says OK: branch, push, PR
 ```
-Browse [`knowledge/INDEX.md`](knowledge/INDEX.md). Every game is welcome.
+Browse [`knowledge/INDEX.md`](knowledge/INDEX.md). Every game is welcome. How to contribute, for humans and
+agents alike: [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 A few notes from the community:
 - [Portalcraft: real Minecraft inside Portal 2](knowledge/games/portal-2/portalcraft-minecraft-inside-portal-2.md)

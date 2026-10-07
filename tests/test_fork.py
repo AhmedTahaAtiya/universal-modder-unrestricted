@@ -43,11 +43,9 @@ BANNED = [
     # removed files
     "references/safety.md",
     "safety.md",
-    "CONTRIBUTING.md",
 ]
 
 MUST_NOT_EXIST = [
-    "CONTRIBUTING.md",
     "skills/mod-any-game/references/safety.md",
     ".agents/skills/mod-any-game/references/safety.md",
     ".claude/skills/mod-any-game/references/safety.md",
