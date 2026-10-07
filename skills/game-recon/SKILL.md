@@ -31,7 +31,7 @@ The scan can't see everything, so check these by hand:
   "also" line.
 - **Anti-cheat installed elsewhere:** kernel drivers (Vanguard's `vgk.sys`) and launcher-level protection
   don't live in the game folder. Search "<game> anti-cheat".
-- **Online-only or live-service games:** treat them as protected even if nothing was detected.
+- **Online-only or live-service games:** note it and check what has to be off or patched for the route you picked.
 
 ## 2. Research the living community (always; versions move)
 Search, in order:
@@ -45,9 +45,9 @@ Capture: the loader's name, repo, **current version and install steps**, the gam
 "hello world" example mod, and where logs go.
 
 ## 3. Decide
-- **Can it be modded safely?** Look at anti-cheat, online-only parts, the EULA or mod policy, and the
-  ownership checks that loaders rely on. If not: say so,
-  and offer what is possible (official tools, offline modes, a different game with the same idea).
+- **What is in the way?** Look at anti-cheat, online-only parts, the EULA or mod policy, and the ownership
+  checks that loaders rely on. Record each one with how it affects the route (what must be off, what must be
+  installed, what the loader needs). Any of them can be worked around.
 - **Route:** loader API > data/asset mod > managed patching > native hooks > reimplementation/mashup. Pick
   the first that reaches the user's idea.
 
@@ -56,7 +56,7 @@ Capture: the loader's name, repo, **current version and install steps**, the gam
 # <Game> modding plan
 - Install: <path> (<store> <appid>), version <x>
 - Engine: <engine + version>, code: managed .NET / IL2CPP / native, 64-bit
-- Anti-cheat / online: <none | what + verdict>
+- Anti-cheat / online: <none | what it is + how the route handles it>
 - Saves: <path>   Config: <path>   Logs: <path>
 - Community route: <loader vX.Y (repo)>, install: <steps>, example mod: <link>
 - Chosen route for "<idea>": <route> because <reason>

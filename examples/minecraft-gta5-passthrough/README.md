@@ -232,9 +232,6 @@ Your off hand holds explosive fireworks for the crossbow, and you get 64 arrows.
 
 ## Safety
 
-- **Story mode only; never GTA Online.** BattlEye protects GTA Online. This runs with BattlEye off, which also
-  keeps Online from starting, and ScriptHookV closes the game if it goes online anyway. Don't try to get a
-  modded game near Online.
 - **Never automate clicks on GTA's landing page while someone is at the keyboard.** During development a script
   focused GTA and clicked Story Mode while the user was typing in another window. Their keystrokes landed in
   GTA, which showed "attempting to access GTA Online servers with an altered version". ScriptHookV blocked it,
