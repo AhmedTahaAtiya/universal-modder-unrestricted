@@ -4,11 +4,11 @@
   "version": "0.2.0-fork.1",
   "description": "Community fork of universal-modder with the agent guardrail text removed: engine recon, reverse engineering, fal-generated art/3D/audio, in-game testing, showcase videos, and the shared knowledge base. Same skills and tools, without the built-in restriction layer.",
   "author": {
-    "name": "PLACEHOLDER",
-    "url": "https://github.com/PLACEHOLDER"
+    "name": "AhmedTahaAtiya",
+    "url": "https://github.com/AhmedTahaAtiya"
   },
-  "homepage": "https://github.com/PLACEHOLDER/universal-modder-unrestricted",
-  "repository": "https://github.com/PLACEHOLDER/universal-modder-unrestricted",
+  "homepage": "https://github.com/AhmedTahaAtiya/universal-modder-unrestricted",
+  "repository": "https://github.com/AhmedTahaAtiya/universal-modder-unrestricted",
   "license": "MIT",
   "keywords": [
     "game-modding",

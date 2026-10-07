@@ -35,17 +35,17 @@ Pick your agent. Each gets the same skills (Agent Skills format), the fal MCP se
 
 | Agent | Install |
 |---|---|
-| **Claude Code** | `/plugin marketplace add PLACEHOLDER/universal-modder-unrestricted`<br>`/plugin install universal-modder-unrestricted@universal-modder-unrestricted` |
-| **Codex** | `codex plugin marketplace add PLACEHOLDER/universal-modder-unrestricted`<br>`codex plugin add universal-modder-unrestricted@universal-modder-unrestricted` |
-| **Gemini CLI** | `gemini extensions install https://github.com/PLACEHOLDER/universal-modder-unrestricted` |
+| **Claude Code** | `/plugin marketplace add AhmedTahaAtiya/universal-modder-unrestricted`<br>`/plugin install universal-modder-unrestricted@universal-modder-unrestricted` |
+| **Codex** | `codex plugin marketplace add AhmedTahaAtiya/universal-modder-unrestricted`<br>`codex plugin add universal-modder-unrestricted@universal-modder-unrestricted` |
+| **Gemini CLI** | `gemini extensions install https://github.com/AhmedTahaAtiya/universal-modder-unrestricted` |
 | **VS Code / Copilot** | Enable `chat.plugins.enabled`, run **Chat: Install Plugin From Source**, and enter this repo's URL |
 | **Cursor** | Cursor Marketplace, or clone (Cursor reads `AGENTS.md` and `.cursor/mcp.json`) |
 | **OpenCode** | Clone and run `opencode` inside it (`opencode.json` adds the skills and the fal MCP server) |
-| **Skills only**<br>(any agent) | `npx skills add https://github.com/PLACEHOLDER/universal-modder-unrestricted` |
-| **Anything else** | `git clone https://github.com/PLACEHOLDER/universal-modder-unrestricted` and start your agent inside it |
+| **Skills only**<br>(any agent) | `npx skills add https://github.com/AhmedTahaAtiya/universal-modder-unrestricted` |
+| **Anything else** | `git clone https://github.com/AhmedTahaAtiya/universal-modder-unrestricted` and start your agent inside it |
 
 Want the original instead? Use [`rehan-remade/universal-modder`](https://github.com/rehan-remade/universal-modder) —
-swap `PLACEHOLDER/universal-modder-unrestricted` for `rehan-remade/universal-modder` in any line above.
+swap `AhmedTahaAtiya/universal-modder-unrestricted` for `rehan-remade/universal-modder` in any line above.
 
 Inside a clone, each agent finds the skills where it looks for them: `.agents/skills` (Codex, Gemini CLI,
 Copilot, Cursor, OpenCode) and `.claude/skills` (Claude Code) are copies of `skills/`. Instructions are in
@@ -54,7 +54,7 @@ Copilot, Cursor, OpenCode) and `.claude/skills` (Claude Code) are copies of `ski
 
 **The `um` CLI.** Plugin installs and clones put it on PATH. Anywhere else:
 ```bash
-uv tool install git+https://github.com/PLACEHOLDER/universal-modder-unrestricted     # or: pipx install git+...
+uv tool install git+https://github.com/AhmedTahaAtiya/universal-modder-unrestricted     # or: pipx install git+...
 ```
 **For assets,** get a [fal API key](https://fal.ai/dashboard/keys). It powers both the fal MCP server and
 `um fal` (for images without a key, `um comfy` uses a local ComfyUI server):
@@ -204,6 +204,5 @@ MIT licensed. Brand type: Geist Pixel, Sometype Mono and Instrument Sans. Video 
 
 ## Star history
 
-<p align="center">
-  <a href="https://github.com/rehan-remade/universal-modder/stargazers"><img src="https://raw.githubusercontent.com/rehan-remade/universal-modder/star-chart/stars.svg" width="800" alt="universal-modder's GitHub stars over time"></a>
-</p>
+This section tracks the [upstream project](https://github.com/rehan-remade/universal-modder), not this fork.
+Forks do not inherit the star chart.
