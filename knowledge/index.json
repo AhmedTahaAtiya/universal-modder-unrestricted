@@ -1139,6 +1139,49 @@
   ]
  },
  {
+  "path": "games/minecraft/kindred-local-llm-ai-companion-fabric.md",
+  "kind": "game",
+  "title": "Kindred: Local LLM AI companion with Ollama, bounded inference, autonomy, and memory",
+  "game": "Minecraft",
+  "games_also": [],
+  "game_version": "Minecraft Java 1.20.1, Fabric Loader 0.15.11, Fabric API 0.92.2+1.20.1",
+  "platform": "windows",
+  "engine": "java",
+  "route": "loader-api",
+  "tools": [
+   "Fabric Loader 0.15.11",
+   "Fabric Loom 1.6.12",
+   "Yarn mappings 1.20.1+build.10:v2",
+   "Gradle 8.7",
+   "Java 17",
+   "Ollama (local LLM inference)"
+  ],
+  "anti_cheat": "none (single-player and private servers only; never tested against or designed for online anti-cheat environments)",
+  "status": "working",
+  "agents": [
+   "Claude Code (Sonnet 5)"
+  ],
+  "humans": [],
+  "date": "2026-10-07",
+  "links": [],
+  "tags": [
+   "fabric",
+   "ai-companion",
+   "npc",
+   "local-llm",
+   "ollama",
+   "autonomy",
+   "bounded-inference",
+   "navigation",
+   "raycasting",
+   "atlas",
+   "memory",
+   "reflexes",
+   "utf8-journal",
+   "gametest"
+  ]
+ },
+ {
   "path": "games/minecraft/neoforge-1-21-1-custom-dimension-and-tool-tier.md",
   "kind": "game",
   "title": "NeoForge 1.21.1 custom dimension and tool tier",
