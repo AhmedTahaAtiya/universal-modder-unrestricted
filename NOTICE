@@ -14,6 +14,9 @@ documentation — belongs to the upstream authors and contributors.
 The MIT license requires the copyright notice and permission notice to be included in all copies
 or substantial portions of the Software. Both are preserved verbatim in `LICENSE`.
 
+See [`UNRESTRICTED.md`](UNRESTRICTED.md) for the full audit trail of what was removed, what was kept, and
+how to merge upstream without losing either. `tests/test_fork.py` enforces it in CI.
+
 ## What changed
 
 - Removed the guardrail/rule text that told agents to refuse certain mods (anti-cheat and online-play

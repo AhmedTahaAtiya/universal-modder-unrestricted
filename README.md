@@ -3,7 +3,8 @@
   <a href="https://github.com/rehan-remade/universal-modder">rehan-remade/universal-modder</a> by Rehan and the
   universal-modder contributors, with the built-in agent guardrail layer removed. All original work, the skills, the
   <code>um</code> CLI and the knowledge base are theirs, under MIT. This fork only deletes restriction text; it adds no
-  capability and ships no new features.
+  capability and ships no new features. The machine-safety rules that protect you (backups, exact-PID kills,
+  no leaked keys) are kept. See <a href="UNRESTRICTED.md">UNRESTRICTED.md</a>.
 </p>
 
 <p align="center">
