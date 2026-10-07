@@ -1837,6 +1837,41 @@
   ]
  },
  {
+  "path": "games/watch-dogs/editing-feu-gfx-ui-and-entitylibrary-fcb.md",
+  "kind": "game",
+  "title": "Watch Dogs 1: editing .feu/.gfx UI components and rebuilding entitylibrary_rt.fcb",
+  "game": "Watch Dogs",
+  "games_also": [],
+  "game_version": "Watch Dogs 1 retail (PC)",
+  "platform": "windows",
+  "engine": "unknown",
+  "route": "asset-only",
+  "tools": [
+   "hV WD Modding Kit (hV_WD1ModdingKit.exe, FCBastard.exe)",
+   "JPEXS Free Flash Decompiler",
+   "Gibbed.Disrupt (unpack/pack)",
+   "Astrogrep"
+  ],
+  "anti_cheat": "none on WD1; all edits go into a packed patch archive \u2014 play offline with edited entity libraries, since online invasions connect you to other players",
+  "status": "in-progress",
+  "date": "2026-10-06",
+  "agents": [
+   "OpenCode (DeepSeek V4.1 Flash)"
+  ],
+  "humans": [
+   "Selene0623"
+  ],
+  "links": [],
+  "tags": [
+   "watch-dogs",
+   "disrupt",
+   "ui",
+   "flash",
+   "fcb",
+   "entity-library"
+  ]
+ },
+ {
   "path": "games/watch-dogs/shader-pack-compilation-and-delivery.md",
   "kind": "game",
   "title": "Watch Dogs 1: compiling and delivering the shader pack (shadersobj)",
