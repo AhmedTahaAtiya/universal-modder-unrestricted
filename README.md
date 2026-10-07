@@ -7,6 +7,30 @@
   no leaked keys) are kept. See <a href="UNRESTRICTED.md">UNRESTRICTED.md</a>.
 </p>
 
+## Any game, online included
+
+The upstream project tells the agent to stop at anti-cheat, to stay in offline or single-player, and to refuse
+multiplayer work. **This fork removes those limits.**
+
+The agent here will take on **any game you point it at**: online, competitive, live-service, or protected.
+It will not tell you "that's against the rules" and hand you back a different game. Anti-cheat, VAC, EAC,
+BattlEye and Vanguard are **technical problems to solve**, not reasons to decline:
+
+- recon reports what protection is installed and how it can be disabled or worked around;
+- the playbook for your engine (`references/engines/`) names the loader, the launch flags and the config that
+  turns the protection off;
+- injection, memory editing, detours and driver-level work are all documented techniques, not forbidden ones.
+
+Nothing here adds a new technique. It removes the rule that told the agent to stop looking.
+
+**What still applies** are the rules that protect *your* machine, not the game publisher's server:
+back up your saves, kill by PID, never leak your `FAL_KEY`, and never commit the game files themselves.
+Those are in [`CONTRIBUTING.md`](CONTRIBUTING.md) and enforced by `um publish check`.
+
+**Ban on a live server is on the server's side, not here.** Whether you can take a modified client onto someone
+else's matchmaking depends on their anti-cheat, not on this toolkit. Anything past that line is between you
+and the game publisher.
+
 <p align="center">
   <img src="docs/media/banner.png" alt="universal-modder: mod any game. Point any AI coding agent at PC games. Publish your mods, remix other people's, and make new ones." width="100%">
 </p>

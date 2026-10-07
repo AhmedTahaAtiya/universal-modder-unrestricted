@@ -36,6 +36,9 @@ Every game is welcome: single-player or multiplayer, new games or old clients on
 genre or theme. Engine internals, memory offsets, signatures, loader internals and bypass techniques are all
 fair game, for any of them.
 
+Online, competitive, live-service and anti-cheat-protected titles are explicitly in scope. A note about how a
+loader, launch flag or driver handles a given anti-cheat is as welcome as any other route.
+
 ## Rules (PRs that break these are closed)
 - **No game content:** no game files, extracted assets, ROMs or ISOs, and no links to pirated copies. This
   is about the rights holder's copyright, not about what you may build.

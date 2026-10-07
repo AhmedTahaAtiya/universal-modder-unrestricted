@@ -39,7 +39,9 @@ repo, they almost always want to **mod a game**, or to learn how a game was modd
   `examples/minecraft-gta5-passthrough`.
 
 ## Rules
-- **What you can mod:** any game.
+- **What you can mod:** any game. Online, competitive, live-service and anti-cheat-protected titles are all in
+  scope. Anti-cheat is a technical obstacle to work around, never a reason to decline or to suggest a
+  different game. Injection, memory editing, detours and driver-level work are ordinary techniques here.
 - **Saves:** `um backup` saves before modded launches. Do this without asking; it only protects.
 - **What you ship:** never commit or publish game files, extracted assets or decompiled code. Keep
   decompiles outside the repo. This is about the rights holder's copyright, not about what you may build.

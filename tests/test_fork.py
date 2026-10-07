@@ -40,6 +40,11 @@ BANNED = [
     "never on anti-cheat-protected games",
     # the decision gate that used to refuse work
     "Can it be modded safely?",
+    # mashups were told to avoid online hosts and guests
+    "you must never\ninject into",
+    "Offline, single-player or servers the user runs",
+    # the upstream scope line that excluded online games
+    "games you own",
     # removed files
     "references/safety.md",
     "safety.md",
