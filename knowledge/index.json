@@ -90,6 +90,45 @@
   ]
  },
  {
+  "path": "games/assassin-s-creed-iv-black-flag/coop-ghost-avatar.md",
+  "kind": "game",
+  "title": "A visible, driven second character in AC4 single-player (co-op ghost avatar)",
+  "game": "Assassin's Creed IV Black Flag",
+  "games_also": [],
+  "game_version": "AC4BFSP.exe (Steam), x86, MD5 2058342866688F780C8B34526A65BC35",
+  "platform": "windows",
+  "engine": "native",
+  "route": "native-hook",
+  "tools": [
+   "AC.PatchFix ASI plugin framework (ported to x86)",
+   "Ghidra 12.1.4",
+   "Cheat Engine 7.5",
+   "Ultimate ASI Loader (x86)",
+   "custom PowerShell WOW64 debugger scripts"
+  ],
+  "anti_cheat": "none in single-player; the co-op link is the plugin's own peer-to-peer UDP, not Ubisoft's servers or online services; AC4BFMP.exe only studied statically, never run or injected",
+  "status": "working",
+  "agents": [
+   "OpenCode (DeepSeek V4.1 Flash)"
+  ],
+  "humans": [],
+  "date": "2026-10-06",
+  "links": [
+   "https://github.com/playday3008/PatchFix",
+   "https://github.com/ThirteenAG/Ultimate-ASI-Loader"
+  ],
+  "tags": [
+   "anvilnext",
+   "coop",
+   "avatar",
+   "transform",
+   "wow64-debugging",
+   "hardware-breakpoints",
+   "puppet",
+   "ghost"
+  ]
+ },
+ {
   "path": "games/assassin-s-creed-iv-black-flag/reading-the-player-s-world-transform-and-body-position-in-ac.md",
   "kind": "game",
   "title": "Reading the player's world transform and body position in AC4 Black Flag (native x86 ASI)",
@@ -673,6 +712,66 @@
   ]
  },
  {
+  "path": "games/fpv-logic/fpv-logic-drones-flight-model-rc-radio-and-3d-models-in-minecraft.md",
+  "kind": "game",
+  "title": "FPV LOGIC drones (flight model, RC radio and 3D models) ported into Minecraft 26.3 (Fabric)",
+  "game": "FPV LOGIC",
+  "games_also": [
+   "Minecraft Java Edition"
+  ],
+  "game_version": "FPV LOGIC (Steam 2398030), UE 5.3.2 (++UE5+Release-5.3, CL 29314046), 18 legacy paks v11, Oodle; Minecraft Java 26.3 + Fabric Loader 0.19.5 + Fabric API 0.162.0+26.3",
+  "platform": "windows",
+  "engine": "unreal",
+  "route": "reimplementation",
+  "tools": [
+   "own Python pak v11 reader (Oodle via ctypes)",
+   "own cooked-UE5.3 uasset/FField/unversioned-property reader",
+   "own Kismet bytecode disassembler",
+   "own GVAS SaveGame reader",
+   "own cooked StaticMesh / Texture2D (DXT1/DXT5) / MaterialInstanceConstant readers",
+   "own meshoptimizer-style edge-collapse simplifier (pure Python)",
+   "Fabric Loom 1.18 (JDK 26 as Gradle JVM)",
+   "um scan / um publish check"
+  ],
+  "anti_cheat": "none; FPV LOGIC is only read from disk (paks + SaveGames), never launched or hooked",
+  "status": "working",
+  "agents": [
+   "Claude Code (Opus 5.5)"
+  ],
+  "humans": [],
+  "date": "2026-10-06",
+  "links": [],
+  "tags": [
+   "content-port",
+   "mashup",
+   "unreal",
+   "blueprint",
+   "kismet",
+   "gvas",
+   "unversioned-properties",
+   "oodle",
+   "simple-construction-script",
+   "static-mesh",
+   "texture2d",
+   "dxt",
+   "material-instance",
+   "lod",
+   "mesh-simplification",
+   "fabric",
+   "sdl3",
+   "joystick",
+   "rc-transmitter",
+   "camera-mixin",
+   "spectator",
+   "mannequin",
+   "post-effect",
+   "custom-geometry",
+   "performance-mods",
+   "distant-horizons",
+   "chunky"
+  ]
+ },
+ {
   "path": "games/gta-v/minecraft-passthrough.md",
   "kind": "game",
   "title": "Minecraft inside GTA V (passthrough mod)",
@@ -1037,6 +1136,49 @@
    "screencapturekit",
    "chroma-key",
    "console-bridge"
+  ]
+ },
+ {
+  "path": "games/minecraft/kindred-local-llm-ai-companion-fabric.md",
+  "kind": "game",
+  "title": "Kindred: Local LLM AI companion with Ollama, bounded inference, autonomy, and memory",
+  "game": "Minecraft",
+  "games_also": [],
+  "game_version": "Minecraft Java 1.20.1, Fabric Loader 0.15.11, Fabric API 0.92.2+1.20.1",
+  "platform": "windows",
+  "engine": "java",
+  "route": "loader-api",
+  "tools": [
+   "Fabric Loader 0.15.11",
+   "Fabric Loom 1.6.12",
+   "Yarn mappings 1.20.1+build.10:v2",
+   "Gradle 8.7",
+   "Java 17",
+   "Ollama (local LLM inference)"
+  ],
+  "anti_cheat": "none (single-player and private servers only; never tested against or designed for online anti-cheat environments)",
+  "status": "working",
+  "agents": [
+   "Claude Code (Sonnet 5)"
+  ],
+  "humans": [],
+  "date": "2026-10-07",
+  "links": [],
+  "tags": [
+   "fabric",
+   "ai-companion",
+   "npc",
+   "local-llm",
+   "ollama",
+   "autonomy",
+   "bounded-inference",
+   "navigation",
+   "raycasting",
+   "atlas",
+   "memory",
+   "reflexes",
+   "utf8-journal",
+   "gametest"
   ]
  },
  {
@@ -1738,6 +1880,84 @@
   ]
  },
  {
+  "path": "games/watch-dogs/editing-feu-gfx-ui-and-entitylibrary-fcb.md",
+  "kind": "game",
+  "title": "Watch Dogs 1: editing .feu/.gfx UI components and rebuilding entitylibrary_rt.fcb",
+  "game": "Watch Dogs",
+  "games_also": [],
+  "game_version": "Watch Dogs 1 retail (PC)",
+  "platform": "windows",
+  "engine": "unknown",
+  "route": "asset-only",
+  "tools": [
+   "hV WD Modding Kit (hV_WD1ModdingKit.exe, FCBastard.exe)",
+   "JPEXS Free Flash Decompiler",
+   "Gibbed.Disrupt (unpack/pack)",
+   "Astrogrep"
+  ],
+  "anti_cheat": "none on WD1; all edits go into a packed patch archive \u2014 play offline with edited entity libraries, since online invasions connect you to other players",
+  "status": "in-progress",
+  "date": "2026-10-06",
+  "agents": [
+   "OpenCode (DeepSeek V4.1 Flash)"
+  ],
+  "humans": [
+   "Selene0623"
+  ],
+  "links": [],
+  "tags": [
+   "watch-dogs",
+   "disrupt",
+   "ui",
+   "flash",
+   "fcb",
+   "entity-library"
+  ]
+ },
+ {
+  "path": "games/watch-dogs/shader-pack-compilation-and-delivery.md",
+  "kind": "game",
+  "title": "Watch Dogs 1: compiling and delivering the shader pack (shadersobj)",
+  "game": "Watch Dogs",
+  "games_also": [],
+  "game_version": "Watch Dogs 1 retail (Steam/uPlay) + NexusTools 1.1.12/1.1.13",
+  "platform": "windows",
+  "engine": "unknown",
+  "route": "passthrough",
+  "tools": [
+   "Gibbed.Disrupt",
+   "NexusTools",
+   "fxc (d3dcompiler_43/46/47)",
+   "dxc"
+  ],
+  "anti_cheat": "none on WD1; delivering files through NexusTools is first-class, no bypass involved",
+  "status": "working",
+  "agents": [
+   "OpenCode (DeepSeek V4.1 Flash)"
+  ],
+  "humans": [
+   "@Selene0623"
+  ],
+  "date": "2026-10-06",
+  "links": [
+   "https://github.com/gibbed/Gibbed.Disrupt"
+  ],
+  "tags": [
+   "shaders",
+   "dxbc",
+   "fxc",
+   "dxc",
+   "hlsl",
+   "shadersobj",
+   "nexus-tools",
+   "signatures",
+   "semantics",
+   "black-screen",
+   "disrupt",
+   "dunia"
+  ]
+ },
+ {
   "path": "games/world-of-warcraft/addon-development-335a.md",
   "kind": "game",
   "title": "Writing and fixing 3.3.5a addons: Lua 5.1 gaps, protected calls, the guild bank, macros and a test harness",
@@ -2213,6 +2433,31 @@
   ]
  },
  {
+  "path": "techniques/disrupt-engine-cross-game-toolchain-picking-tools-for-wd1-wd.md",
+  "kind": "technique",
+  "title": "Disrupt engine cross-game toolchain: picking tools for WD1, WD2 and Legion",
+  "status": "working",
+  "agents": [
+   "OpenCode (MiMo-V2.6-Flash)",
+   "OpenCode (DeepSeek V4.1 Flash)"
+  ],
+  "humans": [
+   "@Selene0623"
+  ],
+  "date": "2026-10-06",
+  "links": [],
+  "tags": [
+   "disrupt",
+   "dunia",
+   "watch-dogs",
+   "far-cry",
+   "archives",
+   "reverse-engineering",
+   "toolchain",
+   "ubisoft"
+  ]
+ },
+ {
   "path": "techniques/disrupt-material-bin-and-xbt-textures.md",
   "kind": "technique",
   "title": "Disrupt material (.material.bin) and texture (.xbt) formats",
@@ -2375,6 +2620,29 @@
   ]
  },
  {
+  "path": "techniques/gamemaker-yyc-vs-vm-check-the-code-chunks-before-trusting-th.md",
+  "kind": "technique",
+  "title": "GameMaker YYC vs VM: check the code chunks before trusting the UndertaleModTool route",
+  "status": "working",
+  "agents": [
+   "Claude Code (deepseek-flash[1m])"
+  ],
+  "humans": [
+   "@genericcooper"
+  ],
+  "date": "2026-10-06",
+  "links": [],
+  "tags": [
+   "gamemaker",
+   "yyc",
+   "data.win",
+   "undertalemodtool",
+   "scan",
+   "detection",
+   "chunk-table"
+  ]
+ },
+ {
   "path": "techniques/loading-pre-sequel-assets-in-borderlands-2.md",
   "kind": "technique",
   "title": "Loading Pre-Sequel assets in Borderlands 2: header-only package surgery, mesh conversion and what still fails",
@@ -2452,6 +2720,33 @@
    "@rehan_shei"
   ],
   "links": []
+ },
+ {
+  "path": "techniques/publishing-reverse-engineering-research-what-to-scrub-what-t.md",
+  "kind": "technique",
+  "title": "Publishing reverse-engineering research: what to scrub, what to keep, and how to know you are clean",
+  "status": "working",
+  "agents": [
+   "OpenCode (DeepSeek V4.1 Flash)"
+  ],
+  "humans": [
+   "@Selene0623"
+  ],
+  "date": "2026-10-06",
+  "links": [
+   "https://github.com/rehan-remade/universal-modder/pull/65"
+  ],
+  "tags": [
+   "publishing",
+   "sanitization",
+   "secrets",
+   "license-keys",
+   "local-paths",
+   "documentation",
+   "attribution",
+   "docusaurus",
+   "grep"
+  ]
  },
  {
   "path": "techniques/reading-source-engine-models-and-animations.md",
@@ -2550,5 +2845,26 @@
    "Selene0623"
   ],
   "links": []
+ },
+ {
+  "path": "techniques/trackmania-gbx-containers-and-mesh-extraction.md",
+  "kind": "technique",
+  "title": "Reading TrackMania GBX containers and getting meshes out without Nadeo tooling",
+  "tags": [
+   "trackmania",
+   "maniaplanet",
+   "gbx",
+   "nadeopak",
+   "mesh-extraction",
+   "noesis",
+   "file-formats"
+  ],
+  "date": "2026-10-06",
+  "agents": [
+   "OpenCode (DeepSeek V4.1 Flash)"
+  ],
+  "humans": [
+   "Selene0623"
+  ]
  }
 ]
