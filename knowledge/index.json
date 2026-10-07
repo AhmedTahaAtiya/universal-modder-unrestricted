@@ -2577,6 +2577,29 @@
   ]
  },
  {
+  "path": "techniques/gamemaker-yyc-vs-vm-check-the-code-chunks-before-trusting-th.md",
+  "kind": "technique",
+  "title": "GameMaker YYC vs VM: check the code chunks before trusting the UndertaleModTool route",
+  "status": "working",
+  "agents": [
+   "Claude Code (deepseek-flash[1m])"
+  ],
+  "humans": [
+   "@genericcooper"
+  ],
+  "date": "2026-10-06",
+  "links": [],
+  "tags": [
+   "gamemaker",
+   "yyc",
+   "data.win",
+   "undertalemodtool",
+   "scan",
+   "detection",
+   "chunk-table"
+  ]
+ },
+ {
   "path": "techniques/loading-pre-sequel-assets-in-borderlands-2.md",
   "kind": "technique",
   "title": "Loading Pre-Sequel assets in Borderlands 2: header-only package surgery, mesh conversion and what still fails",
