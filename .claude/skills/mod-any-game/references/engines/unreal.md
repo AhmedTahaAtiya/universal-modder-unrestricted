@@ -47,8 +47,6 @@ read the UE4SS example mods before prompting for features. Many are already ther
 - `fmodel-mcp` lets an agent browse assets.
 
 ## Pitfalls
-
 - **Version mismatch:** paks cooked for the wrong UE version crash on mount. Blueprint mods break on game
   updates.
-
 - UE5 games that stream everything through IoStore need retoc, not repak.

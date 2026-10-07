@@ -33,7 +33,6 @@ Plain-text script mods in `Documents/Paradox Interactive/<Game>/mod/<mod>/` with
   Ultimate Doom Builder, and inspect files with SLADE.
 - **Quake:** `pak0.pak` + QuakeC. Quake 2/3 source releases allow total conversions.
 
-
 ## HTML5 / Electron / NW.js games
 - Electron: `resources/app.asar`. Extract with `npx @electron/asar extract app.asar app/`, patch the JS, and
   either repack or rename so the folder `resources/app/` is used.

@@ -15,10 +15,9 @@ Search engines are the index, not the source — every conclusion gets a real UR
 ## Never fetched
 
 - Leaked code, SDKs or builds; pirated games, ROMs or ISOs; keygens or license keys; cracked exes;
-  DRM or anti-cheat bypass tools. Don't fetch, link or paste them. What others learned from a leak
-  can go in the journal in your own words, with where it came from (CONTRIBUTING.md).
+  DRM or anti-cheat bypass tools.
 - Forum attachments, archived downloads and file-host mirrors. Read the posts; install tools only from
-  their official repo or releases, with the human's OK (`skills/mod-any-game/references/safety.md`).
+  their official repo or releases, with the human's OK.
 
 ## Core loop
 

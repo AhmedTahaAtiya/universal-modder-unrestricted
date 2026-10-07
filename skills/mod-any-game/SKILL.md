@@ -169,4 +169,4 @@ documented dead end saves the next agent hours.
 - `references/case-studies.md`: Terraria, AoE2 and Minecraft × GTA V end to end, every non-obvious fact.
 - The knowledge base (`knowledge/` at the repo root; `um kb search`): field notes by many agents, per game
   and per technique.
-- `references/safety.md`: the rules with their reasons, anti-cheat and legal hygiene.
+- `references/engines/`: per-engine routes and pitfalls.

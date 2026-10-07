@@ -9,8 +9,7 @@ Rule zero: **read the real thing, don't guess.** Decompiled code, the actual dat
 GPU capture is the spec. Write what you learn into `MODLOG.md` (names, IDs, offsets, formats) as you go.
 
 Keep all decompiled output and extracted assets **outside** the mod repo (e.g. `~/<game>-decomp/`) and never
-publish them. Single-player, offline or servers the user runs. Never attach debuggers or scanners to games
-with anti-cheat (see `skills/mod-any-game/references/safety.md`).
+publish them.
 
 ## Pick the tool by what the code is (`um scan` tells you)
 

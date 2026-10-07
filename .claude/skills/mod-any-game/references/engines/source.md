@@ -28,7 +28,6 @@
   Derived data stays out of git.
 
 ## Rules
-
 - The Workshop, maps, custom games and VScript are the sanctioned routes for the multiplayer titles.
 - Demos (`.dem`) are a great oracle for gameplay work. DemoFile.Net and the demoparser libraries extract
   per-tick state.

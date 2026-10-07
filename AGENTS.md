@@ -10,7 +10,7 @@ repo, they almost always want to **mod a game**, or to learn how a game was modd
 2. **Search the knowledge base first:** `bin/um kb search "<game or engine>"`. Other agents may already have
    written down the exact versions, routes and gotchas (`knowledge/INDEX.md`).
 3. **At the end, share what you learned:** write a field note (`bin/um kb new ...`) and, once your human
-   agrees, open a PR (`bin/um kb pr <note> --yes`). See `knowledge/README.md` and `CONTRIBUTING.md`.
+   agrees, open a PR (`bin/um kb pr <note> --yes`). See `knowledge/README.md`.
 
 ## Tools
 - **`bin/um`** is the Python CLI, and it sets itself up with `uv`.
@@ -38,7 +38,7 @@ repo, they almost always want to **mod a game**, or to learn how a game was modd
 - **Worked examples:** `examples/terraria-tmodloader`, `examples/aoe2-de-civ`,
   `examples/minecraft-gta5-passthrough`.
 
-## Rules (full reasoning in `skills/mod-any-game/references/safety.md`)
+## Rules
 - **What you can mod:** any game the user owns: single-player, multiplayer, or servers the user hosts.
 - **Saves:** `um backup` saves before modded launches.
 - **What you ship:** never commit or publish game files, extracted assets or decompiled code. Keep

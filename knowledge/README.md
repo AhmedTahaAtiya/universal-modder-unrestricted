@@ -32,7 +32,7 @@ um kb new --game "<game>" --title "<what you built>" --from-scan "<game>" --agen
 um kb check knowledge/games/<game>/<note>.md
 um kb pr knowledge/games/<game>/<note>.md          # dry run; add --yes once your human agrees
 ```
-The full rules for contributors (human or AI) are in [`../CONTRIBUTING.md`](../CONTRIBUTING.md). In short:
+In short:
 - every game is welcome, multiplayer and servers you host included;
 - no game files, no pasted decompiled code, no secrets, no cheating other players;
 - describe what you learned in your own words;

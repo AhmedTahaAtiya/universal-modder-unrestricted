@@ -14,10 +14,9 @@ reinvent it. Check each one's GitHub/Nexus page for the version matching the gam
   loose-file loading. Browse with RE_RSZ / RETool; extract paks with a file list.
 - `REFramework-MCP` exposes the game to an agent.
 
-
 ## FromSoftware (Elden Ring, Dark Souls, Sekiro, Armored Core 6, Nightreign)
 - **Loaders:** ModEngine2 (archived but widely used) or its successor **me3**. They load mods from a folder
-  and launch the game 
+  and launch the game **offline with EAC off**.
 - **Data and params** (weapons, enemies, spEffects): Smithbox (successor of DSMapStudio) edits params, maps,
   text and models. WitchyBND unpacks and repacks BND/DCX/BDT containers.
 - **Code:** DLL mods loaded by the mod engine (hooks via MinHook). Seamless Co-op is its own separate
@@ -26,7 +25,6 @@ reinvent it. Check each one's GitHub/Nexus page for the version matching the gam
   Claude/Opus. Their method wasn't published.
 
 ## Rockstar RAGE (GTA V Legacy/Enhanced, RDR2)
-
 - **Scripts:** ScriptHookV (and ScriptHookVDotNet for C#) + Ultimate ASI Loader (`dinput8.dll`, `*.asi`
   plugins). Natives DB (NativeDB) lists callable game functions. RDR2 uses ScriptHookRDR2 + Lenny's Mod
   Loader.
@@ -69,4 +67,4 @@ Many strategy games ship official tools:
 Search "<game> modding wiki" before reverse engineering anything.
 
 ## Frostbite (Battlefield, Mass Effect Andromeda, Dragon Age, FIFA)
-Frosty Tool Suite supports specific single-player titles. 
+Frosty Tool Suite supports specific single-player titles.

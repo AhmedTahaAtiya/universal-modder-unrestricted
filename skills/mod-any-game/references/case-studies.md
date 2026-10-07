@@ -11,7 +11,7 @@ community loader. It is a free Steam app, id 1281930. Content is written in C# a
 `ModProjectile`, `ModNPC`, `ModSystem`, `ModPlayer`, `ModCommand`.
 
 **Pipeline**
-
+1. Recon: `um scan terraria` → XNA/FNA .NET, known route tModLoader.
 2. Source of truth: decompile `Terraria.exe` with `ilspycmd` into `~/terraria-decomp`, outside git. Read
    vanilla AI there (e.g. `NPC.AI_004` for the Eye of Cthulhu, `aiStyle` numbers). tModLoader's own
    decompiled base (1.4.4.9) was diffed against vanilla 1.4.5.8 to confirm the logic matched. The only
@@ -60,7 +60,7 @@ community loader. It is a free Steam app, id 1281930. Content is written in C# a
 `%USERPROFILE%\Games\Age of Empires 2 DE\<steamid>\mods\local\<Mod>`.
 
 **Pipeline**
-
+1. Recon: `um scan "age of empires"` → Genie.
 2. **Data:** clone the Britons' tech tree into the new civ. Add unique units by deep-copying a template unit,
    then changing stats, graphics and train location. Add unique techs with effects, bonuses, key-value
    strings, and a tech tree JSON.
@@ -127,6 +127,7 @@ Code: `examples/minecraft-gta5-passthrough`.
 These projects appeared on X in September 2026: skateboarding in MW2, Minecraft inside Skyrim, Elden Ring
 and Mario 64, Black Ops 2 inside Minecraft, a Majora's Mask recomp extended by Opus. See the
 **mashup-mods** skill.
+- The biggest ones are reimplementations:
   - IW4L is a Rust MW2 runtime that reads the user's own MW2 files.
   - The Skate 3 Rust engine was built against a static recomp as its oracle.
   - Minecraft comes from a Rust rewrite.

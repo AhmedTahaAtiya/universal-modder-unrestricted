@@ -1,7 +1,5 @@
 # Retro and console games: decomps, recomps, emulators
 
-
-
 ## Is there already a decompilation or port?
 Many classics have matching decompilations (C source that compiles back to the identical ROM) and native PC
 ports built on them:

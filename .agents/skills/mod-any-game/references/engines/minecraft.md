@@ -53,7 +53,7 @@ resource packs. Develop in `com.mojang/development_*_packs` and turn on content-
 - **A separate launcher profile keeps the user's worlds safe.** Add a Fabric profile with its own `gameDir`.
   `fabric-installer -launcher microsoft_store` fails for lack of `launcher_profiles_microsoft_store.json`,
   so edit `launcher_profiles.json` by hand, after a backup.
-- Multiplayer: a server needs the mod too (or use plugins). 
+- Multiplayer: a server needs the mod too (or use plugins).
 - Mashups: the September 2026 "Minecraft inside X" projects either reimplemented Minecraft (Rust rewrites
   matching Java worldgen) or ran it side by side and exchanged state (passthrough). Minecraft's own assets
   were downloaded from Mojang at first run and never redistributed.

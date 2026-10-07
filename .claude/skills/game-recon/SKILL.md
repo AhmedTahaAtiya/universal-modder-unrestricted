@@ -46,7 +46,7 @@ Capture: the loader's name, repo, **current version and install steps**, the gam
 
 ## 3. Decide
 - **Can it be modded safely?** Look at anti-cheat, online-only parts, the EULA or mod policy, and the
-  ownership checks that loaders rely on (see `skills/mod-any-game/references/safety.md`). If not: say so,
+  ownership checks that loaders rely on. If not: say so,
   and offer what is possible (official tools, offline modes, a different game with the same idea).
 - **Route:** loader API > data/asset mod > managed patching > native hooks > reimplementation/mashup. Pick
   the first that reaches the user's idea.
