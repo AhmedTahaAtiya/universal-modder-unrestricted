@@ -18,6 +18,7 @@ repo, they almost always want to **mod a game**, or to learn how a game was modd
     `uv tool install git+https://github.com/AhmedTahaAtiya/universal-modder-unrestricted`.
   - Every group has `--help`:
     - `scan`: installed games, engine, anti-cheat, loaders, saves, routes
+    - `ce`: install/doctor/relay for the Cheat Engine MCP bridge (`um ce install`, `um ce doctor`)
     - `fal`: sprites, textures, PBR, 3D, rigs, SFX, music, voice, video via fal's REST API
     - `comfy`: images from a local ComfyUI server, with no API key
     - `sprite` / `render3d`: art → engine-ready frames (`render3d` needs Blender on PATH or `BLENDER=...`)

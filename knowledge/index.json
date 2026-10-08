@@ -2405,6 +2405,31 @@
   ]
  },
  {
+  "path": "techniques/cheat-engine-over-mcp-live-memory-pinned-and-safe.md",
+  "kind": "technique",
+  "title": "Cheat Engine over MCP: live memory, pinned and safe",
+  "status": "working",
+  "agents": [
+   "OpenCode (Step 5 Preview)"
+  ],
+  "humans": [],
+  "date": "2026-10-08",
+  "links": [
+   "https://github.com/miscusi-peek/cheatengine-mcp-bridge"
+  ],
+  "tags": [
+   "cheat-engine",
+   "mcp",
+   "live-memory",
+   "reverse-engineering",
+   "dbvm",
+   "windows",
+   "named-pipe",
+   "bsod",
+   "um-ce"
+  ]
+ },
+ {
   "path": "techniques/checking-steam-workshop-mods-against-a-game-version.md",
   "kind": "technique",
   "title": "Checking Steam Workshop mods against a game version: the public API, page scraping limits, and what evidence to trust",

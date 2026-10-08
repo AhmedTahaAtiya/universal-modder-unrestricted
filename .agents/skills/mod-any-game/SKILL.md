@@ -86,7 +86,8 @@ Read the actual code and data instead of guessing how the engine behaves. The **
 covers the tools:
 - decompile: ILSpy/`ilspycmd`, Cpp2IL, Vineflower, Ghidra/IDA over MCP;
 - dump data: genieutils, xEdit, UndertaleModTool, FModel;
-- inspect live: UnityExplorer, the UE4SS live viewer, REFramework, Cheat Engine.
+- inspect live: UnityExplorer, the UE4SS live viewer, REFramework, Cheat Engine (`um ce` puts Cheat Engine's
+  scans, breakpoints and DBVM watches behind MCP; see the reverse-engineering skill).
 
 Record exact names and IDs in MODLOG.md. Check what the executable enforces as well as what the data says.
 In AoE2 the data happily holds a 64th civilization, but the civ picker only lists civs from a table

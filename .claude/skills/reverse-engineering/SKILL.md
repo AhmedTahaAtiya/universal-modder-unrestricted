@@ -44,8 +44,9 @@ Vineflower / CFR / Recaf. For Minecraft, use Loom `genSources` with Mojang mappi
   properties for free.
 
 **Dynamic / live**
-- Cheat Engine: value scans → "find out what writes to this address" → struct → owner. CheatEngine MCP
-  servers exist.
+- Cheat Engine over MCP (`um ce`): value scans → "find out what writes to this address" → struct → owner.
+  Setup, the tool map and the gotchas (BSOD setting, GUI-thread hangs, DBVM) are in
+  [`references/cheat-engine-mcp.md`](references/cheat-engine-mcp.md).
 - x64dbg: breakpoints and tracing (x64dbg-mcp; bind it to 127.0.0.1, since some default to 0.0.0.0).
 - Frida (frida-mcp, frida-game-hacking-mcp): hook functions from JavaScript, log arguments.
 - ReClass.NET rebuilds structs from live memory.

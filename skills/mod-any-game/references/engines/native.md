@@ -20,8 +20,9 @@ and it's where agents and reverse-engineering MCPs pay off the most.
   to the function that handles the thing you want to change. Name functions and structs as you go, and write
   them into MODLOG.md.
 - **Dynamic analysis:**
-  - Cheat Engine: scan for values (health, ammo, position), find what writes them, then walk back to the
-    struct and its owner.
+  - Cheat Engine over MCP (`um ce install`, then `um ce doctor`): scan for values (health, ammo, position),
+    find what writes them, then walk back to the struct and its owner. See the
+    [reverse-engineering skill's Cheat Engine reference](../reverse-engineering/references/cheat-engine-mcp.md).
   - x64dbg: breakpoints, trace.
   - ReClass.NET: rebuild structs from live memory.
   - MCP versions of CE, x64dbg and Frida let an agent do this. Bind them to localhost.

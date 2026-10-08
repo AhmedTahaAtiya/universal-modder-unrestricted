@@ -4,9 +4,11 @@
 """
 import json
 import shutil
+import socket
 import struct
 import subprocess
 import sys
+import threading
 from pathlib import Path
 
 import pytest
@@ -14,7 +16,7 @@ from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from um import backup, fal, publish, scan, sprite, video  # noqa: E402
+from um import backup, ce, fal, publish, scan, sprite, video  # noqa: E402
 
 
 # --------------------------------------------------------------------------- scan
@@ -738,6 +740,388 @@ def test_skill_copies_match():
         assert tree(root / copy) == src, (f"{copy} differs from skills/: rm -rf .agents/skills .claude/skills && "
                                           "cp -r skills .agents/skills && cp -r skills .claude/skills")
     assert not any((root / d).exists() for d in (".gemini/skills", ".github/skills")), "agents read .agents/skills"
+
+
+# --------------------------------------------------------------------------- cheat engine bridge
+
+PING_RESULT = {"success": True, "version": "12.0.0", "timestamp": 0, "process_id": 4242,
+               "message": "CE MCP Bridge v12.0.0 alive"}
+
+
+class FakePipe:
+    """Stands in for pywin32's win32file: a named pipe that hands the reply over in pieces.
+
+    Partial reads are the whole point. A byte-mode pipe answers with whatever is in its buffer at
+    the time, so a client that asks for 171 bytes can get 167 and must ask for the rest. Reading the
+    4-byte header twice - once to learn the length, once as part of a "header + body" read - hangs
+    forever waiting for 4 bytes that were never sent.
+    """
+
+    class error(Exception):
+        pass
+
+    GENERIC_READ, GENERIC_WRITE, OPEN_EXISTING = 1, 2, 3
+
+    def __init__(self, reply: bytes, pieces: list[int]):
+        self.reply, self.pieces, self.sent = reply, pieces, b""
+        self.writes: list[bytes] = []
+        self.closed = 0
+
+    def CreateFile(self, name, access, share, sec, disp, flags, tmpl):
+        return "handle"
+
+    def WriteFile(self, h, data):
+        self.writes.append(bytes(data))
+        return (0, len(data))
+
+    def ReadFile(self, h, n):
+        want = self.pieces.pop(0) if self.pieces else n
+        want = min(want, n)
+        if not self.reply or want == 0:
+            raise self.error(109, "ReadFile", "The pipe has been ended.")
+        chunk, self.reply = self.reply[:want], self.reply[want:]
+        self.sent += chunk
+        return (0, chunk)
+
+    def CloseHandle(self, h):
+        self.closed += 1
+
+
+def fake_relay_reply(result: dict) -> bytes:
+    body = json.dumps({"jsonrpc": "2.0", "id": 7, "result": result}).encode()
+    return struct.pack("<I", len(body)) + body
+
+
+@pytest.fixture
+def pipe_env(monkeypatch):
+    monkeypatch.delenv("CE_MCP_TRANSPORT", raising=False)
+    monkeypatch.delenv("CE_MCP_PIPE", raising=False)
+    monkeypatch.setenv("CE_MCP_TIMEOUT", "5")
+
+
+def test_ce_pipe_reads_the_header_once(pipe_env, monkeypatch):
+    # the reply arrives as header(4) + 100 + 67 bytes; a client that re-reads the header blocks forever
+    reply = fake_relay_reply(PING_RESULT)
+    pipe = FakePipe(reply, pieces=[len(reply), 100, 67])
+    monkeypatch.setitem(sys.modules, "win32file", pipe)
+    monkeypatch.setitem(sys.modules, "pywintypes", pipe)
+    assert ce._Pipe().exchange(ce.encode_request("ping")) == reply
+    assert pipe.writes and pipe.writes[0][:4] == struct.pack("<I", len(pipe.writes[0]) - 4)
+    assert json.loads(pipe.writes[0][4:])["method"] == "ping" and pipe.closed == 1
+
+
+def test_ce_pipe_without_pywin32_says_what_to_install(pipe_env, monkeypatch, capsys):
+    monkeypatch.setitem(sys.modules, "win32file", None)      # `import win32file` -> ImportError
+    with pytest.raises(SystemExit):
+        ce._Pipe().exchange(b"")
+    err = capsys.readouterr().err
+    assert "pywin32" in err and "CE_MCP_TRANSPORT=tcp" in err
+
+
+class FakeRelay(threading.Thread):
+    """Stands in for ce_tcp_relay.py: same framing over TCP, answers whatever we send it."""
+
+    def __init__(self):
+        super().__init__(daemon=True)
+        self.srv = socket.socket()
+        self.srv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        self.srv.bind(("127.0.0.1", 0))
+        self.srv.listen(4)
+        self.port = self.srv.getsockname()[1]
+        self.asked: list[str] = []
+        self.start()
+
+    def run(self):
+        while True:
+            try:
+                s, _ = self.srv.accept()
+            except OSError:
+                return
+            threading.Thread(target=self.handle, args=(s,), daemon=True).start()
+
+    def handle(self, s):
+        with s:
+            head = self._read(s, 4)
+            req = json.loads(self._read(s, struct.unpack("<I", head)[0]))
+            self.asked.append(req["method"])
+            body = json.dumps({"jsonrpc": "2.0", "id": req.get("id"),
+                               "result": dict(PING_RESULT, method=req["method"])}).encode()
+            s.sendall(struct.pack("<I", len(body)) + body)
+
+    @staticmethod
+    def _read(s, n):
+        out = b""
+        while len(out) < n:
+            chunk = s.recv(n - len(out))
+            if not chunk:
+                raise ConnectionError("closed")
+            out += chunk
+        return out
+
+    def close(self):
+        self.srv.close()
+
+
+@pytest.fixture
+def tcp_env(pipe_env, monkeypatch):
+    relay = FakeRelay()
+    monkeypatch.setenv("CE_MCP_TRANSPORT", "tcp")
+    monkeypatch.setenv("CE_MCP_HOST", "127.0.0.1")
+    monkeypatch.setenv("CE_MCP_PORT", str(relay.port))
+    yield relay
+    relay.close()
+
+
+def test_ce_tcp_round_trip(tcp_env):
+    assert ce.send("ping") == dict(PING_RESULT, method="ping")
+    assert ce.send("get_process_info") == dict(PING_RESULT, method="get_process_info")
+    assert tcp_env.asked == ["ping", "get_process_info"]
+
+
+def test_ce_tcp_no_relay_is_a_sentence_not_a_traceback(tcp_env, monkeypatch):
+    monkeypatch.setenv("CE_MCP_PORT", "1")          # nothing listens there
+    with pytest.raises(ce.BridgeError) as e:
+        ce.send("ping")
+    assert "um ce relay" in str(e.value)
+    assert ce._Tcp("127.0.0.1", 1).reachable() is False
+
+
+def test_ce_framing_round_trip_and_rejects_junk():
+    frame = ce.encode_request("aob_scan", {"value": 100})
+    assert frame[:4] == struct.pack("<I", len(frame) - 4)
+    req = json.loads(frame[4:])
+    assert req["jsonrpc"] == "2.0" and req["method"] == "aob_scan" and req["params"] == {"value": 100}
+    assert ce.decode_frame(frame) == frame[4:]
+    with pytest.raises(ce.BridgeError):
+        ce.decode_frame(b"\x01\x02")
+    with pytest.raises(ce.BridgeError):
+        ce.decode_frame(struct.pack("<I", 4) + b"ab")          # truncated body
+    with pytest.raises(ce.BridgeError):
+        ce.decode_frame(struct.pack("<I", ce.MAX_FRAME + 1) + b"x" * 8)
+    assert ce.unwrap({"result": {"ok": 1}}) == {"ok": 1}
+    assert ce.unwrap({"error": "boom"})["success"] is False
+
+
+def test_ce_with_timeout_gives_up_and_says_why(monkeypatch):
+    monkeypatch.setenv("CE_MCP_TIMEOUT", "0.2")
+    import time
+    with pytest.raises(ce.BridgeError, match="no answer within"):
+        ce._with_timeout(lambda: time.sleep(2), ce.timeout_seconds())
+
+
+def test_ce_env_parsing(monkeypatch, capsys):
+    for raw, want in [("pipe", "pipe"), ("named_pipe", "pipe"), ("np", "pipe"), ("socket", "tcp"),
+                      (" TCP ", "tcp")]:
+        monkeypatch.setenv("CE_MCP_TRANSPORT", raw)
+        assert ce.transport() == want
+    monkeypatch.setenv("CE_MCP_TRANSPORT", "carrier-pigeon")
+    with pytest.raises(SystemExit):
+        ce.transport()
+    assert "carrier-pigeon" in capsys.readouterr().err
+    monkeypatch.delenv("CE_MCP_TRANSPORT")
+    monkeypatch.delenv("CE_MCP_TIMEOUT", raising=False)
+    assert ce.timeout_seconds() == 30.0
+    monkeypatch.setenv("CE_MCP_TIMEOUT", "0")
+    assert ce.timeout_seconds() is None
+    monkeypatch.setenv("CE_MCP_TIMEOUT", "nonsense")
+    assert ce.timeout_seconds() == 30.0
+    monkeypatch.delenv("CE_MCP_TIMEOUT")
+    assert ce.tcp_port() == 9876
+    monkeypatch.setenv("CE_MCP_PORT", "not-a-port")
+    with pytest.raises(SystemExit):
+        ce.tcp_port()
+    monkeypatch.setenv("CE_MCP_PORT", "70000")
+    with pytest.raises(SystemExit):
+        ce.tcp_port()
+
+
+def test_ce_tools_reads_the_bridge_source(tmp_path, monkeypatch):
+    src = tmp_path / "MCP_Server" / "mcp_cheatengine.py"
+    src.parent.mkdir(parents=True)
+    src.write_text("@mcp.tool()\ndef aob_scan(pattern: str) -> str:\n    pass\n\n"
+                   "@mcp.tool(name='read memory')\ndef read_memory() -> str:\n    pass\n\n"
+                   "def helper():\n    pass\n", encoding="utf-8")
+    monkeypatch.setenv("UM_CE_DIR", str(tmp_path))
+    assert ce.tools() == ["aob_scan", "read_memory"]
+    assert ce.tools("AOB") == ["aob_scan"]
+    monkeypatch.setenv("UM_CE_DIR", str(tmp_path / "nope"))
+    with pytest.raises(SystemExit) as e:
+        ce.tools()
+
+
+def test_ce_doctor_walks_every_step(pipe_env, tmp_path, monkeypatch, capsys):
+    script = tmp_path / "MCP_Server" / "mcp_cheatengine.py"
+    script.parent.mkdir(parents=True)
+    script.write_text("@mcp.tool()\ndef ping() -> str:\n    pass\n", encoding="utf-8")
+    monkeypatch.setenv("UM_CE_DIR", str(tmp_path))
+    monkeypatch.setattr(ce, "script_path", lambda: script)
+    monkeypatch.setattr(ce, "requirements_path", lambda: script.parent / "requirements.txt")
+    monkeypatch.setattr(ce, "ce_processes", lambda: [{"Id": 101, "ProcessName": "cheatengine-x86_64"}])
+    monkeypatch.setattr(ce, "send", lambda method, params=None: dict(PING_RESULT))
+    monkeypatch.setattr(ce.importlib.util, "find_spec", lambda name: "spec")
+    monkeypatch.setattr(ce, "endpoint", lambda: type("E", (), {"reachable": staticmethod(lambda: True),
+                                                               "exchange": staticmethod(lambda p: b"")})())
+    report = ce.doctor()
+    assert report["ok"] is True
+    out = capsys.readouterr().out
+    assert "everything the bridge needs" in out
+    assert "attached process id 4242" in out
+
+    monkeypatch.setattr(ce, "send", lambda method, params=None: (_ for _ in ()).throw(ce.BridgeError("boom")))
+    with pytest.raises(SystemExit):
+        ce.doctor()
+    out = capsys.readouterr().out
+    assert "boom" in out and "Query memory region routines" in out
+    monkeypatch.setattr(ce, "script_path", lambda: tmp_path / "not-installed.py")
+    with pytest.raises(SystemExit):
+        ce.doctor()
+    assert "um ce install" in capsys.readouterr().out
+
+
+def test_ce_doctor_reports_unattached_cheat_engine(pipe_env, tmp_path, monkeypatch, capsys):
+    script = tmp_path / "MCP_Server" / "mcp_cheatengine.py"
+    script.parent.mkdir(parents=True)
+    script.write_text("x", encoding="utf-8")
+    monkeypatch.setenv("UM_CE_DIR", str(tmp_path))
+    monkeypatch.setattr(ce, "script_path", lambda: script)
+    monkeypatch.setattr(ce, "ce_processes", lambda: [{"Id": 7, "ProcessName": "cheatengine-i386"}])
+    monkeypatch.setattr(ce, "endpoint", lambda: type("E", (), {"reachable": staticmethod(lambda: True)})())
+    monkeypatch.setattr(ce, "send", lambda method, params=None: dict(PING_RESULT, process_id=0))
+    with pytest.raises(SystemExit):
+        ce.doctor()
+    assert "attached to nothing" in capsys.readouterr().out
+
+
+def test_ce_clone_pins_one_commit(tmp_path, monkeypatch):
+    calls = []
+    monkeypatch.setenv("UM_CE_DIR", str(tmp_path / "bridge"))
+    monkeypatch.setattr(ce, "bridge_dir", lambda: tmp_path / "bridge")
+    monkeypatch.setattr(ce, "run", lambda cmd: calls.append(cmd) or type("R", (), {"stdout": ""})())
+    monkeypatch.setattr(ce.subprocess, "run", lambda cmd, **kw: calls.append(cmd) or
+                        type("R", (), {"returncode": 0, "stdout": "", "stderr": ""})())
+    ce.clone(force=True)
+    fetch = [c for c in calls if "fetch" in c][0]
+    assert fetch[:2] == ["git", "-C"] and "--depth" in fetch and "1" in fetch
+    assert ce.BRIDGE_REF in fetch
+    assert any("remote" in c and "add" in c for c in calls)
+    (tmp_path / "bridge" / ".git").mkdir(parents=True, exist_ok=True)      # what a real clone leaves behind
+    ce.clone()                                   # already cloned: no second fetch
+    assert len([c for c in calls if "fetch" in c]) == 1
+    monkeypatch.setenv("UM_CE_REF", "main")
+    ce.clone(force=True)
+    assert [c for c in calls if "fetch" in c][1][-1] == "main"
+
+
+def test_ce_install_refuses_off_windows(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(ce, "is_windows", lambda: False)
+    monkeypatch.setattr(ce, "is_wsl", lambda: False)
+    with pytest.raises(SystemExit):
+        ce.install(type("A", (), {"ref": None, "force": False, "write": False})())
+    assert "um ce relay" in capsys.readouterr().err
+
+
+def test_ce_install_pins_and_points_at_the_lua_script(tmp_path, monkeypatch, capsys):
+    d = tmp_path / "bridge"
+    (d / "MCP_Server").mkdir(parents=True)
+    for name in ("ce_mcp_bridge.lua", "mcp_cheatengine.py", "requirements.txt", "ce_tcp_relay.py"):
+        (d / "MCP_Server" / name).write_text("x", encoding="utf-8")
+    monkeypatch.setattr(ce, "bridge_dir", lambda: d)
+    monkeypatch.setattr(ce, "lua_path", lambda: d / "MCP_Server" / "ce_mcp_bridge.lua")
+    monkeypatch.setattr(ce, "script_path", lambda: d / "MCP_Server" / "mcp_cheatengine.py")
+    monkeypatch.setattr(ce, "requirements_path", lambda: d / "MCP_Server" / "requirements.txt")
+    monkeypatch.setattr(ce, "clone", lambda ref=None, force=False: d)
+    monkeypatch.setattr(ce, "run", lambda cmd: type("R", (), {"stdout": "Requirement already satisfied"})())
+    monkeypatch.setattr(ce.subprocess, "run", lambda cmd, **kw: type("R", (), {"stdout": ce.BRIDGE_REF})())
+    monkeypatch.setattr(ce, "write_configs", lambda: [])
+    ce.install(type("A", (), {"ref": None, "force": False, "write": False})())
+    out = capsys.readouterr().out
+    assert ce.BRIDGE_REF[:12] in out and "dofile([[" in out and "um ce doctor" in out
+
+
+def test_ce_config_writes_every_agent_config(tmp_path, monkeypatch):
+    import shutil
+    repo = tmp_path / "repo"
+    (repo / ".cursor").mkdir(parents=True)
+    (repo / ".codex").mkdir(parents=True)
+    (repo / ".vscode").mkdir(parents=True)
+    for rel in (".mcp.json", "mcp.json", ".cursor/mcp.json", ".vscode/mcp.json", "opencode.json",
+                "gemini-extension.json"):
+        shutil.copy(ce.REPO / rel, repo / rel)
+    (repo / ".codex" / "config.toml").write_text('command = "python"\n[mcp_servers.fal]\nurl = "x"\n',
+                                                 encoding="utf-8")
+    (repo / "MCP_Server").mkdir(parents=True)
+    (repo / "MCP_Server" / "mcp_cheatengine.py").write_text("x", encoding="utf-8")
+    monkeypatch.setattr(ce, "REPO", repo)
+    monkeypatch.setattr(ce, "script_path", lambda: repo / "MCP_Server" / "mcp_cheatengine.py")
+    monkeypatch.setattr(ce, "data_dir", lambda: tmp_path / "data")
+
+    written = ce.write_configs()
+    assert set(written) == {r for r, _, _ in ce.CONFIG_FILES}
+    for rel, key, style in ce.CONFIG_FILES:
+        text = (repo / rel).read_text(encoding="utf-8")
+        if style == "codex":
+            assert "[mcp_servers.cheatengine]" in text and "mcp_cheatengine.py" in text
+            assert "[mcp_servers.fal]" in text                      # the other server survived
+        else:
+            entry = json.loads(text)[key]["cheatengine"]
+            assert [str(p) for p in entry.get("args", entry.get("command", []))][-1].endswith("mcp_cheatengine.py")
+            assert "fal" in text                                     # fal's entry is still there
+    codex = (repo / ".codex" / "config.toml").read_text(encoding="utf-8")
+    assert codex.index("[mcp_servers.fal]") < codex.index("[mcp_servers.cheatengine]")
+
+    before = {rel: (repo / rel).read_bytes() for rel in written}
+    assert ce.write_configs() == []                                 # idempotent: nothing to do
+    assert {rel: (repo / rel).read_bytes() for rel in written} == before
+    assert len(list((tmp_path / "data" / "config-backups").glob("*.bak"))) == len(ce.CONFIG_FILES)
+
+
+def test_ce_config_updates_a_stale_path(tmp_path, monkeypatch):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    (repo / ".mcp.json").write_text(json.dumps({"mcpServers": {"fal": {"url": "x"},
+                                                                "cheatengine": {"args": ["/old/path.py"]}}}),
+                                    encoding="utf-8")
+    (repo / "MCP_Server").mkdir()
+    (repo / "MCP_Server" / "mcp_cheatengine.py").write_text("x", encoding="utf-8")
+    monkeypatch.setattr(ce, "REPO", repo)
+    monkeypatch.setattr(ce, "script_path", lambda: repo / "MCP_Server" / "mcp_cheatengine.py")
+    monkeypatch.setattr(ce, "data_dir", lambda: tmp_path / "data")
+    assert ce.write_configs() == [".mcp.json"]
+    entry = json.loads((repo / ".mcp.json").read_text())["mcpServers"]["cheatengine"]
+    assert entry["args"] == [str(repo / "MCP_Server" / "mcp_cheatengine.py")]
+    assert "fal" in (repo / ".mcp.json").read_text()
+
+
+def test_ce_config_lists_the_snippets(pipe_env, tmp_path, monkeypatch, capsys):
+    (tmp_path / "MCP_Server").mkdir(parents=True)
+    (tmp_path / "MCP_Server" / "mcp_cheatengine.py").write_text("x", encoding="utf-8")
+    monkeypatch.setattr(ce, "script_path", lambda: tmp_path / "MCP_Server" / "mcp_cheatengine.py")
+    assert ce.config() == [rel for rel, _, _ in ce.CONFIG_FILES]
+    out = capsys.readouterr().out
+    for rel, _, _ in ce.CONFIG_FILES:
+        assert rel in out
+    assert "um ce install --write" in out
+
+
+def test_ce_relay_needs_the_bridge(pipe_env, tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(ce, "is_windows", lambda: True)
+    monkeypatch.setattr(ce, "relay_path", lambda: tmp_path / "ce_tcp_relay.py")
+    with pytest.raises(SystemExit):
+        ce.relay()
+    assert "um ce install" in capsys.readouterr().err
+
+
+def test_ce_cli_ping_uses_the_bridge(pipe_env, monkeypatch, capsys):
+    from um import cli
+    asked = []
+    monkeypatch.setattr(ce, "send", lambda method, params=None: asked.append(method) or PING_RESULT)
+    cli.main(["ce", "ping"])
+    assert asked == ["ping"]
+    assert json.loads(capsys.readouterr().out) == PING_RESULT
+    monkeypatch.setattr(ce, "send", lambda m, p=None: (_ for _ in ()).throw(ce.BridgeError("nope")))
+    with pytest.raises(SystemExit):
+        cli.main(["ce", "ping"])
+    assert "nope" in capsys.readouterr().err
 
 
 # --------------------------------------------------------------------------- hooks
