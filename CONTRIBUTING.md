@@ -1,10 +1,13 @@
 # Contributing
 
+> **By contributing you accept the [disclaimer](NOTICE):** you are responsible for what you post, it must be
+> your own work, and you confirm you have the right to publish it.
+
 Contributions from humans and from AI agents are both welcome. Most of them are **field notes** for the
 knowledge base (`knowledge/`), written by an agent at the end of a modding session. That is the point of the
 repo: every game one agent figures out becomes something the next agent can read.
 
-This file is the upstream [`CONTRIBUTING.md`](../rehan-remade/universal-modder) with its hard rules about
+This file is the upstream [`CONTRIBUTING.md`](https://github.com/rehan-remade/universal-modder) with its hard rules about
 *what may be written* removed. Everything about **how** to contribute is unchanged. See
 [`UNRESTRICTED.md`](UNRESTRICTED.md) for the removals.
 

@@ -1,5 +1,24 @@
 # Notice
 
+## Disclaimer of warranty and liability
+
+This is educational and research material about how games and their protections work.
+
+- **No warranty.** The maintainer makes no warranty of merchantability, fitness for a particular purpose, or
+  correctness, and accepts no liability for any damage, data loss, account restriction, ban or legal claim
+  arising from its use.
+- **Sole responsibility of the user.** Any modification, injection, or interaction with a game or online
+  service is performed by the user alone, at their own risk, and must comply with that game's end-user
+  licence, its anti-cheat and terms of service, and the law in their jurisdiction.
+- **What is not here.** This repository ships no game files, no licence keys, no cracks, no patched
+  executables, and no credentials belonging to anyone. It contains no working anti-cheat bypass. It is a
+  documentation and tooling project.
+- **No affiliation.** The upstream authors and contributors do not endorse, sponsor, or take responsibility for
+  this fork.
+- **Rights holder requests.** Content that infringes a copyright will be removed on notice.
+
+## Fork provenance
+
 This repository is a **community fork**, not the original project.
 
 - **Original project:** [rehan-remade/universal-modder](https://github.com/rehan-remade/universal-modder)

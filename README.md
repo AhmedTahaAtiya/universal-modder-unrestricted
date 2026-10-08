@@ -7,6 +7,38 @@
   no leaked keys) are kept. See <a href="UNRESTRICTED.md">UNRESTRICTED.md</a>.
 </p>
 
+<p align="center">
+  <b>Educational and research material. No warranty, no liability.</b>
+</p>
+
+## ⚠️ Scope and responsibility
+
+Read this before you use anything here.
+
+**What this repository is.** A fork of an MIT-licensed, freely distributed toolkit for game-modding research.
+The only change is that a set of instruction sentences telling the agent to decline certain work were
+removed. **No new technique, tool, exploit, bypass or code is shipped here.** Everything technical came from the
+upstream authors, who published it under MIT for this purpose.
+
+**What this repository does not contain.** No game files, no keys, no cracks, no patched executables, no
+circumvention tooling that defeats a live protection service, and no account of anyone's credentials.
+`um publish check` exists to enforce the first two and runs in CI.
+
+**Your responsibility, entirely.** If you point an agent at a game you do not hold a licence for, or take a
+modified client onto someone else's server, that is your act and your risk. It is not endorsed here, and it
+falls under the game's EULA, anti-cheat terms and the law where you live. Anti-cheat bans revoke accounts and
+are rarely reversible. **Check what you are allowed to do before you do it.**
+
+**The maintainer accepts no liability** for damage to your system, your accounts, your game installs or any
+third party's online service arising from this material, and makes no warranty of fitness for any purpose.
+The upstream authors and contributors are likewise not affiliated with, and not responsible for, this fork.
+
+**Reporting.** If you are a rights holder and want content here removed, open an issue or email the maintainer;
+requests will be honoured. GitHub's own policies on intellectual property and acceptable use apply to this
+repository in full.
+
+## Any game, online included
+
 ## Any game, online included
 
 The upstream project tells the agent to stop at anti-cheat, to stay in offline or single-player, and to refuse
