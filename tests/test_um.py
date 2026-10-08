@@ -949,7 +949,14 @@ def test_ce_tools_reads_the_bridge_source(tmp_path, monkeypatch):
         ce.tools()
 
 
+def windows(monkeypatch):
+    """`um ce` is a Windows tool and CI runs on Linux, so tests simulate the platform instead of skipping."""
+    monkeypatch.setattr(ce, "is_windows", lambda: True)
+    monkeypatch.setattr(ce, "is_wsl", lambda: False)
+
+
 def test_ce_doctor_walks_every_step(pipe_env, tmp_path, monkeypatch, capsys):
+    windows(monkeypatch)
     script = tmp_path / "MCP_Server" / "mcp_cheatengine.py"
     script.parent.mkdir(parents=True)
     script.write_text("@mcp.tool()\ndef ping() -> str:\n    pass\n", encoding="utf-8")
@@ -979,6 +986,7 @@ def test_ce_doctor_walks_every_step(pipe_env, tmp_path, monkeypatch, capsys):
 
 
 def test_ce_doctor_reports_unattached_cheat_engine(pipe_env, tmp_path, monkeypatch, capsys):
+    windows(monkeypatch)
     script = tmp_path / "MCP_Server" / "mcp_cheatengine.py"
     script.parent.mkdir(parents=True)
     script.write_text("x", encoding="utf-8")
@@ -1021,6 +1029,7 @@ def test_ce_install_refuses_off_windows(tmp_path, monkeypatch, capsys):
 
 
 def test_ce_install_pins_and_points_at_the_lua_script(tmp_path, monkeypatch, capsys):
+    windows(monkeypatch)
     d = tmp_path / "bridge"
     (d / "MCP_Server").mkdir(parents=True)
     for name in ("ce_mcp_bridge.lua", "mcp_cheatengine.py", "requirements.txt", "ce_tcp_relay.py"):
