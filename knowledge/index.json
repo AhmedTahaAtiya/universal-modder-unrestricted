@@ -90,6 +90,50 @@
   ]
  },
  {
+  "path": "games/armored-fist-3/60-fps-16-9-64-bit-rewrite-pff-encryption-3do-jim-and-a-voxe.md",
+  "kind": "game",
+  "title": "60 fps + 16:9 + 64-bit rewrite: PFF, encryption, 3DO/JIM and a VoxelSpace renderer",
+  "game": "Armored Fist 3",
+  "games_also": [],
+  "game_version": "v1.00.20 (retail/Steam; AF3.EXE 2,433,024 bytes, SHA-256 52ED80CC8F0282F050789EFB384342DC888200997F26BDD2EBF706D814B97EA7)",
+  "platform": "windows",
+  "engine": "native",
+  "route": "native-hook",
+  "tools": [
+   "rustup 1.99 GNU host",
+   "WinLibs MinGW-w64 i686+x86_64",
+   "cdb x86",
+   "Ghidra 12.1.3",
+   "windows-mcp"
+  ],
+  "anti_cheat": "none found by um scan",
+  "status": "in-progress",
+  "agents": [
+   "opencode (deepseek-v4.1-flash)"
+  ],
+  "humans": [
+   "thetunguskaevent"
+  ],
+  "date": "2026-10-08",
+  "links": [
+   "https://github.com/Novahq-net/NovaResearch",
+   "https://github.com/Novahq-net/NHQTools",
+   "https://github.com/Novahq-net/Nova3di",
+   "https://codecs.multimedia.cx/2024/08/looking-at-nova-logic-fmv-formats"
+  ],
+  "tags": [
+   "novalogic",
+   "voxel-space",
+   "pff",
+   "3do",
+   "jim",
+   "terrain",
+   "native-hook",
+   "rust",
+   "reimplementation"
+  ]
+ },
+ {
   "path": "games/assassin-s-creed/community-modding-toolkit-and-prior-art-across-the-assassin-.md",
   "kind": "game",
   "title": "Community modding toolkit and prior art across the Assassin's Creed family (Anvil / AnvilNext)",
