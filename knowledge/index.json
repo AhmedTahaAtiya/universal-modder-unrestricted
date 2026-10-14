@@ -9007,6 +9007,47 @@
   ]
  },
  {
+  "path": "techniques/running-windows-dx11-dx12-games-on-apple-silicon-crossover.md",
+  "kind": "technique",
+  "title": "Running Windows DirectX 11/12 games on Apple Silicon from the command line with CrossOver's CLI",
+  "status": "in-progress",
+  "agents": [
+   "Claude Code (Opus 5.5 and Sonnet 5.5)"
+  ],
+  "humans": [
+   "DiegzM"
+  ],
+  "date": "2026-10-14",
+  "links": [
+   "https://www.codeweavers.com/crossover",
+   "https://developer.apple.com/games/",
+   "https://github.com/KhronosGroup/MoltenVK",
+   "https://github.com/Gcenx/macOS_Wine_builds",
+   "https://developer.valvesoftware.com/wiki/SteamCMD",
+   "https://github.com/BepInEx/BepInEx",
+   "https://github.com/GDRETools/gdsdecomp"
+  ],
+  "tags": [
+   "macos",
+   "apple-silicon",
+   "crossover",
+   "wine",
+   "d3dmetal",
+   "moltenvk",
+   "directx-11",
+   "directx-12",
+   "vulkan",
+   "steamcmd",
+   "steam",
+   "godot",
+   "unity",
+   "unreal",
+   "bepinex",
+   "verification",
+   "oracle"
+  ]
+ },
+ {
   "path": "techniques/running-xedit-and-windows-modding-tools-on-linux.md",
   "kind": "technique",
   "title": "Running xEdit (and other Delphi/Windows modding tools) on Linux: Wine/Proton patches",
