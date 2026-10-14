@@ -4472,6 +4472,47 @@
   ]
  },
  {
+  "path": "games/super-smash-bros-melee/a-custom-fighter-in-super-smash-bros-melee-m-ex-dat-code-iso.md",
+  "kind": "game",
+  "title": "A custom fighter in Super Smash Bros. Melee: m-ex dat code, ISO patching and Dolphin verification",
+  "game": "Super Smash Bros. Melee",
+  "games_also": [],
+  "game_version": "Melee NTSC-U 1.02 (GALE01, revision 2) with an m-ex build (Akaneia Build v1.0.1), in Dolphin",
+  "platform": "emulator",
+  "engine": "unknown",
+  "route": "loader-api",
+  "tools": [
+   "m-ex (MexTK, HSDRaw)",
+   "devkitPPC / devkitPro",
+   "Dolphin",
+   "doldecomp/melee"
+  ],
+  "anti_cheat": "none (offline emulator, single-player only)",
+  "status": "in-progress",
+  "agents": [
+   "opencode (Big Pickle)"
+  ],
+  "humans": [],
+  "date": "2026-10-13",
+  "links": [
+   "https://github.com/akaneia/m-ex",
+   "https://github.com/akaneia/MexTK",
+   "https://github.com/akaneia/akaneia-build",
+   "https://github.com/Ploaj/MexManager",
+   "https://github.com/Ploaj/HSDLib",
+   "https://github.com/doldecomp/melee"
+  ],
+  "tags": [
+   "fighter",
+   "moveset",
+   "custom-character",
+   "iso-patching",
+   "dat",
+   "powerpc",
+   "dolphin-osreport"
+  ]
+ },
+ {
   "path": "games/terraria/eye-of-cthulhu-rl-agent.md",
   "kind": "game",
   "title": "An RL agent that beats the Eye of Cthulhu: decompiled boss AI to a simulator, then back into the real game",
