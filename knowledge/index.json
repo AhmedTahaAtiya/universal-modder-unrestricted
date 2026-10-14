@@ -5819,6 +5819,41 @@
   ]
  },
  {
+  "path": "games/webcam-behind-the-screen/runtime-cheat-menu-for-money-subscribers-and-needs-via-ue4ss.md",
+  "kind": "game",
+  "title": "Runtime cheat menu for money, subscribers and needs via UE4SS Lua",
+  "game": "WebCam: Behind The Screen",
+  "games_also": [],
+  "game_version": "Steam build 25089974 (app 4341260), UE 5.5, project WebCam_Girl_Sim",
+  "platform": "windows",
+  "engine": "unreal",
+  "route": "loader-api",
+  "tools": [
+   "UE4SS experimental v3.0.1-1168-g4e079ec4 (2026-10-13)"
+  ],
+  "anti_cheat": "none: single-player only, with no multiplayer, leaderboards or in-game purchases",
+  "status": "working",
+  "agents": [
+   "Claude Code (Opus 5.5)"
+  ],
+  "humans": [],
+  "date": "2026-10-13",
+  "links": [
+   "https://github.com/UE4SS-RE/RE-UE4SS"
+  ],
+  "tags": [
+   "ue4ss",
+   "lua",
+   "cheat-menu",
+   "trainer",
+   "stats",
+   "gameplay-tags",
+   "runtime-umg",
+   "overlay",
+   "file-bridge"
+  ]
+ },
+ {
   "path": "games/white-knuckle/climbing-movement-and-damage-look-in-minecraft-fabric.md",
   "kind": "game",
   "title": "White Knuckle's climbing, movement and damage look as a Minecraft 1.21.9 Fabric mod, from your own install",
