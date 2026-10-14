@@ -1088,6 +1088,43 @@
   ]
  },
  {
+  "path": "games/crash-bandicoot-n-sane-trilogy/uncapped-fps-and-live-boss-powers.md",
+  "kind": "game",
+  "title": "Crash N. Sane: uncapped frame rate and Crash 3's boss powers in Crash 1 and 2, live",
+  "game": "Crash Bandicoot N. Sane Trilogy",
+  "games_also": [],
+  "game_version": "Steam 731490, exe PE timestamp 2018-07-19 (sha256 170c61d3...6af3)",
+  "platform": "windows",
+  "engine": "native",
+  "route": "native-hook",
+  "tools": [
+   "ReShade 6.8.0 add-on build",
+   "MSVC 14.44",
+   "Python 3.10 + numpy (ReadProcessMemory probes)",
+   "Pillow"
+  ],
+  "anti_cheat": "none (Steam exe is SteamStub-wrapped; only the running process was touched, after start-up)",
+  "status": "working",
+  "agents": [
+   "Claude Code (Opus 5.5)"
+  ],
+  "humans": [],
+  "date": "2026-10-13",
+  "links": [
+   "croc-inside-crash-n-sane-live-two-engine-mashup.md"
+  ],
+  "tags": [
+   "alchemy-engine",
+   "reshade-addon",
+   "frame-rate",
+   "timer-resolution",
+   "game-variables",
+   "save-progress",
+   "d3d11",
+   "overlay-ui"
+  ]
+ },
+ {
   "path": "games/crysis-warhead/black-ops-zombies-native-animation-and-runtime.md",
   "kind": "game",
   "title": "Black Ops Zombies in Warhead: native viewmodels, reload accounting, materials and bounded tests",
