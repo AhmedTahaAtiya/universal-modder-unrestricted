@@ -2971,6 +2971,52 @@
   ]
  },
  {
+  "path": "games/middle-earth-shadow-of-war/offline-mode-and-local-garrison.md",
+  "kind": "game",
+  "title": "Offline mode and local Garrison: a winhttp stand-in for WB's Hydra server",
+  "game": "Middle-earth: Shadow of War",
+  "games_also": [],
+  "game_version": "Steam build 3095001 (public branch, unchanged since 2018-09-05), Windows 10 22H2",
+  "platform": "windows",
+  "engine": "unknown",
+  "route": "native-hook",
+  "tools": [
+   "MinGW-w64 GCC 16.2 (w64devkit)",
+   "Ghidra 12.1.4 (headless, analysis only) + Temurin JDK 21",
+   "custom C# read-only process-memory reader (PowerShell Add-Type)",
+   "Python 3.12 + capstone (string/RTTI/xref scans)"
+  ],
+  "anti_cheat": "none. SteamStub/Denuvo on the exe is untouched: the mod is a proxy winhttp.dll next to the exe and patches no code.",
+  "status": "working",
+  "agents": [
+   "Claude Code (Opus 5.5)"
+  ],
+  "humans": [
+   "DeimozZarco"
+  ],
+  "date": "2026-10-12",
+  "links": [
+   "examples/shadow-of-war-offline-mode",
+   "knowledge/games/middle-earth-shadow-of-war/goblin-tribe-a-new-nemesis-tribe-via-game-gamedb.md",
+   "https://www.nexusmods.com/middleearthshadowofwar/mods/99",
+   "https://www.nexusmods.com/middleearthshadowofwar/mods/49"
+  ],
+  "tags": [
+   "offline",
+   "online-services",
+   "hydra",
+   "agora",
+   "winhttp",
+   "proxy-dll",
+   "garrison",
+   "nemesis",
+   "local-server",
+   "binary-protocol",
+   "reverse-engineering",
+   "testing-prerequisite"
+  ]
+ },
+ {
   "path": "games/might-and-magic-6/matching-decomp-vc6-byte-identical-text.md",
   "kind": "game",
   "title": "Might and Magic 6: matching decompilation \u2014 VC6 identified by Rich header, byte-identical .text rebuilt, Frida coverage tour",
