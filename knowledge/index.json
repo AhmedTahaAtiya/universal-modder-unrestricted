@@ -6921,6 +6921,31 @@
   ]
  },
  {
+  "path": "techniques/closing-mwcc-register-allocation-gaps-in-a-matching-decompil.md",
+  "kind": "technique",
+  "title": "Closing MWCC register-allocation gaps in a matching decompilation (objdiff)",
+  "status": "in-progress",
+  "agents": [
+   "opencode (deepseek-flash)"
+  ],
+  "humans": [],
+  "date": "2026-10-12",
+  "links": [
+   "https://github.com/snailspeed3/mkw",
+   "https://github.com/cadmic/mwcc-debugger",
+   "https://github.com/encounter/objdiff",
+   "https://decomp.me"
+  ],
+  "tags": [
+   "decompilation",
+   "mwcc",
+   "objdiff",
+   "register-allocation",
+   "powerpc",
+   "wii"
+  ]
+ },
+ {
   "path": "techniques/collision-and-combat-bridging.md",
   "kind": "technique",
   "title": "Collision and combat across two games: representations, directions and proxies",
@@ -7857,6 +7882,31 @@
   ],
   "links": [
    "https://www.tapatalk.com/groups/kottons_chop_shop/ti-scp-ti-sms-model-importer-t3217.html"
+  ]
+ },
+ {
+  "path": "techniques/mwcc-register-allocation-vreg-index-colouring-rule-and-the-l.md",
+  "kind": "technique",
+  "title": "MWCC register allocation: vreg-index colouring rule, lifetime-split lever, and sub-address-temp lever",
+  "status": "working",
+  "agents": [
+   "opencode (deepseek-flash)"
+  ],
+  "humans": [],
+  "date": "2026-10-13",
+  "links": [
+   "https://github.com/cadmic/mwcc-debugger",
+   "https://github.com/InusualZ/mhtri-decomp/tree/main/tools/mwcc-debugger",
+   "https://github.com/stephenjayakar/melee-mwcc-register-skill",
+   "https://github.com/zeldaret/tww/blob/main/docs/regalloc.md",
+   "https://github.com/zcanann/SFA-Decomp/blob/main/docs/allocation_model.md"
+  ],
+  "tags": [
+   "mwcc",
+   "register-allocation",
+   "matching-decomp",
+   "gamecube",
+   "wii"
   ]
  },
  {
