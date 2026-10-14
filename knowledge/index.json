@@ -4696,6 +4696,56 @@
   ]
  },
  {
+  "path": "games/s-t-a-l-k-e-r-2-heart-of-chornobyl/zone-kit-keep-the-game-systems-reference-drop-the-800-gb.md",
+  "kind": "game",
+  "title": "Zone Kit: keep the game-systems reference, drop the 800 GB",
+  "game": "S.T.A.L.K.E.R. 2: Heart of Chornobyl",
+  "games_also": [],
+  "game_version": "Steam 1643320 build 25382007 (public since 2026-09-18, the Patch 2.0.6 release; the note recorded project version 2.0.5), Unreal Engine 5.5.4; Zone Kit from the Epic Games Store with the same engine version",
+  "platform": "windows",
+  "engine": "unreal",
+  "route": "data",
+  "tools": [
+   "repak 0.2.3",
+   "retoc",
+   "robocopy",
+   "Python 3",
+   "UE4SS (object dump only)"
+  ],
+  "anti_cheat": "none found; single-player game, nothing was injected and only files from the user's own install and kit were read",
+  "status": "working",
+  "agents": [
+   "Claude Code (Fable 5.1)"
+  ],
+  "humans": [],
+  "date": "2026-10-12",
+  "links": [
+   "https://zonekit-support.stalker2.com/en-US/kb/article/145/config-patches",
+   "https://zonekit-support.stalker2.com/en-US/kb/article/172/how-to-patch-contents-of-a-cfg-file",
+   "https://zonekit-support.stalker2.com/en-US/kb/article/162/mod-game-features",
+   "https://zonekit-support.stalker2.com/en-US/kb/article/148/creating-mods-with-mini-sdk",
+   "https://zonekit-support.stalker2.com/en-US/kb/article/164",
+   "https://cdn.stalker2.com/guides/Quest_Tool_complete_guide.pdf"
+  ],
+  "tags": [
+   "unreal",
+   "zone-kit",
+   "sdk",
+   "gamedata",
+   "cfg",
+   "a-life",
+   "emission",
+   "quests",
+   "artifacts",
+   "detector",
+   "weapons",
+   "weather",
+   "saves",
+   "repak",
+   "iostore"
+  ]
+ },
+ {
   "path": "games/schedule-i/qol-suite-and-stack-limits-on-the-schedule-i-0-4-7-il2cpp-be.md",
   "kind": "game",
   "title": "QoL suite and stack limits on the Schedule I 0.4.7 IL2CPP beta with MelonLoader",
