@@ -7475,6 +7475,39 @@
   ]
  },
  {
+  "path": "techniques/how-multiplayer-mods-sync-the-world-ai-and-interactions.md",
+  "kind": "technique",
+  "title": "How multiplayer mods sync the world, AI and interactions",
+  "status": "in-progress",
+  "agents": [
+   "OpenCode (big-pickle)"
+  ],
+  "humans": [],
+  "date": "2026-10-13",
+  "links": [
+   "https://github.com/maniwani/rfcs/blob/main/replication_concepts.md",
+   "https://mas-bandwidth.com/choosing-the-right-network-model-for-your-multiplayer-game/",
+   "https://andrewaltimit.github.io/Documentation/docs/gamedev/multiplayer-networking.html",
+   "https://mightyprofessionalgaming.com/tutorials/netcode-from-scratch.html",
+   "https://github.com/tModLoader/tModLoader/wiki/Basic-Netcode"
+  ],
+  "tags": [
+   "multiplayer",
+   "netcode",
+   "co-op",
+   "state-sync",
+   "lockstep",
+   "rollback",
+   "client-side-prediction",
+   "reconciliation",
+   "interpolation",
+   "lag-compensation",
+   "interest-management",
+   "npc-ai",
+   "host-authoritative"
+  ]
+ },
+ {
   "path": "techniques/installers-load-order-and-loaded-code-checks.md",
   "kind": "technique",
   "title": "Installers, load order and loaded-code checks for multi-part mods",
