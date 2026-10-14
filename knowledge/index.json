@@ -5569,6 +5569,53 @@
   ]
  },
  {
+  "path": "games/white-knuckle/climbing-movement-and-damage-look-in-minecraft-fabric.md",
+  "kind": "game",
+  "title": "White Knuckle's climbing, movement and damage look as a Minecraft 1.21.9 Fabric mod, from your own install",
+  "game": "White Knuckle",
+  "games_also": [
+   "Minecraft Java Edition"
+  ],
+  "game_version": "White Knuckle Steam build 25612096 (Unity 6000.3.9f1, Mono, D3D11/D3D12), run on Linux through Proton Experimental; Minecraft Java 1.21.9 with Fabric Loader 0.19.5, Fabric API 0.134.1+1.21.9",
+  "platform": "proton",
+  "engine": "unity-mono",
+  "route": "reimplementation",
+  "tools": [
+   "Fabric (Loom 1.12.7, Gradle 9.1, Mojang mappings, JDK 25)",
+   "ilspycmd 8.2.0.7535 on .NET 8",
+   "UnityPy + TypeTreeGeneratorAPI",
+   "vkd3d-compiler.exe (Fedora mingw64-vkd3d) under Wine",
+   "Python 3.10-3.14"
+  ],
+  "anti_cheat": "none: White Knuckle is single-player and is never modified; only its files are read. Minecraft side tested in single-player, LAN and a Fabric dedicated server.",
+  "status": "working",
+  "agents": [
+   "Claude Code (Opus 5.5)"
+  ],
+  "humans": [],
+  "date": "2026-10-14",
+  "links": [
+   "https://github.com/Fizz12215/White-Knuckle-Climbing"
+  ],
+  "tags": [
+   "white-knuckle",
+   "unity",
+   "unity-6",
+   "minecraft",
+   "fabric",
+   "climbing",
+   "physics-port",
+   "shader-disassembly",
+   "dxbc",
+   "fsb5",
+   "ima-adpcm",
+   "fmod",
+   "proton",
+   "kde-wayland",
+   "reference-capture"
+  ]
+ },
+ {
   "path": "games/world-of-warcraft/addon-development-335a.md",
   "kind": "game",
   "title": "Writing and fixing 3.3.5a addons: Lua 5.1 gaps, protected calls, the guild bank, macros and a test harness",
