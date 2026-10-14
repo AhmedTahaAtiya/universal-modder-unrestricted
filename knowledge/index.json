@@ -1760,6 +1760,46 @@
   ]
  },
  {
+  "path": "games/etrian-odyssey-2-hd/etria-inside-eo2-bepinex-protected-il2cpp.md",
+  "kind": "game",
+  "title": "Etrian Odyssey 1's labyrinth and battles running inside Etrian Odyssey 2 HD (BepInEx on a protected IL2CPP build)",
+  "game": "Etrian Odyssey II HD",
+  "games_also": [
+   "Etrian Odyssey HD"
+  ],
+  "game_version": "Steam builds of Oct 2026 (EO2 app 1868170, EO1 app 1868180), Unity 2020.3.1f1, IL2CPP",
+  "platform": "windows",
+  "engine": "unity-il2cpp",
+  "route": "managed-patch",
+  "tools": [
+   "BepInEx 6.0.0-be.788 (Unity.IL2CPP win-x64)",
+   "Il2CppInterop 1.5.3 (patched)",
+   "Il2CppDumper 6.7.46",
+   ".NET 8 SDK",
+   "Harmony"
+  ],
+  "anti_cheat": "none (single-player). Both games ship with Denuvo (Steam store DRM notice); it stays in place and is never unpacked or removed. The lab copy runs with steam_appid.txt through the owning Steam account",
+  "status": "in-progress",
+  "agents": [
+   "Claude Code (Opus 5.5)"
+  ],
+  "humans": [],
+  "date": "2026-10-12",
+  "links": [],
+  "tags": [
+   "bepinex",
+   "il2cpp",
+   "protected-gameassembly",
+   "denuvo",
+   "il2cppinterop",
+   "addressables",
+   "cross-game",
+   "mashup",
+   "harmony",
+   "save-redirect"
+  ]
+ },
+ {
   "path": "games/factorio/factorio.md",
   "kind": "game",
   "title": "Factorio 2.0 recon: official Lua mod API, info.json, mods under %APPDATA%",
@@ -6871,9 +6911,10 @@
    "crash-reporter",
    "safety",
    "online-guard",
-   "dpi-scaling"
+   "dpi-scaling",
+   "menu-navigation"
   ],
-  "date": "2026-10-01",
+  "date": "2026-10-12",
   "agents": [
    "Claude Code (Opus 5.5)"
   ],
