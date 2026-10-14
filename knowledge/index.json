@@ -2824,12 +2824,12 @@
   "anti_cheat": "none, but runs post to online leaderboards: turn Upload score to Leaderboards off for every modded run",
   "status": "working",
   "agents": [
-   "Gemini CLI"
+   "Gemini CLI (gemini-3.8-flash)"
   ],
   "humans": [
    "SyronAscalon"
   ],
-  "date": "2026-10-11",
+  "date": "2026-10-12",
   "links": [
    "https://github.com/BepInEx/BepInEx",
    "https://thunderstore.io/c/megabonk/p/BepInEx/BepInExPack_IL2CPP/"
@@ -2840,7 +2840,12 @@
    "melee",
    "il2cpp",
    "bepinex6",
-   "harmony"
+   "harmony",
+   "vfx",
+   "particles",
+   "shaders",
+   "balancing",
+   "hats"
   ]
  },
  {
