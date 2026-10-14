@@ -180,9 +180,8 @@ documented dead end saves the next agent hours.
   - big engines: `unity.md`, `unreal.md`, `godot.md`, `source.md`, `native.md`;
   - families and frameworks: `dotnet-xna.md` (Terraria, Stardew, Celeste), `bethesda.md`,
     `big-frameworks.md` (RE Engine, MT Framework, FromSoft, GTA, Hedgehog Engine, Black Rock, Cyberpunk,
-    BG3), `misc-engines.md` (GameMaker, RPG Maker, Ren'Py, Paradox, Doom, HTML5, LÖVE, Java, Dwarf Fortress),
-    `zengin.md`
-    (Gothic 1/2: Daedalus scripts, Union, GD3D11);
+    BG3, Avalanche/Just Cause), `misc-engines.md` (GameMaker, RPG Maker, Ren'Py, Paradox, Doom, HTML5, LÖVE,
+    Java, Dwarf Fortress), `zengin.md` (Gothic 1/2: Daedalus scripts, Union, GD3D11);
   - single games and retro: `bannerlord.md` (Mount & Blade II: modules, XML/XSLT, C# SubModules, Harmony),
     `minecraft.md`, `genie-aoe2.md`, `isaac.md` (Binding of Isaac: Lua mods, REPENTOGON, anm2, console),
     `retro-decomp.md`.
