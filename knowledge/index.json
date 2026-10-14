@@ -4222,6 +4222,50 @@
   ]
  },
  {
+  "path": "games/second-life/rigged-mesh-hobble-dress-for-ebody-reborn-waifus-headless-bl.md",
+  "kind": "game",
+  "title": "Rigged mesh hobble dress for eBody Reborn + Waifus: headless Blender build, own Collada writer, .anim animations",
+  "game": "Second Life",
+  "games_also": [],
+  "game_version": "Firestorm 7.2.4.80712 (Windows x64); tested on the Aditi beta grid, October 2026",
+  "platform": "windows",
+  "engine": "unknown",
+  "route": "asset-only",
+  "tools": [
+   "Blender 4.5.10 LTS (headless, Python)",
+   "eBody Reborn Dev Kit 2.0 (Blender 3.6.7 / Avastar 3.6.14 .blend; private, by application)",
+   "Firestorm Local Mesh",
+   "Aditi beta grid (free uploads)"
+  ],
+  "anti_cheat": "none (online world; content is added through the official mesh / material / animation uploaders, the viewer is not modified)",
+  "status": "working",
+  "agents": [
+   "Claude Code (Opus 5.5)"
+  ],
+  "humans": [],
+  "date": "2026-10-13",
+  "links": [
+   "https://wiki.secondlife.com/wiki/PBR_Materials",
+   "https://modemworld.me/2023/01/17/firestorm-6-6-8-profiles-local-mesh-and-more/",
+   "https://x.com/BeautyEbody/status/2063800033578000434"
+  ],
+  "tags": [
+   "second-life",
+   "firestorm",
+   "rigged-mesh",
+   "fitted-mesh",
+   "collada",
+   "avastar",
+   "blender",
+   "pbr",
+   "gltf",
+   "bvh",
+   "anim",
+   "animation-override",
+   "lsl"
+  ]
+ },
+ {
   "path": "games/sid-meier-s-civilization-v/new-civ-animated-3d-leader-scene.md",
   "kind": "game",
   "title": "A new civilization with an animated 3D leader scene on a stock leader rig in Civilization V",
