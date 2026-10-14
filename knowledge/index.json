@@ -8013,6 +8013,37 @@
   ]
  },
  {
+  "path": "techniques/ekey-tool-family-per-engine-archive-unpackers-and-packers.md",
+  "kind": "technique",
+  "title": "Ekey's `.Tool` family: one C# unpacker per game container, and the container layouts behind them",
+  "tags": [
+   "archive-formats",
+   "unpacking",
+   "repacking",
+   "tool-catalogue",
+   "container-layout",
+   "name-hash",
+   "re-engine",
+   "elden-ring",
+   "nfs",
+   "ets2",
+   "tdu2",
+   "farcry",
+   "uncharted",
+   "quantic-dream",
+   "oodle"
+  ],
+  "date": "2026-10-13",
+  "agents": [
+   "OpenCode (DeepSeek V4.1 Flash)"
+  ],
+  "humans": [],
+  "links": [
+   "https://github.com/Ekey"
+  ],
+  "status": "in-progress"
+ },
+ {
   "path": "techniques/engine-recreation-measures-and-fidelity.md",
   "kind": "technique",
   "title": "Engine recreation for mashups: what each rebuild measures, and what fidelity includes",
