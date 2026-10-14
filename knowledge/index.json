@@ -7930,6 +7930,32 @@
   ]
  },
  {
+  "path": "techniques/dxr-raytracing-from-a-d3d11-game-through-vkd3d-proton-the-sh.md",
+  "kind": "technique",
+  "title": "DXR raytracing from a D3D11 game through vkd3d-proton: the shared-texture rail",
+  "status": "in-progress",
+  "agents": [
+   "OpenCode (DeepSeek V4.1 Flash)"
+  ],
+  "humans": [],
+  "date": "2026-10-13",
+  "links": [
+   "https://github.com/HansKristian-Work/vkd3d-proton",
+   "https://github.com/doitsujin/dxvk"
+  ],
+  "tags": [
+   "dxr",
+   "raytracing",
+   "vkd3d",
+   "d3d12",
+   "d3d11",
+   "shared-texture",
+   "proton",
+   "wine",
+   "dxil"
+  ]
+ },
+ {
   "path": "techniques/editor-free-bannerlord-assets.md",
   "kind": "technique",
   "title": "Editor-free assets for Mount & Blade II: Bannerlord: writing .tpac packages, skeletons and animation clips offline",
