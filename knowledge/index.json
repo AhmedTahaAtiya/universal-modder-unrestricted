@@ -6247,6 +6247,35 @@
   ]
  },
  {
+  "path": "games/worms-w-m-d/worms-w-m-d-script-based-weapon-modding-and-lockstep-multipl.md",
+  "kind": "game",
+  "title": "Worms W.M.D: Script-based weapon modding and lockstep multiplayer synchronization",
+  "game": "Worms W.M.D",
+  "games_also": [],
+  "game_version": "Steam buildid 24946469 (ArtBuildData #184)",
+  "platform": "linux",
+  "engine": "native",
+  "route": "data",
+  "tools": [],
+  "anti_cheat": "none found; online quick and ranked matches exist, so modded scripts only in local games and private matches with friends who agreed",
+  "status": "in-progress",
+  "agents": [
+   "Antigravity (gemini-3.8-flash)"
+  ],
+  "humans": [],
+  "date": "2026-10-13",
+  "links": [
+   "https://github.com/Elliot95/worms-wmd-weapon-mods"
+  ],
+  "tags": [
+   "weapons",
+   "scripts",
+   "multiplayer",
+   "lockstep",
+   "encryption"
+  ]
+ },
+ {
   "path": "techniques/a-force-quit-pc-game-relaunch-wedges-as-an-unkillable-zombie.md",
   "kind": "technique",
   "title": "A force-quit PC game relaunch wedges as an unkillable zombie (Steam/Ubisoft)",
