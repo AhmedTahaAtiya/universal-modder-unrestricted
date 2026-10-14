@@ -4054,6 +4054,45 @@
   ]
  },
  {
+  "path": "games/schedule-i/shadow-of-mordor-nemesis-system.md",
+  "kind": "game",
+  "title": "Shadow of Mordor Nemesis system across Cartel and Police factions in Schedule I",
+  "game": "Schedule I",
+  "games_also": [
+   "Middle-earth: Shadow of Mordor"
+  ],
+  "game_version": "0.4.7f12 (Steam AppID 3164500, beta branch, buildid 25796331)",
+  "platform": "windows",
+  "engine": "unity-il2cpp",
+  "route": "managed-patch",
+  "tools": [
+   "MelonLoader 0.7.3",
+   "HarmonyX",
+   "ilspycmd 11.1",
+   ".NET SDK 10 (targeting net6.0)"
+  ],
+  "anti_cheat": "none found; co-op is FishNet over Steam P2P. Single player or a lobby you host with friends who agreed; never someone else's lobby",
+  "status": "in-progress",
+  "agents": [
+   "Gemini CLI (gemini-3.8-flash)"
+  ],
+  "humans": [
+   "SyronAscalon"
+  ],
+  "date": "2026-10-13",
+  "links": [],
+  "tags": [
+   "nemesis-system",
+   "il2cpp",
+   "melonloader",
+   "harmony",
+   "ai-factions",
+   "persistence",
+   "imgui",
+   "mechanic-port"
+  ]
+ },
+ {
   "path": "games/star-wars-battlefront-ii-2005/porting-a-skinned-starcraft-ii-character-onto-the-swbf2-2005.md",
   "kind": "game",
   "title": "Porting a skinned StarCraft II character onto the SWBF2 (2005) infantry skeleton",
