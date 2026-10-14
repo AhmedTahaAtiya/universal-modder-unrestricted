@@ -56,9 +56,16 @@ fal MCP server when `FAL_KEY` is set and none is configured. A clone doesn't nee
 uv tool install git+https://github.com/rehan-remade/universal-modder     # or: pipx install git+...
 ```
 **For assets,** get a [fal API key](https://fal.ai/dashboard/keys). It powers both the fal MCP server and
-`um fal` (for images without a key, `um comfy` uses a local ComfyUI server):
+`um fal`. Rather than exporting it from a shell profile or a `.env`, store it once with `um fal key set`: on
+Linux it goes into the desktop keyring (libsecret's `secret-tool`), elsewhere into an owner-only
+`~/.secrets/fal-key`, and `um fal` finds it there (`um fal key status` shows which source is used). `FAL_KEY`
+in the environment still works and wins. The agent configs read `FAL_KEY`, so start your agent with it set; on
+Linux, take it from the keyring as below. With no key, fal's OAuth endpoint `https://mcp.fal.ai/mcp-relay`
+signs you in through the browser instead ([fal's MCP guides](https://fal.ai/docs/documentation/setting-up/mcp)),
+and `um comfy` makes images on a local ComfyUI server.
 ```bash
-export FAL_KEY=...
+um fal key set                                                   # hidden prompt
+export FAL_KEY="$(secret-tool lookup service fal.ai key api)"    # Linux: before starting the agent
 ```
 You also need Git, Python 3.10+ and ffmpeg. `uv` is recommended. Blender is needed for 3D → sprite renders.
 Windows games are driven natively or from WSL.

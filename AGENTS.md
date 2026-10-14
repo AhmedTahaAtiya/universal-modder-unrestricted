@@ -31,7 +31,10 @@ repo, they almost always want to **mod a game**, or to learn how a game was modd
   - It's pre-configured per agent: `.mcp.json` (Claude Code), `.codex/config.toml` (Codex),
     `.cursor/mcp.json` (Cursor), `.vscode/mcp.json` (VS Code / Copilot), `gemini-extension.json`
     (Gemini CLI), `opencode.json` (OpenCode).
-  - No MCP? `um fal` does the same over REST.
+  - It needs `FAL_KEY` in the agent's environment; without it the server doesn't connect. fal's OAuth
+    endpoint, `https://mcp.fal.ai/mcp-relay`, takes a browser sign-in instead (see `skills/fal-assets`).
+  - No MCP? `um fal` does the same over REST. It also finds the key that `um fal key set` stored (the
+    desktop keyring on Linux, `~/.secrets/fal-key` elsewhere).
 - **Skills** (`skills/*/SKILL.md`, Agent Skills format) are copied where agents look for them in a clone:
   `.agents/skills` (Codex, Gemini CLI, Copilot, Cursor, OpenCode) and `.claude/skills` (Claude Code). Edit
   `skills/`, then copy it over; a test fails while the copies differ.
