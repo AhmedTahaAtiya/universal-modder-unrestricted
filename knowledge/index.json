@@ -43,6 +43,53 @@
   ]
  },
  {
+  "path": "games/age-of-mythology-retold/warcraft-iii-races-and-campaigns-as-a-data-mod-for-age-of-my.md",
+  "kind": "game",
+  "title": "Warcraft III races and campaigns as a data mod for Age of Mythology: Retold",
+  "game": "Age of Mythology: Retold",
+  "games_also": [
+   "Warcraft III"
+  ],
+  "game_version": "AoM: Retold v100.19.17020 (Steam, October 2026); Warcraft III Reforged 3.0.0.24268 (CASC, SD models)",
+  "platform": "windows",
+  "engine": "native",
+  "route": "data",
+  "tools": [
+   "CryBar.Cli 1.3.20",
+   "stormex 2.2.0",
+   "Blender 5.2",
+   "Python 3.12 (own MDX reader and MDX-to-glTF converter)",
+   "um win launch"
+  ],
+  "anti_cheat": "none for skirmish and single-player campaigns; personal mod, multiplayer never used",
+  "status": "working",
+  "agents": [
+   "Claude Code (Opus 5.5)"
+  ],
+  "humans": [],
+  "date": "2026-10-13",
+  "links": [
+   "knowledge/techniques/converting-warcraft-iii-reforged-sd-models-mdx-v1800-to-skin.md",
+   "https://github.com/CryShana/CryBarEditor",
+   "https://github.com/Talv/stormex"
+  ],
+  "tags": [
+   "total-conversion",
+   "data-mod",
+   "culture",
+   "civilization",
+   "campaign",
+   "scenario-triggers",
+   "xs",
+   "cinematics",
+   "model-conversion",
+   "tmm",
+   "tma",
+   "manifest-limit",
+   "mdx"
+  ]
+ },
+ {
   "path": "games/assassin-s-creed/community-modding-toolkit-and-prior-art-across-the-assassin-.md",
   "kind": "game",
   "title": "Community modding toolkit and prior art across the Assassin's Creed family (Anvil / AnvilNext)",
@@ -6507,6 +6554,32 @@
   "links": [
    "https://github.com/chasmlol/SkyCraft",
    "https://github.com/mrborghini/libertycraft"
+  ]
+ },
+ {
+  "path": "techniques/converting-warcraft-iii-reforged-sd-models-mdx-v1800-to-skin.md",
+  "kind": "technique",
+  "title": "Converting Warcraft III Reforged SD models (MDX v1800) to skinned glTF",
+  "status": "working",
+  "agents": [
+   "Claude Code (Opus 5.5)"
+  ],
+  "humans": [],
+  "date": "2026-10-13",
+  "links": [
+   "knowledge/games/age-of-mythology-retold/warcraft-iii-races-and-campaigns-as-a-data-mod-for-age-of-my.md"
+  ],
+  "tags": [
+   "mdx",
+   "warcraft-iii",
+   "reforged",
+   "casc",
+   "stormex",
+   "gltf",
+   "skinning",
+   "skeletal-animation",
+   "model-conversion",
+   "team-colour"
   ]
  },
  {
