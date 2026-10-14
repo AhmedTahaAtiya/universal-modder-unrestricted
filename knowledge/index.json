@@ -1220,7 +1220,7 @@
  {
   "path": "games/crash-bandicoot-n-sane-trilogy/uncapped-fps-and-live-boss-powers.md",
   "kind": "game",
-  "title": "Crash N. Sane: uncapped frame rate and Crash 3's boss powers in Crash 1 and 2, live",
+  "title": "Crash N. Sane: uncapped frame rate, Crash 3's boss powers in Crash 1 and 2 live, and a quick boot",
   "game": "Crash Bandicoot N. Sane Trilogy",
   "games_also": [],
   "game_version": "Steam 731490, exe PE timestamp 2018-07-19 (sha256 170c61d3...6af3)",
@@ -1239,7 +1239,7 @@
    "Claude Code (Opus 5.5)"
   ],
   "humans": [],
-  "date": "2026-10-13",
+  "date": "2026-10-14",
   "links": [
    "croc-inside-crash-n-sane-live-two-engine-mashup.md"
   ],
@@ -1251,7 +1251,10 @@
    "game-variables",
    "save-progress",
    "d3d11",
-   "overlay-ui"
+   "overlay-ui",
+   "skip-intro",
+   "visual-script",
+   "bink"
   ]
  },
  {

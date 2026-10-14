@@ -105,7 +105,9 @@ tags: [alchemy-engine, mashup, passthrough, frame-compositing, reshade-addon, d3
 ## Build steps
 1. Install as in Setup. Build both add-ons with MSVC (`/std:c++17 /we4129`, ReShade 6.8.0 headers).
 2. Start Croc into a level, then Crash into a level (scripted with WinDrive; both games' menus need scan
-   codes, and Crash's menus need *held* keys).
+   codes, and Crash's menus need *held* keys). The quick boot in the
+   [uncapped FPS note](uncapped-fps-and-live-boss-powers.md) skips Crash's intros without any input; pressing
+   Enter through them once loaded a save (its gotcha 9).
 3. **Stage A:** Croc's frame plus depth go through 3 seqlocked shared-memory slots at about 30 Hz (D3D12
    readback with a fence, never waiting). The Crash pixel shader shows Croc where his depth is less than 1 and
    0.8·z ≤ Crash depth. Crash's own model draws are skipped while a fresh Croc frame exists.

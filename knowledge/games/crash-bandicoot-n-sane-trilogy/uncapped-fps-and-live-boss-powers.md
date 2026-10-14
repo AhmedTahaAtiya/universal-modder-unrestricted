@@ -1,6 +1,6 @@
 ---
 kind: game
-title: 'Crash N. Sane: uncapped frame rate and Crash 3''s boss powers in Crash 1 and 2, live'
+title: 'Crash N. Sane: uncapped frame rate, Crash 3''s boss powers in Crash 1 and 2 live, and a quick boot'
 game: Crash Bandicoot N. Sane Trilogy
 games_also: []
 game_version: 'Steam 731490, exe PE timestamp 2018-07-19 (sha256 170c61d3...6af3)'
@@ -13,23 +13,26 @@ status: working
 agents:
 - Claude Code (Opus 5.5)
 humans: []
-date: '2026-10-13'
+date: '2026-10-14'
 links: ["croc-inside-crash-n-sane-live-two-engine-mashup.md"]
-tags: [alchemy-engine, reshade-addon, frame-rate, timer-resolution, game-variables, save-progress, d3d11, overlay-ui]
+tags: [alchemy-engine, reshade-addon, frame-rate, timer-resolution, game-variables, save-progress, d3d11, overlay-ui, skip-intro, visual-script, bink]
 ---
-# Crash N. Sane: uncapped frame rate and Crash 3's boss powers in Crash 1 and 2, live
+# Crash N. Sane: uncapped frame rate, Crash 3's boss powers in Crash 1 and 2 live, and a quick boot
 
-> Two runtime changes from a ReShade add-on, with no game files touched:
+> Three runtime changes from a ReShade add-on, with no game files touched:
 > - **Frame rate:** the game runs uncapped (~230–340 FPS on a 240 Hz display), and measured movement shows the
 >   game still runs at native speed.
 > - **Boss powers:** in Crash 1 and 2, a beaten boss hands over its Crash 3 power the moment the game marks the
 >   boss beaten, with a Crash 3-style "new power" card (the game's own icon and wording).
+> - **Quick boot:** the title screen is up ~4 s after the window appears, instead of ~50 s (no Activision video, no
+>   Vicarious Visions intro cutscene).
 >
 > Verified in the real game:
 > - **Frame rate:** the FPS counter in screenshots, and run speed and jump height measured at uncapped and at
 >   60 FPS.
 > - **Powers:** switched in memory, checked through their effect in game and in the saved file.
 > - **Card:** shown in a boss arena.
+> - **Quick boot:** three launches; screenshots show the title ~4 s after the window appears.
 >
 > No boss was actually fought: each kill was simulated by flipping the beaten flag in memory.
 
@@ -49,6 +52,12 @@ tags: [alchemy-engine, reshade-addon, frame-rate, timer-resolution, game-variabl
   fragile.
 - **Rejected: rewriting the save at the next launch** (what the existing mod did). The power arrives one
   restart late.
+- **Quick boot, other ways (not used here):**
+  - PCGamingWiki's [skip-intro fix](https://www.pcgamingwiki.com/wiki/Crash_Bandicoot_N._Sane_Trilogy#Skip_intro_videos)
+    empties `archives\bumper_atvi.bk2`. That removes the Activision video only (the VV cutscene comes from the
+    start screen's script, below), and it changes a game file, which Steam's file check puts back.
+  - `--overridemap <map>` (same page) starts straight in one map, for testing; PCGamingWiki warns that the pause
+    menu's statistics read lower. Not tried here.
 
 ## How the game works (what we had to learn)
 - **Frame limiter:**
@@ -121,6 +130,30 @@ tags: [alchemy-engine, reshade-addon, frame-rate, timer-resolution, game-variabl
   - Crash 1: its wood Save/Load popup and plank signs.
   - Crash 2: its stone panel pieces.
   - Crash 3: its metal popup.
+- **Boot sequence:**
+  - The trilogy boots into Crash 1's start screen (`C1_StartScreen.pak`).
+  - Its zone info (`chunkInfos.pak`, `CZoneInfo._loadMovieName` at +0x50) names a *loading movie*, `bumper_atvi`:
+    the Activision video, played through Bink (`archives/bumper_atvi.bk2`, opened by bink2w64.dll, not by the
+    exe's CreateFile).
+  - The start screen's visual script `C1_StartScreen_Manager` calls `CProgressionNodes::previousLevel`:
+    - nothing (a fresh boot): it plays the Vicarious Visions cutscene (`playEdc3`) before the title;
+    - a level (back from a game): it fades straight in.
+  - previousLevel (wrapper exe+0x274c60 → exe+0x767320) reads a path at +0xb0 of the game state
+    (`*(exe+0x1a64690)`; +0xb8 is the current level) and resolves it through the zone manager
+    (`*(exe+0x1a5b690)`, lookup exe+0x750ac0).
+  - The title ("CLICK TO START") waits for the first input to pick the primary controller. It reads device state
+    (Crash reads the keyboard through user32's key state; see the
+    [Croc note](croc-inside-crash-n-sane-live-two-engine-mashup.md)), so posted key or mouse messages don't reach
+    it; a key press does, an injected one too (gotcha 9). After it, a 6 s camera blend in the same script flies
+    to the game-select menu.
+- **Reading visual scripts in igz:**
+  - An `igVscCppActionNode`'s `_metaFunction` (+0x38) is a named external reference (an RNEX fixup). Its value
+    indexes the file's EXNM entries, counting only those without bit 31 of the second word; that bit marks the
+    handle entries, which `igHandle` fields index instead.
+  - The entry gives the native function's name, e.g. `CProgressionNodes::previousLevel_VSC`. kishimisu's
+    [Crash-NST-Level-Editor](https://github.com/kishimisu/Crash-NST-Level-Editor) splits EXNM the same way
+    (`FixupCollection.SetupNamedReferences`).
+  - At runtime the reflected function's name string is followed (+8) by its code address.
 
 ## Build steps
 1. **Add-on module (`host_powers.cpp`), every 0.25 s while the area is Crash 1 or 2:**
@@ -144,6 +177,13 @@ tags: [alchemy-engine, reshade-addon, frame-rate, timer-resolution, game-variabl
    - `timeBeginPeriod(1)` once.
    - The `ja` NOP from `init_device`.
    - Optional own limiter: a high-resolution waitable timer to 0.5 ms early, then a spin.
+6. **Quick boot (`host_boot.cpp`, at D3D device creation, in the running process like the `ja` NOP):**
+   - Patch the running exe's `BinkOpen` import entry to return null when the path names `bumper_atvi`; the game
+     carries on. The `.bk2` file stays as it is.
+   - Replace the function at exe+0x767320 with a version that does the same lookup but, on its first call with no
+     previous level, uses the current level's path (+0xb8). The start screen then takes its "back from a game"
+     branch: no cutscene.
+   - Check the original bytes first.
 
 ## Verification
 - **Frame rate:** the FPS counter showed 230–340 in levels and menus. Run and jump measurements at uncapped and
@@ -156,6 +196,8 @@ tags: [alchemy-engine, reshade-addon, frame-rate, timer-resolution, game-variabl
   - Speed shoes came on, and the card rose in over the fight (screenshots).
   - The same flip after quitting from the arena to the map also showed the card.
   - A flip in Crash 2's warp room without coming from that arena granted silently, with no card.
+- **Quick boot:** launched three times. The add-on's log shows `bumper_atvi` refused and the previousLevel
+  fallback used once, and the screenshots show the title ~4 s after the window appears.
 - **Persistence:**
   - An unused variable was set through its holder.
   - The game's Save/Load → Save wrote it to the slot's file (read back with an IGB parser).
@@ -189,6 +231,11 @@ tags: [alchemy-engine, reshade-addon, frame-rate, timer-resolution, game-variabl
    own `ID3DDeviceContextState` still had the back buffer's RTV bound after `SwapDeviceContextState(prev)`. That
    live reference made the game's `ResizeBuffers` fail with `DXGI_ERROR_INVALID_CALL` (in ReShade's log), and the
    game crashed. **Fix:** `OMSetRenderTargets(0, nullptr, nullptr)` before swapping back.
+9. **Injected Enter presses through the intros once loaded a save.** **Cause:** the VV cutscene doesn't skip on
+   Enter, and the title/menu logo fingerprints never matched the textures actually drawn. A press then landed on
+   the main menu, where Enter means Continue: the last save loaded and a level started. **Fix:** don't skip by
+   input; take the script's own no-intro branch (Build step 6). Any input-based automation on these menus needs
+   a positive "this is the title" signal first.
 
 ## Assets
 - No generated assets.
