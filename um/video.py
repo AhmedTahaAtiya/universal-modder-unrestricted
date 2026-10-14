@@ -38,7 +38,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-from um.common import die, need
+from um.common import die, need, text_utf8
 
 FONTS = Path(__file__).parent / "fonts"
 TITLE_FONT = FONTS / "SpaceGrotesk-Bold.ttf"
@@ -49,7 +49,7 @@ FONT_OVERRIDES: dict[Path, str] = {}   # set per EDL from the theme's title_font
 
 def ff(*args, quiet=True):
     cmd = ["ffmpeg", "-hide_banner", "-y"] + (["-loglevel", "error"] if quiet else []) + [str(a) for a in args]
-    r = subprocess.run(cmd, capture_output=True, text=True)
+    r = subprocess.run(cmd, capture_output=True, **text_utf8())
     if r.returncode:
         die("ffmpeg failed:\n" + " ".join(cmd)[:3000] + "\n" + r.stderr[-3000:])
     return r
@@ -57,7 +57,7 @@ def ff(*args, quiet=True):
 
 def _probe_ffmpeg(path) -> dict:
     """ffprobe-less fallback: parse `ffmpeg -i` banner."""
-    err = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(path)], capture_output=True, text=True).stderr
+    err = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(path)], capture_output=True, **text_utf8()).stderr
     if "Invalid data" in err or "No such file" in err:
         die(f"cannot read {path}: {err.strip().splitlines()[-1]}")
     m = re.search(r"Duration: (\d+):(\d+):([\d.]+)", err)
@@ -72,7 +72,7 @@ def _probe_ffmpeg(path) -> dict:
 def probe(path) -> dict:
     if not shutil.which("ffprobe"):
         return _probe_ffmpeg(path)
-    r = subprocess.run(["ffprobe", "-v", "error", "-print_format", "json", "-show_streams", "-show_format", str(path)], capture_output=True, text=True)
+    r = subprocess.run(["ffprobe", "-v", "error", "-print_format", "json", "-show_streams", "-show_format", str(path)], capture_output=True, **text_utf8())
     if r.returncode:
         die(f"ffprobe {path}: {r.stderr.strip()}")
     d = json.loads(r.stdout)

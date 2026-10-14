@@ -19,7 +19,7 @@ import time
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from um.common import die, is_mac, is_windows, is_wsl, ps_exe, to_posix
+from um.common import PS_UTF8, die, is_mac, is_windows, is_wsl, ps_exe, text_utf8, to_posix
 
 MAX_ENTRIES = 80_000
 MAX_DEPTH = 6
@@ -53,12 +53,12 @@ def win_folders() -> dict:
         return {}
     cache = win_folders.__dict__
     if "v" not in cache:
-        ps = ("$f=[Environment]; "
+        ps = (PS_UTF8 + "$f=[Environment]; "
               "@($f::GetFolderPath('UserProfile'),$f::GetFolderPath('MyDocuments'),$f::GetFolderPath('ApplicationData'),"
               "$f::GetFolderPath('LocalApplicationData')) -join '|'")
         exe = ps_exe()
         try:
-            out = subprocess.run([exe, "-NoProfile", "-Command", ps], capture_output=True, text=True, timeout=30,
+            out = subprocess.run([exe, "-NoProfile", "-Command", ps], capture_output=True, **text_utf8(), timeout=30,
                                  cwd="/mnt/c" if is_wsl() else None).stdout.strip()
             prof, docs, roaming, local = (out.split("|") + ["", "", "", ""])[:4]
             cache["v"] = {k: to_posix(v) for k, v in dict(profile=prof, documents=docs, appdata=roaming, localappdata=local).items() if v}
@@ -81,7 +81,7 @@ def steam_registry_root() -> Path | None:
     elif is_wsl():
         try:
             out = subprocess.run(["reg.exe", "query", r"HKCU\Software\Valve\Steam", "/v", "SteamPath"], capture_output=True,
-                                 text=True, timeout=15, cwd="/mnt/c").stdout
+                                 **text_utf8(), timeout=15, cwd="/mnt/c").stdout
         except (OSError, subprocess.TimeoutExpired):
             return None
         m = re.search(r"SteamPath\s+REG_SZ\s+(.+)", out)

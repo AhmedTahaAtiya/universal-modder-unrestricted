@@ -25,7 +25,7 @@ import time
 import urllib.request
 from pathlib import Path
 
-from um.common import data_dir, die, need
+from um.common import data_dir, die, need, text_utf8
 
 REPO = os.environ.get("UM_KB_REPO", "rehan-remade/universal-modder")
 BRANCH = os.environ.get("UM_KB_BRANCH", "main")
@@ -384,7 +384,7 @@ def open_pr(path: Path, yes: bool):
     media = [p for p in path.parent.glob("media/*")] if (path.parent / "media").exists() else []
     can_push = False
     if shutil.which("gh"):
-        r = subprocess.run(["gh", "api", f"repos/{REPO}", "--jq", ".permissions.push"], capture_output=True, text=True)
+        r = subprocess.run(["gh", "api", f"repos/{REPO}", "--jq", ".permissions.push"], capture_output=True, **text_utf8())
         can_push = r.stdout.strip() == "true"
     remote = "origin" if can_push else "fork"
     cmds = [["git", "checkout", "-b", branch], ["um", "kb", "index"],
@@ -410,9 +410,9 @@ def open_pr(path: Path, yes: bool):
         if c[:3] == ["gh", "repo", "fork"] and subprocess.run(["git", "remote", "get-url", "fork"], cwd=repo, capture_output=True).returncode == 0:
             continue
         if c[:3] == ["gh", "pr", "create"] and remote == "fork":
-            url = subprocess.run(["git", "remote", "get-url", "fork"], cwd=repo, capture_output=True, text=True).stdout.strip()
+            url = subprocess.run(["git", "remote", "get-url", "fork"], cwd=repo, capture_output=True, **text_utf8()).stdout.strip()
             c[c.index("--head") + 1] = pr_head(branch, url)
-        r = subprocess.run(c, cwd=repo, capture_output=True, text=True)
+        r = subprocess.run(c, cwd=repo, capture_output=True, **text_utf8())
         if r.returncode:
             die(f"{' '.join(c[:4])} failed: {(r.stderr or r.stdout).strip()[-800:]}")
         if c[:3] == ["gh", "pr", "create"]:
