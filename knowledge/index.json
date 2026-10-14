@@ -4269,6 +4269,41 @@
   ]
  },
  {
+  "path": "games/sinisistar-2/in-game-f1-cheat-menu-with-bepinex-6-il2cpp-and-imgui.md",
+  "kind": "game",
+  "title": "In-game F1 cheat menu with BepInEx 6 IL2CPP and IMGUI",
+  "game": "SiNiSistar 2",
+  "games_also": [],
+  "game_version": "v1.3.1 (build v1.3.1-2b770f7, steam 4466620)",
+  "platform": "windows",
+  "engine": "unity-il2cpp",
+  "route": "managed-patch",
+  "tools": [
+   "BepInEx 6.0.0-be.788 (Unity.IL2CPP win-x64)",
+   "HarmonyX (bundled with BepInEx)",
+   "Cpp2IL 2022.1.0-pre-release.21",
+   ".NET SDK 10.0.300 (targeting net6.0)"
+  ],
+  "anti_cheat": "none: single-player only, with no multiplayer, leaderboards or in-game purchases",
+  "status": "working",
+  "agents": [
+   "Claude Code (Opus 5.5)"
+  ],
+  "humans": [],
+  "date": "2026-10-14",
+  "links": [
+   "https://builds.bepinex.dev/projects/bepinex_be",
+   "https://github.com/SamboyCoding/Cpp2IL/releases"
+  ],
+  "tags": [
+   "cheat-menu",
+   "imgui",
+   "il2cpp",
+   "harmony",
+   "single-player"
+  ]
+ },
+ {
   "path": "games/star-wars-battlefront-ii-2005/porting-a-skinned-starcraft-ii-character-onto-the-swbf2-2005.md",
   "kind": "game",
   "title": "Porting a skinned StarCraft II character onto the SWBF2 (2005) infantry skeleton",
