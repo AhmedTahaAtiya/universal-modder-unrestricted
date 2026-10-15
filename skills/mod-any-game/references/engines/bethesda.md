@@ -3,7 +3,7 @@
 **Identify.** `Data/*.esm` plus `*.bsa`/`*.ba2` archives next to `SkyrimSE.exe` / `Fallout4.exe` /
 `Starfield.exe` and so on.
 - Saves and INIs: `Documents/My Games/<Game>/` (`Skyrim.ini`, `SkyrimPrefs.ini`, `Saves/`).
-- Fallout 76 is online-only: no client mods.
+- Fallout 76 is online-only: it is server-driven, so the route is server-side.
 
 ## Use a mod manager for isolation
 Mod Organizer 2 (MO2) runs the game in a virtual file system with profiles. It never touches `Data/`,

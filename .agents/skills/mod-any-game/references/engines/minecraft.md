@@ -96,7 +96,7 @@ resource packs. Develop in `com.mojang/development_*_packs` and turn on content-
 - **A separate launcher profile keeps the user's worlds safe.** Add a Fabric profile with its own `gameDir`.
   `fabric-installer -launcher microsoft_store` fails for lack of `launcher_profiles_microsoft_store.json`,
   so edit `launcher_profiles.json` by hand, after a backup.
-- Multiplayer: a server needs the mod too (or use plugins). Never ship client hacks for public servers.
+- Multiplayer: a server needs the mod too (or use plugins).
 - **Port fidelity:**
   - A 1.7.10 `Item.onItemUseFirst` ran before the block's `onBlockActivated`. In 1.20 the block's `onUse` runs
     first, so items that must win go through `UseBlockCallback`.

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/media/banner.png" alt="universal-modder: mod any game. Point any AI coding agent at the PC games you own. Publish your mods, remix other people's, and make new ones." width="100%">
+  <img src="docs/media/banner.png" alt="universal-modder: mod any game. Point any AI coding agent at any PC game and publish your mods, remix other people's, and make new ones." width="100%">
 </p>
 
 <p align="center">
