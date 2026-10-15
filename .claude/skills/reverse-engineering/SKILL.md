@@ -1,6 +1,6 @@
 ---
 name: reverse-engineering
-description: Read how a game actually works so a mod can hook it. Decompile .NET/Mono (ILSpy), IL2CPP (Cpp2IL, Il2CppDumper), Java (Vineflower) and native code (Ghidra, IDA, via MCP servers); dump data and asset formats; reverse-engineer a binary file format and prove it with a round trip; read live memory (Cheat Engine, Frida, x64dbg); find render passes (RenderDoc). Use when a mod needs game internals, e.g. "how does the boss AI work", "find the damage function", "what format is this .sld/.pak/.dat", "where is the player position in memory".
+description: Read how a game actually works so a mod can hook it. Decompile .NET/Mono (ILSpy), IL2CPP (Cpp2IL, Il2CppDumper), Java (Vineflower) and native code (Ghidra, IDA, via REA's MCP or your own); dump data and asset formats; reverse-engineer a binary file format and prove it with a round trip; read live memory and drive a debugger (REA, Cheat Engine, Frida, x64dbg); find render passes (RenderDoc). Use when a mod needs game internals, e.g. "how does the boss AI work", "find the damage function", "what format is this .sld/.pak/.dat", "where is the player position in memory".
 ---
 
 # Reverse engineering for mods
@@ -22,9 +22,9 @@ publish them.
 **Unity IL2CPP**
 - Cpp2IL (or Il2CppDumper) on `GameAssembly.dll` + `global-metadata.dat` gives types, fields, method
   signatures and addresses, plus dummy DLLs for ILSpy.
-- Method bodies are native: load `GameAssembly.dll` in Ghidra/IDA and apply the generated script to name
-  functions.
-- Live: UnityExplorer, or `il2cpp-frida-mcp`.
+- Method bodies are native: load `GameAssembly.dll` in Ghidra/IDA (via REA) and apply the generated script
+  to name functions.
+- Live: UnityExplorer, or REA's Frida session.
 
 **Java** (Minecraft, Slay the Spire...)
 Vineflower / CFR / Recaf. For Minecraft, use Loom `genSources` with Mojang mappings.
@@ -44,10 +44,15 @@ Vineflower / CFR / Recaf. For Minecraft, use Loom `genSources` with Mojang mappi
   properties for free.
 
 **Dynamic / live**
-- Cheat Engine: value scans → "find out what writes to this address" → struct → owner. CheatEngine MCP
-  servers exist.
-- x64dbg: breakpoints and tracing (x64dbg-mcp; bind it to 127.0.0.1, since some default to 0.0.0.0).
-- Frida (frida-mcp, frida-game-hacking-mcp): hook functions from JavaScript, log arguments.
+- **REA** (https://github.com/morluto/rea, `npx rea-agents setup`) — one MCP covering all of this. Static:
+  native binaries through Ghidra/IDA/Hopper, .NET assemblies and CIL, Android APKs via JADX, JS/Electron,
+  WASM, Go/Rust, firmware, SQLite. Runtime: debugger sessions it owns (Rizin, GDB), Frida injection, live
+  memory reads, navigation context. Results carry their evidence and their unknowns. Needs Node 22+;
+  native targets need an engine you already have installed.
+- **Cheat Engine**, by hand, for the value-scan loop: scan → "find out what writes to this address" → struct
+  → owner.
+- **x64dbg** for breakpoints and tracing on Windows (bind any bridge to 127.0.0.1; some default to 0.0.0.0).
+- **Frida** to hook functions from JavaScript and log arguments, when scripting beats driving a GUI.
 - ReClass.NET rebuilds structs from live memory.
 
 **Graphics**
