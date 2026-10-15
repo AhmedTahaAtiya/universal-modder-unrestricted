@@ -27,6 +27,12 @@ repo, they almost always want to **mod a game**, or to learn how a game was modd
     - `backup`: snapshot and restore saves
     - `publish`: pre-release lint
     - `kb`: the knowledge base
+- **REA** (https://github.com/morluto/rea, [rea.tools](https://rea.tools)) — the reverse-engineering MCP.
+  `npx rea-agents setup` registers it with your agent and installs its workflow instructions. One server
+  covers native binaries (through a Ghidra, IDA or Hopper install you already have), .NET assemblies and
+  CIL, Android APKs, JavaScript/Electron, WASM, Go and Rust binaries, firmware and SQLite — plus the
+  runtime sessions it owns: Rizin and GDB debuggers, Frida injection, live memory reads. Results come back
+  with their evidence and their unknowns. Needs Node 22+; `skills/reverse-engineering` is the workflow.
 - **fal MCP server:** `https://mcp.fal.ai/mcp` with header `Authorization: Bearer $FAL_KEY`.
   - It's pre-configured per agent: `.mcp.json` (Claude Code), `.codex/config.toml` (Codex),
     `.cursor/mcp.json` (Cursor), `.vscode/mcp.json` (VS Code / Copilot), `gemini-extension.json`

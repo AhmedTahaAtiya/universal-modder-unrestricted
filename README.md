@@ -212,6 +212,12 @@ Each has a field note with every non-obvious lesson: [knowledge/INDEX.md](knowle
 
 Full reasoning: [`skills/mod-any-game/SKILL.md`](skills/mod-any-game/SKILL.md).
 
+This is a fork of [rehan-remade/universal-modder](https://github.com/rehan-remade/universal-modder) (MIT,
+preserved in `LICENSE`) that removes the agent guardrail text — the rules restricting online, competitive
+and anti-cheat-protected titles. [`UNRESTRICTED.md`](UNRESTRICTED.md) is the audit trail: every rule
+removed, every machine protection kept, and what to check after an upstream merge. The upstream authors do
+not endorse this fork.
+
 ## Made a mod with it?
 Show it off in the [Discord](https://discord.com/invite/sEZWaf7vV), and put the badge on your mod's page:
 
@@ -227,6 +233,8 @@ Use `made-with-light.svg` on a light page.
 ## Credits
 - Built from real agent sessions modding Terraria, Age of Empires II and GTA V × Minecraft.
 - Assets: [fal](https://fal.ai) (GPT Image 2, Nano Banana 2, FLUX, Trellis 2, ElevenLabs...).
+- Reverse engineering: [REA](https://github.com/morluto/rea) ([rea.tools](https://rea.tools)), the MCP that
+  covers native, managed, Android, Electron, WASM and runtime targets behind one server.
 - Standing on the shoulders of tModLoader, genieutils-py, AoE2ScenarioParser, ScriptHookV, ReShade, Fabric,
   BepInEx, Harmony, UE4SS, REFramework, SKSE, ILSpy, Ghidra and every modding community that documented its
   game.
