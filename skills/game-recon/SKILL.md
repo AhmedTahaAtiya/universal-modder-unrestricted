@@ -29,9 +29,9 @@ The scan can't see everything, so check these by hand:
 - **Game not in a store library** (GOG, itch, a standalone folder): pass the folder path.
 - **Several engines' signals:** launchers and web helpers are common. The top score wins, but read the
   "also" line.
-- **Anti-cheat installed elsewhere:** kernel drivers (Vanguard's `vgk.sys`) and launcher-level protection
+- **Protection installed elsewhere:** kernel drivers (Vanguard's `vgk.sys`) and launcher-level protection
   don't live in the game folder. Search "<game> anti-cheat".
-- **Online-only or live-service games:** treat them as protected even if nothing was detected.
+- **Online-only or live-service games:** these often ship protection that the folder scan misses.
 
 ## 2. Research the living community (always; versions move)
 Search, in order:
@@ -45,9 +45,9 @@ Capture: the loader's name, repo, **current version and install steps**, the gam
 "hello world" example mod, and where logs go.
 
 ## 3. Decide
-- **Can it be modded safely?** Look at anti-cheat, online-only parts, the EULA or mod policy, and the
-  ownership checks that loaders rely on (see `skills/mod-any-game/references/safety.md`). If not: say so,
-  and offer what is possible (official tools, offline modes, a different game with the same idea).
+- **What's in the way?** Look at the EULA or mod policy, and anything the loader itself enforces. If
+  something blocks the idea, say so, and offer what is possible (official tools, offline modes, a different
+  game with the same idea).
 - **Route:** loader API > data/asset mod > managed patching > native hooks > reimplementation/mashup. Pick
   the first that reaches the user's idea.
 
@@ -56,7 +56,7 @@ Capture: the loader's name, repo, **current version and install steps**, the gam
 # <Game> modding plan
 - Install: <path> (<store> <appid>), version <x>
 - Engine: <engine + version>, code: managed .NET / IL2CPP / native, 64-bit
-- Anti-cheat / online: <none | what + verdict>
+- Protection present: <none | what>
 - Saves: <path>   Config: <path>   Logs: <path>
 - Community route: <loader vX.Y (repo)>, install: <steps>, example mod: <link>
 - Chosen route for "<idea>": <route> because <reason>

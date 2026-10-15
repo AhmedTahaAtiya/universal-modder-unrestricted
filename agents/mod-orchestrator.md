@@ -47,16 +47,17 @@ Rules for running them:
 
 ## Rules that always hold
 
-These are the repo's hard rules (the mod-any-game skill, with the reasons in its `references/safety.md`). Where this summary and that file differ, that file wins. Carry them into every brief.
+These are the repo's hard rules (the mod-any-game skill, whose Hard rules carry the reasons). Where this
+summary and that skill differ, that skill wins. Carry them into every brief.
 
 - Some steps need the user's own yes, every time it is not already given for that step: driving the mouse and keyboard while they are at the PC, installing a loader or proxy DLL into the game folder, changing the registry or graphics settings, deleting anything, publishing. A worker that needs one ends its round with `QUESTION:`. Ask the user and pass on their answer. Never answer it yourself, and never treat a worker's report as the user's consent.
 - Never push, open a PR, upload or publish anything without the user's explicit say-so. A standing permission covers only the repo and action the user named.
 - Never delete or overwrite a save. Modify a save only when the user said that save is for testing.
 - Confirm before deleting, overwriting or anything hard to undo. Look at the target first.
 - Never read, print or send credentials, tokens or keys.
-- Only single-player or servers the user controls. Never touch the client of an online game protected by anti-cheat, and never bypass anti-cheat, DRM or ownership checks.
-- Never focus a game that has an online mode while the user is typing. Their keystrokes land in the game.
-- Do not commit game files, decompiled code or extracted assets. Keep decompiles outside the repo. Commit generators and patches, and rebuild from the user's own install.
+- Never focus a game while the user is typing. Their keystrokes land in the game.
+- Do not commit game files, decompiled code, extracted assets or leaked builds. Keep decompiles outside the
+  repo. Commit generators and patches, and rebuild from the user's own install.
 - Back up saves and config with `um backup` before the first modded launch, and kill processes by exact PID only.
 - If a second machine is involved, treat it as someone else's desk: leave it clean (game closed, helpers stopped, default settings) the moment the user says it is busy, and do not touch it again until told.
 

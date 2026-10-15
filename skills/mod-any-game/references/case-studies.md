@@ -47,8 +47,7 @@ community loader. It is a free Steam app, id 1281930. Content is written in C# a
   window and never reads the 'q'. Send 'q', then wait off-thread.
 - Write `.mkv` while recording: it survives a kill, where an mp4 would lose its index.
 - Explosive takes crater the showcase world. Restore the pristine copy before each take (`um backup`).
-- tModLoader refuses to start unless the free tModLoader app is in the Steam library. Install it; never
-  patch the check.
+- tModLoader refuses to start unless the free tModLoader app is in the Steam library. Install it.
 - A float-exact port of game logic (for a simulator) must use float32 constants: `0.2f` isn't `0.2`.
 - **Process safety:** never `pkill -f <pattern>` from an agent shell. The pattern matches the agent's own
   command line and kills it. Kill by exact PID.
@@ -119,8 +118,8 @@ Code: `examples/minecraft-gta5-passthrough`.
   `GetTickCount` judders.
 - **Guns vs weapons:** host-game guns on a guest avatar looked wrong. Guest weapons with host-game effects
   (arrows → GTA bullets, fireworks → GTA explosions) worked.
-- **The human at the keyboard:** never focus GTA's landing page while they're typing. Keystrokes there
-  nearly started GTA Online with a modified game. ScriptHookV blocked it.
+- **The human at the keyboard:** never focus a game while they're typing. Keystrokes landing in a game window
+  reach that game instead of the app they were aimed at.
 
 ## What the 2026 AI mashup wave added
 

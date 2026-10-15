@@ -21,8 +21,7 @@ How to get there depends on the store:
   anywhere else.
 - **GOG (DRM-free):** swapping the exe is a downgrade, which is fine. Back the original up (e.g.
   `Gothic2.gog27.exe.bak`), then drop the supported exe into `system/`.
-- **Steam:** don't swap the Steam exe. Whether it carries Steam DRM is unverified, and replacing a DRM-wrapped
-  exe would strip the DRM. Use THQ Nordic's official Workshop beta instead (game Properties → Betas): it starts
+- **Steam:** use THQ Nordic's official Workshop beta instead of swapping the exe (game Properties → Betas): it starts
   the game through a Workshop launcher, and Union and plugins install by subscribing to Workshop items. Which exe
   build that branch runs, and whether GD3D11 works on it, isn't verified here.
 - Union may already be in the install: `SHW32.DLL` loaded in-process and `saves/<slot>/UnionPlugin*.dat` are

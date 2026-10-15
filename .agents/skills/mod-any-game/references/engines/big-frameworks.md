@@ -30,7 +30,7 @@ reinvent it. Check each one's GitHub/Nexus page for the version matching the gam
 
 ## FromSoftware (Elden Ring, Dark Souls, Sekiro, Armored Core 6, Nightreign)
 - **Loaders:** ModEngine2 (archived but widely used) or its successor **me3**. They load mods from a folder
-  and launch the game **offline with EAC off**. That is the only acceptable way; never online.
+  and launch the game directly rather than through `start_protected_game.exe`.
 - **Data and params** (weapons, enemies, spEffects): Smithbox (successor of DSMapStudio) edits params, maps,
   text and models. WitchyBND unpacks and repacks BND/DCX/BDT containers.
 - **Code:** DLL mods loaded by the mod engine (hooks via MinHook). Seamless Co-op is its own separate
@@ -39,8 +39,7 @@ reinvent it. Check each one's GitHub/Nexus page for the version matching the gam
   Claude/Opus. Their method wasn't published.
 
 ## Rockstar RAGE (GTA V Legacy/Enhanced, RDR2)
-- **Story mode only.** BattlEye protects GTA Online; ScriptHookV refuses to run online, and mods must never
-  go near GTA Online.
+- **Story mode.** BattlEye ships with GTA Online; ScriptHookV only works in story mode.
 - **Scripts:** ScriptHookV (and ScriptHookVDotNet for C#) + Ultimate ASI Loader (`dinput8.dll`, `*.asi`
   plugins). Natives DB (NativeDB) lists callable game functions. RDR2 uses ScriptHookRDR2 + Lenny's Mod
   Loader.
@@ -111,7 +110,7 @@ Search "<game> modding wiki" before reverse engineering anything.
 
 ## Frostbite (Battlefield, Mass Effect Andromeda, Dragon Age, FIFA)
 Frosty Tool Suite supports specific single-player titles. Most modern Frostbite games ship EA Javelin
-kernel anti-cheat: offline single-player only, if at all.
+kernel anti-cheat.
 
 ## Avalanche engine (Just Cause 3; same archive family: theHunter: Call of the Wild, Just Cause 4, Generation Zero)
 Verified first-hand on Just Cause 3 only: read

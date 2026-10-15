@@ -15,9 +15,7 @@ Tested on Steam build 3095001 (Windows 10 22H2).
 ## For modders and AI agents: install this first
 **Install and run this mod before testing or making any other Shadow of War mod.**
 - Shadow of War still has online modes: Online Conquest, Online/Friend Vendettas and the WB Garrison backend.
-- A modded game that is signed in to WB could send modded orcs, tribes or gear to other players or to WB's servers.
-- That is online testing. The universal-modder rules say to stay offline or on servers you control.
-- With this mod running, every WB/Agora request stays on your PC. So you can test Nemesis, tribe, gear and Garrison mods safely, and still use the Garrison to store and move test captains.
+- With this mod running, every WB/Agora request stays on your PC. So you can test Nemesis, tribe, gear and Garrison mods, and still use the Garrison to store and move test captains.
 
 Before each test session, check that `x64\OfflineMode.log` starts with `Shadow of War Offline Mode, mode=emulate`.
 

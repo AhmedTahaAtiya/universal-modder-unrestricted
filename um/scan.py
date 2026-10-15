@@ -381,9 +381,9 @@ KNOWN = {
     "the elder scrolls v: skyrim special edition": ("ESP/ESL plugins (xEdit, Creation Kit), Papyrus, SKSE + CommonLibSSE-NG native plugins, MO2", "bethesda.md"),
     "fallout 4": ("ESP plugins (FO4Edit, Creation Kit), Papyrus, F4SE plugins, MO2", "bethesda.md"),
     "starfield": ("Creation Kit plugins, SFSE", "bethesda.md"),
-    "elden ring": ("ModEngine2 (offline, EAC disabled) + Smithbox/DSMapStudio param/map edits; never online", "big-frameworks.md"),
-    "grand theft auto v": ("Story mode only: ScriptHookV + ASI loader, OpenIV/CodeWalker; BattlEye guards GTA Online - never mod online", "big-frameworks.md"),
-    "grand theft auto v enhanced": ("Story mode only: ScriptHookV (enhanced build) + ASI loader; BattlEye guards GTA Online - never mod online", "big-frameworks.md"),
+    "elden ring": ("ModEngine2 (launches the game directly, without EAC) + Smithbox/DSMapStudio param/map edits", "big-frameworks.md"),
+    "grand theft auto v": ("Story mode: ScriptHookV + ASI loader, OpenIV/CodeWalker; BattlEye ships with GTA Online", "big-frameworks.md"),
+    "grand theft auto v enhanced": ("Story mode: ScriptHookV (enhanced build) + ASI loader; BattlEye ships with GTA Online", "big-frameworks.md"),
     "cyberpunk 2077": ("REDmod / Cyber Engine Tweaks (Lua) / RED4ext / ArchiveXL, WolvenKit for assets", "big-frameworks.md"),
     "baldur's gate 3": ("Script Extender (Lua) + LSLib/Multitool for .pak, official mod.io toolkit", "big-frameworks.md"),
     "valheim": ("BepInEx 5 + Jotunn, HarmonyX patches", "unity.md"),
@@ -403,7 +403,7 @@ KNOWN = {
                        "Workshop. Mods are picked and ordered at world creation and copied to data/installed_mods (bump NUMERIC_VERSION after "
                        "edits); graphics replacements declare [REQUIRES_ID_AFTER_ME:vanilla_creatures_graphics]. DFHack (Lua) for scripting",
                        "misc-engines.md"),
-    "counter-strike 2": ("Workshop maps / Source 2 tools; local -insecure only. VAC: never inject on official servers", "source.md"),
+    "counter-strike 2": ("Workshop maps / Source 2 tools; local listen server with -insecure", "source.md"),
     "portal 2": ("VScript (Squirrel) + Puzzle Maker/Hammer, Workshop", "source.md"),
     "half-life 2": ("Source SDK 2013 mods (C++), maps with Hammer", "source.md"),
     "doom": ("WAD/PK3 mods with a source port (GZDoom/UZDoom)", "misc-engines.md"),
@@ -474,8 +474,8 @@ ENGINES = {
     "clausewitz": ("Paradox Clausewitz/Jomini", "misc-engines.md", "script mods (plain text) in Documents/Paradox Interactive/<game>/mod"),
     "re-engine": ("Capcom RE Engine", "big-frameworks.md", "REFramework (Lua scripts, in-game UI) + Fluffy Mod Manager for pak/natives replacements"),
     "mt-framework": ("Capcom MT Framework", "big-frameworks.md", ".arc archives under native*/ (nativePC, nativeDX10, ...): ARCtool to unpack/repack, Fluffy Mod Manager to install; DeadRisingEx for Dead Rising; native code via DLL hooks"),
-    "fromsoft": ("FromSoftware (Dantelion)", "big-frameworks.md", "ModEngine2 + Smithbox/DSMapStudio, param edits; offline only"),
-    "rage": ("Rockstar RAGE", "big-frameworks.md", "story mode: ScriptHookV + ASI loader, OpenIV/CodeWalker for assets; never online"),
+    "fromsoft": ("FromSoftware (Dantelion)", "big-frameworks.md", "ModEngine2 + Smithbox/DSMapStudio, param edits"),
+    "rage": ("Rockstar RAGE", "big-frameworks.md", "story mode: ScriptHookV + ASI loader, OpenIV/CodeWalker for assets"),
     "hedgehog": ("Hedgehog Engine (Sonic Team)", "big-frameworks.md", "Hedge Mod Manager + its HE1/HE2 mod loaders (Generations, Lost World, Forces, Frontiers, Shadow Generations) or Unleashed Recompiled's built-in loader: mod.ini folders of loose file replacements"),
     "blackrock": ("Black Rock Studio engine (Split/Second)", "big-frameworks.md", "no community tools: .ark packs, .model/.textures assets and plaintext .params config to reverse yourself; native code via DLL hooks"),
     "redengine": ("CD Projekt REDengine", "big-frameworks.md", "REDmod, Cyber Engine Tweaks, RED4ext, WolvenKit (Cyberpunk); REDkit (Witcher 3)"),
@@ -811,12 +811,13 @@ def scan(query: str) -> dict:
     if len(ix.files) < 5:
         warnings.append("the install folder is (nearly) empty: the game is not fully installed, or lives elsewhere")
     if anti:
-        warnings.append(f"anti-cheat present ({', '.join(anti)}): offline/single-player only, never inject into online play; "
-                        "many titles need the anti-cheat disabled via an official offline launch option - do not bypass it")
+        warnings.append(f"anti-cheat present ({', '.join(anti)}): some titles need an official launch option "
+                        "that starts the game without it")
     if online:
-        warnings.append(f"'{online}' is an online competitive game: modding its client breaks the ToS and gets accounts banned - stop, or use official tools only (Workshop/creative modes)")
+        warnings.append(f"'{online}' is an online competitive game: its official tools (Workshop/creative modes) "
+                        "are usually the cheapest route")
     if any(l == "ScriptHookV" for l in loaders) and "rage" in key:
-        warnings.append("ScriptHookV only works in story mode; launch GTA offline")
+        warnings.append("ScriptHookV only works in story mode")
     report = dict(
         name=name, store=game.get("store"), appid=game.get("appid"), path=str(root),
         engine=dict(key=key, label=label, confidence=score, evidence=ev, **{k: v for k, v in det.items() if v not in (None, "")}),

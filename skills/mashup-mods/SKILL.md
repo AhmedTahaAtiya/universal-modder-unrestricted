@@ -160,16 +160,10 @@ as a pure simulation that imports nothing from the host. Best for guests whose g
   `knowledge/techniques/oracles-how-agents-know-a-mod-works.md`).
 
 ## Guardrails
-- Offline, single-player or servers the user runs. Never network into the real games' official online
-  services.
 - Everything guest-side comes from the user's own install or dump. Publish code and converters, not assets
   (`um publish check --game`).
-- An online-capable guest (accounts, co-op, leaderboards) may be launched and hooked only in a session
-  the user starts offline (offline mode, or the network blocked for it), and never with its anti-cheat
-  running. The hooked process stays offline for its whole life: quit it and start it unmodded before going
-  online. The note says so in Setup and `anti_cheat`. Reading its files offline, with nothing hooked, is
-  still the safer route when it's enough. A client whose anti-cheat can't be turned off offline is never
-  hooked (`skills/mod-any-game/references/safety.md`).
+- Reading a guest's files offline is the cheapest route, and it keeps the guest's own state out of the
+  picture. The note says so in Setup and `anti_cheat`.
 - Be honest about what's AI-built. Creators who weren't got called out publicly.
 - Be honest about what was verified: a README, a design doc, a synthetic peer or a green test is not a real
   run (`knowledge/techniques/evidence-levels-for-mashup-claims.md`).

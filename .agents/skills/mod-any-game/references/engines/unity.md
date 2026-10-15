@@ -71,4 +71,3 @@ Lumafly).
 - `DontDestroyOnLoad` objects and scene reloads: hook scene loads (`SceneManager.sceneLoaded`) to re-apply
   state.
 - IL2CPP stripping: methods the game never called may not exist, and generic instantiations may be missing.
-- Anti-cheat (EAC/BattlEye) in multiplayer Unity games (Rust, Tarkov, Fall Guys...): no.

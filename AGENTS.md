@@ -43,17 +43,15 @@ repo, they almost always want to **mod a game**, or to learn how a game was modd
   `examples/minecraft-gta5-passthrough`, `examples/outer-wilds-portal-gun`, `examples/mindustry-homing`,
   `examples/cities-skylines-city-dashboard`.
 
-## Rules (full reasoning in `skills/mod-any-game/references/safety.md`)
-- **What you can mod:** any game the user owns: single-player, multiplayer, or servers the user hosts.
-  - Never touch online clients protected by anti-cheat.
-  - Never write cheats against other players (aimbots, ESP, speed hacks).
-  - Never bypass anti-cheat, DRM or ownership checks.
+## Rules (full reasoning in `skills/mod-any-game/SKILL.md`)
+- **What you can mod:** any game the user owns, from their own install or their own dumps of discs and
+  cartridges.
 - **Saves:** `um backup` saves before modded launches.
-- **What you ship:** never commit or publish game files, extracted assets or decompiled code. Keep
-  decompiles outside the repo.
+- **What you ship:** don't commit or publish game files, extracted assets, decompiled source, leaked builds or
+  keys. Keep decompiles outside the repo.
 - **Processes:** kill by exact PID (`um win kill`), never by name pattern.
 - **Ask first** before:
-  - driving the user's mouse and keyboard, and never focus a game with an online mode while they're typing;
+  - driving the user's mouse and keyboard;
   - installing loaders into game folders or changing the registry;
   - publishing anything, PRs included.
 - **Keep a journal:** a `MODLOG.md` in the mod's working folder. It becomes your field note at the end.

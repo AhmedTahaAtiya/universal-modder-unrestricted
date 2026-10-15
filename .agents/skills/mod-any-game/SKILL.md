@@ -45,9 +45,8 @@ Companion skills: **game-recon**, **reverse-engineering**, **fal-assets**, **ass
 - If the user wants an existing mod updated to a newer game version or another loader (an old Forge 1.7.10
   mod on modern Fabric, say), the original is the spec, and its license decides whether the port can be
   published: follow the **port-a-mod** skill inside this loop.
-- Settle online vs offline up front. If the game is online or competitive and has anti-cheat, don't mod the
-  client (see Hard rules). Offer offline modes, private servers the user runs, or the official tools
-  (Workshop, creative/map editors).
+- Settle online vs offline up front, because it changes the route. A competitive game usually has an official
+  surface (Workshop, creative/map editors) that is cheaper and safer than hooking the client.
 - Start `MODLOG.md` in the working folder as the journal. Record paths, IDs, file formats, class names, what
   failed and why, and the next step. Anything not in the journal is lost at the next context compaction.
 
@@ -153,25 +152,34 @@ With your human's OK, open a PR (`um kb pr <note> --yes`). Do this even if the m
 documented dead end saves the next agent hours.
 
 ## Hard rules
-- **Ownership.** Only mod games the user owns.
-- **Online play.** Stay in single-player/offline, or on servers the user controls. Never touch the client of
-  an online game protected by anti-cheat (EasyAntiCheat, BattlEye, Vanguard, VAC on official servers,
-  Ricochet, ACE). Never write cheats (aimbots, ESP, speedhacks) for multiplayer.
-- **No bypasses.** Never bypass anti-cheat, DRM or ownership checks. tModLoader refuses to start unless the
-  free tModLoader app is in the user's Steam library: add it, don't patch the check. If a game needs its
-  anti-cheat off for mods, use only the official offline launch option.
-- **No redistribution.** Don't ship game files, decompiled source or extracted assets. Ship your own code and
+- **Ownership.** Mod games the user owns, from their own install or their own dumps of discs and cartridges.
+  ROMs, ISOs and game downloads stay out.
+- **No redistribution.** Don't ship game files, byte-identical copies, extracted assets, decompiled source,
+  leaked builds or SDKs, license keys, or retail offsets baked into shipped code. Ship your own code and
   assets, or patches and converters that run on the user's own install ("bring your own game files").
-- **Back up first.** Run `um backup` before changing saves, profiles or game folders. Keep the restore path
-  written in MODLOG.md.
+  Credit loaders and libraries, and disclose AI use honestly: communities react badly to undisclosed
+  "vibe-coded" releases, and some ban AI projects outright.
+- **No secrets.** Keep API keys, tokens and `.env` files out of the repo. `um kb check` and
+  `um publish check` catch the common ones.
+- **Unpacked builds.** Reading a DRM-wrapped exe you own is fine (live memory, or a private dump kept
+  outside any repo). Keep the unpacked exe out of the game folder, out of version control, and out of notes.
+- **Back up first.** Run `um backup` before changing saves, profiles or game folders, and keep the restore
+  path written in MODLOG.md.
 - **Process hygiene.**
   - Kill by exact PID (`um win kill <pid>`). Never use `pkill -f` (it matches your own shell) or wildcard
     kills.
   - Never block the game's main thread (for example by waiting on ffmpeg from inside a mod).
   - Clear crash reporters (BugSplat etc.) by PID when Steam refuses to relaunch.
+  - Leave no topmost windows (`untop`), global hooks or orphaned ffmpeg/PowerShell processes behind.
 - **The user's machine.**
+  - Loaders and proxy DLLs (`winhttp.dll`, `version.dll`, `dinput8.dll`, `dxgi.dll`) sit in the game folder.
+    Say what you added and how to remove it, or use a separate copy of the game or a mod-manager profile.
+  - Registry and config changes: `um win reg set` backs the key up first. Note what changed.
   - Driving input takes over their mouse and keyboard. Check `um win drive --proc X idle` and ask before long
-    automated sessions while they're at the PC.
+    automated sessions while they're at the PC. Input is only sent while the game is in the foreground.
+  - Bind any bridge, debugger or MCP server you add to `127.0.0.1` with a token; some RE tools default to
+    `0.0.0.0`.
+  - Run loaders only from their official repository or releases. A viral mod's "download" is often malware.
   - Ask before installing a loader into the game folder, changing registry or graphics settings, deleting
     anything, or publishing.
 
@@ -188,4 +196,3 @@ documented dead end saves the next agent hours.
 - `references/case-studies.md`: Terraria, AoE2 and Minecraft × GTA V end to end, every non-obvious fact.
 - The knowledge base (`knowledge/` at the repo root; `um kb search`): field notes by many agents, per game
   and per technique.
-- `references/safety.md`: the rules with their reasons, anti-cheat and legal hygiene.

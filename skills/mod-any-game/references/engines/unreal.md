@@ -47,9 +47,7 @@ read the UE4SS example mods before prompting for features. Many are already ther
 - `fmodel-mcp` lets an agent browse assets.
 
 ## Pitfalls
-- **Anti-cheat:** EAC/BattlEye titles (Fortnite and most online UE games) → no.
 - **Version mismatch:** paks cooked for the wrong UE version crash on mount. Blueprint mods break on game
   updates.
-- **Signatures:** games with `.sig` files verify paks. Community bypasses exist only for specific
-  single-player games; don't bypass them where it's used as anti-tamper for online play.
+- **Signatures:** games with `.sig` files verify paks, so a repak has to be signed (or the sig stripped).
 - UE5 games that stream everything through IoStore need retoc, not repak.

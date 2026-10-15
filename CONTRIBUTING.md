@@ -41,17 +41,10 @@ rules below.
   download links or license keys, and no instructions to fetch them.
 - **DRM-wrapped executables** (Steam stub, Arxan, Denuvo, iOS FairPlay): analysing your own legally installed
   copy is fine, from the running game's memory or a private dump kept outside any repository, and so is
-  writing up what you learned in your own words. A note never explains how to strip or unpack the protection,
-  never links an unpacked executable or a DRM-removal tool, and never gives steps whose result is the game
-  running without its DRM.
-- **No cheating other players, and no bypasses:**
-  - nothing that gives an edge over other players on servers you don't run (aimbots, ESP, speed hacks,
-    bots);
-  - no anti-cheat, DRM or ownership-check bypasses;
-  - no instructions for injecting into online clients protected by anti-cheat;
-  - one exception, for games that can no longer be bought anywhere: a note may say that a community route for
-    people without a copy exists and link the community's guide page. Its steps, keys, serials and files
-    stay out of the repo, and so do direct links to patched executables, cracks or game downloads.
+  writing up what you learned in your own words.
+- **Abandoned games:** for a game that can no longer be bought anywhere, a note may say that a community route
+  for people without a copy exists and link the community's guide page. Its steps, keys, serials and files
+  stay out of the repo, and so do direct links to patched executables, cracks or game downloads.
 - **No secrets:** API keys, tokens, `.env` files. `um kb check` and `um publish check` catch the common
   ones.
 - **Honesty:**

@@ -38,10 +38,8 @@ Pick a game route only after deciding these, because the model dictates the simu
   usually owns their own character (see the co-op default below).
 - **What has to cross the wire?** Inputs (lockstep), or state (client-server), or both (hybrid).
 
-The rules from `skills/mod-any-game/references/safety.md` still hold. In a co-op mod, each player runs their own
-copy and the mod's traffic goes over its own transport (direct UDP, a VPN, a relay you run). It never goes
-through the game's official online services, and it never touches a client protected by anti-cheat. PvP mods
-are for servers the user runs.
+The hard rules in `skills/mod-any-game/SKILL.md` still hold. In a co-op mod, each player runs their own
+copy and the mod's traffic goes over its own transport (direct UDP, a VPN, a relay you run).
 
 ## How
 

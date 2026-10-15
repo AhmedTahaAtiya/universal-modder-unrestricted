@@ -20,5 +20,4 @@ agent configs and the example mods. The parts where a bug matters most:
   README). A way to reach it from another machine is in scope.
 
 Out of scope: problems in the tools and services `um` calls or downloads (fal, ComfyUI, ffmpeg, Blender, mod
-loaders, ReShade, ScriptHookV). Please report those upstream. Requests to get past a game's anti-cheat, DRM or
-ownership checks are out of scope too: this project doesn't do that (see `CONTRIBUTING.md`).
+loaders, ReShade, ScriptHookV). Please report those upstream (see `CONTRIBUTING.md`).

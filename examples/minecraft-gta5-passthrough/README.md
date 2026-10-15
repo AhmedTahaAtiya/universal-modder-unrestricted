@@ -234,13 +234,12 @@ Your off hand holds explosive fireworks for the crossbow, and you get 64 arrows.
 
 ## Safety
 
-- **Story mode only; never GTA Online.** BattlEye protects GTA Online. This runs with BattlEye off, which also
-  keeps Online from starting, and ScriptHookV closes the game if it goes online anyway. Don't try to get a
-  modded game near Online.
+- **Story mode.** BattlEye ships with GTA Online; ScriptHookV only works in story mode and closes the game if
+  it goes online anyway.
 - **Never automate clicks on GTA's landing page while someone is at the keyboard.** During development a script
   focused GTA and clicked Story Mode while the user was typing in another window. Their keystrokes landed in
-  GTA, which showed "attempting to access GTA Online servers with an altered version". ScriptHookV blocked it,
-  but don't risk it. Pick Story Mode by hand. `go.py` never clicks.
+  GTA, which showed "attempting to access GTA Online servers with an altered version". Pick Story Mode by
+  hand. `go.py` never clicks.
 - **The game folder.** `install.sh` lists what it adds, won't replace another mod's loader or ReShade, and
   `--remove` takes it all out again.
 - **Saves.** `go.py save` keeps your save files as `.bak` before it replaces them.

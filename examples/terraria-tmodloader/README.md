@@ -137,7 +137,7 @@ your normal save folder.
   `um backup create "<save folder>/tModLoader/Worlds" --name worlds`, then `um backup restore worlds`
   (the save folder is `Documents\My Games\Terraria` on Windows).
 - tModLoader refuses to start unless the free tModLoader app is in your Steam library, including
-  builds from GitHub. Add it to your library; don't try to get around the check. The command-line
+  builds from GitHub. Add it to your library. The command-line
   `-build` exits before any Steam code runs, so building works without it.
 - `ModSystem.ModifyScreenPosition` runs after screen shake is applied, so setting
   `Main.screenPosition` outright cancels the shake. The nuke's camera adds an eased offset instead.
